@@ -1,89 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portfolio | CoreStack Creative</title>
-  <style>
-    :root {
-      --dark-turquoise: #006d77;
-      --light-blue: #83c5be;
-      --very-light-grey: #edf6f9;
-      --white: #ffffff;
-      --black: #222222;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Verdana, sans-serif; }
-    body { background: var(--very-light-grey); color: var(--black); }
-    header { width: 100%; background: var(--dark-turquoise); display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; position: fixed; top: 0; left: 0; z-index: 1000; transition: top 0.3s; }
-    .logo { font-size: 1.8rem; color: var(--white); font-weight: bold; }
-    nav ul { list-style: none; display: flex; gap: 1.5rem; }
-    nav a { color: var(--white); text-decoration: none; font-size: 1rem; transition: color 0.3s; }
-    nav a:hover { color: var(--light-blue); }
-    .hero { background: linear-gradient(rgba(0,109,119,0.8), rgba(0,109,119,0.8)), url('https://images.unsplash.com/photo-1522199670076-2852f80289c1?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat; height: 70vh; display: flex; justify-content: center; align-items: center; text-align: center; color: var(--white); padding: 2rem; }
-    .hero h1 { font-size: 3rem; }
-    .portfolio-section { padding: 6rem 2rem 2rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; }
-    .portfolio-item { background: #fff; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); overflow: hidden; width: 300px; transition: transform 0.3s; }
-    .portfolio-item:hover { transform: scale(1.05); }
-    .portfolio-item img { width: 100%; height: 200px; object-fit: cover; }
-    .portfolio-item p { padding: 1rem; }
-    footer { background: var(--dark-turquoise); color: var(--white); text-align: center; padding: 2rem 1rem; margin-top: 2rem; }
-    footer a { color: var(--light-blue); text-decoration: none; display: block; margin-top: 0.5rem; }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio - Carolina Web Crafters</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
+  <header>
+    <nav class="navbar">
+      <a href="index.html">
+        <img src="https://i.ibb.co/7J7bKyN3/logo1.png" alt="Logo" class="logo white-bg" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="portfolio.html" class="active">Portfolio</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<header id="header">
-  <div class="logo">CoreStack Creative</div>
-  <nav>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="pricing.html">Pricing</a></li>
-      <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+  <main class="container fade-in">
+    <section class="portfolio-section">
+      <h1>Our Work</h1>
+      <p>Here are some of the projects we've brought to life for local businesses:</p>
+      <div class="portfolio-gallery">
+        <!-- Add real thumbnails and descriptions as needed -->
+        <div class="project-card">Project 1</div>
+        <div class="project-card">Project 2</div>
+        <div class="project-card">Project 3</div>
+      </div>
+    </section>
+  </main>
 
-<section class="hero">
-  <h1>Our Work</h1>
-</section>
-
-<section class="portfolio-section">
-  <div class="portfolio-item">
-    <img src="https://images.unsplash.com/photo-1581090700227-1c065c5f8661?auto=format&fit=crop&w=800&q=80" alt="Project 1">
-    <p>Business Website - Clean, modern design with booking integration.</p>
-  </div>
-  <div class="portfolio-item">
-    <img src="https://images.unsplash.com/photo-1603791452906-86a0ecdb2583?auto=format&fit=crop&w=800&q=80" alt="Project 2">
-    <p>Portfolio Website - Bold personal branding with responsive layout.</p>
-  </div>
-  <div class="portfolio-item">
-    <img src="https://images.unsplash.com/photo-1591696205602-2b6a6adfc7a4?auto=format&fit=crop&w=800&q=80" alt="Project 3">
-    <p>E-commerce Store - Product catalogs, checkout, and payments.</p>
-  </div>
-</section>
-
-<footer>
-  <div>
-    <strong>Contact Us:</strong><br>
-    <a href="mailto:velo.guidrycsc@gmail.com">velo.guidrycsc@gmail.com</a>
-    <a href="mailto:baxter.caresscsc@gmail.com">baxter.caresscsc@gmail.com</a>
-    <p>&copy; 2025 CoreStack Creative. All rights reserved.</p>
-  </div>
-</footer>
-
-<script>
-let prevScrollPos = window.pageYOffset;
-const header = document.getElementById("header");
-window.onscroll = function() {
-  let currentScrollPos = window.pageYOffset;
-  if (prevScrollPos > currentScrollPos) { header.style.top = "0"; }
-  else { header.style.top = "-100px"; }
-  prevScrollPos = currentScrollPos;
-}
-</script>
-
+  <footer class="footer">
+    <img src="https://i.ibb.co/7J7bKyN3/logo1.png" alt="Logo" class="logo white-bg" />
+    <p>Helping Carrboro businesses thrive online.</p>
+    <p>Email: <a href="mailto:info@carolinawebcrafters.com">info@carolinawebcrafters.com</a></p>
+  </footer>
 </body>
 </html>

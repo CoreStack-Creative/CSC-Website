@@ -1,92 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About Us | CoreStack Creative</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CoreStack Creative</title>
   <style>
     :root {
-      --dark-turquoise: #006d77;
-      --light-blue: #83c5be;
-      --very-light-grey: #edf6f9;
-      --white: #ffffff;
-      --black: #222222;
+      --primary-color: #222831;
+      --accent-color: #00adb5;
+      --light-bg: #f5f5f5;
+      --dark-bg: #393e46;
+      --text-color: #eeeeee;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Verdana, sans-serif; }
-    body { background: var(--very-light-grey); color: var(--black); }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light-bg);
+      color: #333;
+    }
+
     header {
-      width: 100%;
-      background: var(--dark-turquoise);
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1rem 2rem; position: fixed; top: 0; left: 0; z-index: 1000;
-      transition: top 0.3s;
+      background-color: var(--primary-color);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .logo { font-size: 1.8rem; color: var(--white); font-weight: bold; }
-    nav ul { list-style: none; display: flex; gap: 1.5rem; }
-    nav a { color: var(--white); text-decoration: none; font-size: 1rem; transition: color 0.3s; }
-    nav a:hover { color: var(--light-blue); }
+
+    header img.logo {
+      height: 40px;
+      background-color: #fff;
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: bold;
+    }
+
     .hero {
-      background: linear-gradient(rgba(0,109,119,0.8), rgba(0,109,119,0.8)),
-      url('https://images.unsplash.com/photo-1508780709619-79562169bc64?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-      height: 70vh; display: flex; justify-content: center; align-items: center; text-align: center; color: var(--white); padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      background-color: var(--accent-color);
+      padding: 60px 20px;
+      flex-wrap: wrap;
+      animation: fadeIn 1.5s ease;
     }
-    .hero h1 { font-size: 3rem; }
-    section { padding: 6rem 2rem 2rem; text-align: center; }
-    section p { max-width: 800px; margin: 0 auto; font-size: 1.1rem; }
+
+    .hero-text {
+      max-width: 500px;
+      color: white;
+    }
+
+    .hero-text h1 {
+      font-size: 2.5em;
+    }
+
+    .hero-graphic img {
+      max-width: 300px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .pricing-preview {
+      background: var(--dark-bg);
+      color: var(--text-color);
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .pricing-preview h2 {
+      margin-bottom: 10px;
+    }
+
+    .pricing-preview a {
+      display: inline-block;
+      margin-top: 15px;
+      background: var(--accent-color);
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .pricing-preview a:hover {
+      background: #028991;
+    }
+
+    .map-section {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    iframe {
+      border: 0;
+      width: 100%;
+      height: 300px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
     footer {
-      background: var(--dark-turquoise); color: var(--white); text-align: center;
-      padding: 2rem 1rem; margin-top: 2rem;
+      background: var(--primary-color);
+      color: var(--text-color);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 20px;
+      align-items: center;
     }
-    footer a { color: var(--light-blue); text-decoration: none; display: block; margin-top: 0.5rem; }
+
+    footer img {
+      height: 40px;
+      background: #fff;
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    footer p, footer a {
+      margin: 5px 10px;
+      color: var(--text-color);
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
-
 <body>
 
-<header id="header">
-  <div class="logo">CoreStack Creative</div>
-  <nav>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="pricing.html">Pricing</a></li>
-      <li><a href="portfolio.html">Portfolio</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+  <header>
+    <img src="https://i.ibb.co/7J7bKyN3/logo1.png" alt="CoreStack Logo" class="logo" />
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
-<section class="hero">
-  <h1>About CoreStack Creative</h1>
-</section>
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Custom Websites for Local Businesses</h1>
+      <p>We design beautiful, responsive websites tailored for small to medium businesses in the Carrboro, NC area. Fast, affordable, and built to grow with your business.</p>
+    </div>
+    <div class="hero-graphic">
+      <img src="https://i.ibb.co/k26RGjdJ/Png-Item-3490619.png" alt="Web Design Graphic">
+    </div>
+  </section>
 
-<section>
-  <h2>Our Story</h2>
-  <p>CoreStack Creative was founded to provide clients with beautiful, fast, and functional websites.
-     We focus on clean design, intuitive user experiences, and modern technologies.
-     Our mission is to turn your online presence into something unforgettable.
-  </p>
-</section>
+  <section class="pricing-preview">
+    <h2>Simple & Transparent Pricing</h2>
+    <p>Starting at just $200, our packages are designed to give your business the online presence it deserves.</p>
+    <a href="pricing.html">View Pricing</a>
+  </section>
 
-<footer>
-  <div>
-    <strong>Contact Us:</strong><br>
-    <a href="mailto:velo.guidrycsc@gmail.com">velo.guidrycsc@gmail.com</a>
-    <a href="mailto:baxter.caresscsc@gmail.com">baxter.caresscsc@gmail.com</a>
-    <p>&copy; 2025 CoreStack Creative. All rights reserved.</p>
-  </div>
-</footer>
+  <section class="map-section">
+    <h2>We Serve Carrboro, NC</h2>
+    <p>Proudly supporting local businesses in Carrboro and surrounding areas.</p>
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3236.326078708646!2d-79.07211518434358!3d35.91024688014366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89ace5109c7eea23%3A0xd5775fbbd7d69d5e!2sCarrboro%2C%20NC!5e0!3m2!1sen!2sus!4v1682915172761"
+      allowfullscreen=""
+      loading="lazy"
+    ></iframe>
+  </section>
 
-<script>
-let prevScrollPos = window.pageYOffset;
-const header = document.getElementById("header");
-window.onscroll = function() {
-  let currentScrollPos = window.pageYOffset;
-  if (prevScrollPos > currentScrollPos) { header.style.top = "0"; }
-  else { header.style.top = "-100px"; }
-  prevScrollPos = currentScrollPos;
-}
-</script>
+  <footer>
+    <img src="https://i.ibb.co/7J7bKyN3/logo1.png" alt="CoreStack Logo">
+    <p>CoreStack Creative — Web Design for Local Businesses</p>
+    <p>Email us: <a href="mailto:contact@corestackcreative.com">contact@corestackcreative.com</a></p>
+  </footer>
 
 </body>
 </html>
