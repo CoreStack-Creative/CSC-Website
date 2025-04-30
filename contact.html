@@ -7,43 +7,48 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <header>
-    <nav class="navbar">
-      <a href="index.html">
-        <img src="https://i.ibb.co/7J7bKyN3/logo1.png" alt="Logo" class="logo white-bg" />
-      </a>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="pricing.html">Pricing</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
-      </ul>
+    <img src="https://i.ibb.co/7J7bKyN3/logo1.png" alt="CoreStack Logo" class="logo" />
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="contact.html" class="active">Contact</a>
     </nav>
   </header>
 
-  <main class="container fade-in">
-    <section class="contact-section">
+  <section class="hero">
+    <div class="hero-text">
       <h1>Get in Touch</h1>
-      <form action="mailto:info@carolinawebcrafters.com" method="post" enctype="text/plain">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required />
+      <p>Have questions or ready to start your project? We'd love to hear from you. Fill out the form below to contact us directly.</p>
+    </div>
+    <div class="hero-graphic">
+      <img src="https://i.ibb.co/k26RGjdJ/Png-Item-3490619.png" alt="Contact Graphic">
+    </div>
+  </section>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
+  <section class="pricing-preview">
+    <form action="mailto:info@carolinawebcrafters.com" method="post" enctype="text/plain" style="max-width: 600px; margin: auto; text-align: left;">
+      <label for="name">Name:</label><br />
+      <input type="text" id="name" name="name" required style="width: 100%; padding: 10px; margin-bottom: 10px;" /><br />
 
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
+      <label for="email">Email:</label><br />
+      <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; margin-bottom: 10px;" /><br />
 
-        <button type="submit">Send Message</button>
-      </form>
-    </section>
-  </main>
+      <label for="message">Message:</label><br />
+      <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 10px; margin-bottom: 10px;"></textarea><br />
 
-  <footer class="footer">
-    <img src="https://i.ibb.co/7J7bKyN3/logo1.png" alt="Logo" class="logo white-bg" />
+      <button type="submit" style="background: var(--accent-color); color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <img src="https://i.ibb.co/7J7bKyN3/logo1.png" alt="CoreStack Logo">
     <p>Helping Carrboro businesses thrive online.</p>
     <p>Email: <a href="mailto:info@carolinawebcrafters.com">info@carolinawebcrafters.com</a></p>
   </footer>
+
 </body>
 </html>
