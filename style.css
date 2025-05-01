@@ -62,6 +62,7 @@
     animation: float 3s ease-in-out infinite;
   }
   
+  /* Pricing Preview Section */
   .pricing-preview {
     background: var(--dark-bg);
     color: var(--text-color);
@@ -70,7 +71,8 @@
   }
   
   .pricing-preview h2 {
-    margin-bottom: 10px;
+    margin-bottom: 2rem;
+    font-size: 2.2rem;
   }
   
   .pricing-preview a {
@@ -87,20 +89,61 @@
     background: #028991;
   }
   
-  .map-section {
-    text-align: center;
-    padding: 60px 20px;
+  .fine-print {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    margin-top: 2rem;
   }
   
-  iframe {
-    border: 0;
-    width: 100%;
-    height: 300px;
-    border-radius: 10px;
-    margin-top: 20px;
+  /* New Pricing Cards (inside pricing-preview) */
+  .pricing-card-link {
+    text-decoration: none;
+    color: inherit;
   }
   
-  /* Updated Footer Styles */
+  .pricing-card {
+    background: white;
+    color: #333;
+    border-radius: 16px;
+    padding: 2rem;
+    width: 300px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+  }
+  
+  .pricing-card ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .pricing-card li {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+  }
+  
+  .pricing-card .price {
+    font-size: 1.6rem;
+    margin: 1rem 0;
+  }
+  
+  .label {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff6347;
+    color: white;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+    border-radius: 4px;
+  }
+  
+  .hover-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Footer */
   footer {
     background: var(--primary-color);
     color: var(--text-color);
@@ -144,6 +187,25 @@
     transform: scale(1.05);
   }
   
+  /* Hero Button Link */
+  .button-link {
+    display: inline-block;
+    margin-top: 20px;
+    background: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .button-link:hover {
+    background: #028991;
+    transform: scale(1.05);
+  }
+  
+  /* Animations */
   @keyframes float {
     0%,
     100% {
