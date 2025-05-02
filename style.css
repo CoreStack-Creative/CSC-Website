@@ -226,4 +226,29 @@
       transform: translateY(0);
     }
   }
-    
+  .map-section {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: var(--light-bg);
+    color: #333;
+  }
+  
+  .map-section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .map-section p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .map-section iframe {
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    border: 0;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
