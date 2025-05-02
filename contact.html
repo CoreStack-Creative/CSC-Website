@@ -25,24 +25,77 @@
       <p>Have questions or ready to start your project? We'd love to hear from you. Fill out the form below to contact us directly.</p>
     </div>
     <div class="hero-graphic">
-      <img src="https://i.ibb.co/k26RGjdJ/Png-Item-3490619.png" alt="Contact Graphic">
+      <img 
+        src="https://i.ibb.co/YBwwX7nG/Chat-GPT-Image-May-1-2025-08-13-25-PM.png" 
+        alt="Contact Graphic" 
+        style=" animation: float 3s ease-in-out infinite;"
+      >
     </div>
   </section>
-
+  
   <section class="pricing-preview">
-    <form action="mailto:info@carolinawebcrafters.com" method="post" enctype="text/plain" style="max-width: 600px; margin: auto; text-align: left;">
+    <form id="contactForm" style="max-width: 600px; margin: auto; text-align: left;">
       <label for="name">Name:</label><br />
       <input type="text" id="name" name="name" required style="width: 100%; padding: 10px; margin-bottom: 10px;" /><br />
-
+  
       <label for="email">Email:</label><br />
       <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; margin-bottom: 10px;" /><br />
-
+  
+      <label for="pricing">Select Plan:</label><br />
+      <select id="pricing" name="pricing" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
+        <option value="">-- Please choose an option --</option>
+        <option value="Basic">Basic</option>
+        <option value="Regular">Regular</option>
+        <option value="Premium">Premium</option>
+      </select><br />
+  
       <label for="message">Message:</label><br />
       <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 10px; margin-bottom: 10px;"></textarea><br />
-
+  
       <button type="submit" style="background: var(--accent-color); color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Send Message</button>
     </form>
+    <div id="successMessage" style="display: none; color: limegreen; margin-top: 15px; font-weight: bold;">
+      Thanks! Your message is being prepared.
+    </div>
   </section>
+  
+  <script>
+    // Preselect plan from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedPlan = urlParams.get('plan');
+    if (selectedPlan) {
+      const planDropdown = document.getElementById('pricing');
+      planDropdown.value = selectedPlan;
+    }
+  
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+  
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const plan = document.getElementById('pricing').value;
+      const message = document.getElementById('message').value.trim();
+  
+      if (!name || !email || !plan || !message) {
+        alert('Please fill out all fields.');
+        return;
+      }
+  
+      const mailtoLink = `mailto:velo.guidrycsc@gmail.com?subject=Website Inquiry - ${plan} Plan&body=Name: ${name}%0DEmail: ${email}%0DPlan: ${plan}%0DMessage: ${message}`;
+  
+      // Show success message
+      const successDiv = document.getElementById('successMessage');
+      successDiv.style.display = 'block';
+  
+      // Reset form after slight delay
+      setTimeout(() => {
+        document.getElementById('contactForm').reset();
+        successDiv.style.display = 'none';
+        window.location.href = mailtoLink;
+      }, 1000);
+    });
+  </script>
+  
 
   <footer style="
   background: var(--primary-color);
