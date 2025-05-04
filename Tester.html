@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smooth Scroll Webpage</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Scroll snap for smooth transition */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .full-page {
+      height: 100vh;
+      background-color: var(--primary-color);
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      color: var(--text-color);
+      text-align: center;
+      padding: 40px;
+      position: relative;
+    }
+
+    .scroll-down-indicator {
+      position: absolute;
+      bottom: 20px;
+      font-size: 1.2rem;
+      animation: float 2s infinite;
+      cursor: pointer;
+      color: var(--text-color);
+    }
+
+    .more-info {
+      padding: 60px 20px;
+      background-color: var(--light-bg);
+      color: #333;
+      text-align: center;
+    }
+
+    .more-info h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .more-info p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- First Section -->
+  <section class="full-page">
+    <div>
+      <h1>Welcome to Our Page</h1>
+      <p>Scroll to discover more</p>
+      <a href="#more" class="scroll-down-indicator">↓</a>
+    </div>
+  </section>
+
+  <!-- More Info Section -->
+  <section id="more" class="more-info">
+    <h2>More About Us</h2>
+    <p>
+      We offer creative solutions that help businesses grow. Learn about our
+      services, philosophy, and how we can support your goals through thoughtful
+      design and strategy.
+    </p>
+  </section>
+</body>
+</html>
