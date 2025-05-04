@@ -3,153 +3,170 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Website Plans | Purely Paradisaic</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Web Design Pricing</title>
   <style>
     :root {
-      --main-bg: #00adb5;
-      --text-color: #ffffff;
-      --card-bg: #ffffff;
-      --card-text: #222831;
-      --hover-shadow: rgba(0, 0, 0, 0.2);
+      --primary-color: #222831;
+      --accent-color: #00adb5;
+      --light-bg: #f5f5f5;
+      --dark-bg: #393e46;
+      --text-color: #eeeeee;
     }
 
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #eeeeee;
-      color: var(--card-text);
+      background-color: var(--dark-bg);
+      color: var(--text-color);
+      overflow-x: hidden;
     }
 
-    .hero {
+    /* Hero Section */
+    .hero-section {
       height: 100vh;
-      background: url('https://your-image-url.jpg') center/cover no-repeat;
+      background-color: var(--dark-bg);
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
       text-align: center;
-      color: var(--text-color);
-      position: relative;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0, 173, 181, 0.5), var(--main-bg));
-      z-index: 0;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
       padding: 0 20px;
+      position: relative;
     }
 
-    .hero h1 {
+    .hero-content h1 {
       font-size: 3rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
     }
 
-    .hero p {
-      font-size: 1.25rem;
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
       max-width: 600px;
-      margin: 0 auto;
     }
 
+    .scroll-cue {
+      position: absolute;
+      bottom: 40px;
+      font-size: 1.1rem;
+      animation: bounce 2s infinite;
+      opacity: 0;
+      animation-delay: 2s;
+      animation-fill-mode: forwards;
+      color: var(--accent-color);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); opacity: 1; }
+      50% { transform: translateY(10px); }
+    }
+
+    /* Reveal on scroll */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    .reveal-on-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Pricing Preview Section */
     .pricing-preview {
-      background-color: var(--main-bg);
+      background: var(--dark-bg);
       color: var(--text-color);
-      padding: 4rem 1rem;
       text-align: center;
+      padding: 80px 20px 60px;
     }
 
     .pricing-preview h2 {
-      font-size: 2.5rem;
       margin-bottom: 2rem;
+      font-size: 2.5rem;
     }
 
     .pricing-grid {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
       gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .pricing-card-link {
+      text-decoration: none;
+      color: inherit;
     }
 
     .pricing-card {
-      background: var(--card-bg);
-      color: var(--card-text);
-      border-radius: 12px;
-      box-shadow: 0 4px 10px var(--hover-shadow);
+      background: white;
+      color: #333;
+      border-radius: 16px;
       padding: 2rem;
-      width: 260px;
+      width: 300px;
+      text-align: left;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
     }
 
     .pricing-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px var(--hover-shadow);
+      transform: scale(1.03);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     }
 
     .pricing-card .label {
-      background-color: #ff5722;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ff6347;
       color: white;
-      padding: 0.25rem 0.5rem;
-      border-radius: 6px;
+      padding: 0.3rem 0.6rem;
       font-size: 0.75rem;
-      display: inline-block;
-      margin-bottom: 0.5rem;
-    }
-
-    .pricing-card h3 {
-      margin: 0.5rem 0;
+      border-radius: 4px;
     }
 
     .pricing-card .price {
-      font-size: 1.25rem;
-      font-weight: bold;
+      font-size: 1.6rem;
       margin: 1rem 0;
     }
 
     .pricing-card ul {
       list-style: none;
-      padding: 0;
-      margin: 0;
+      padding-left: 0;
     }
 
-    .pricing-card ul li {
-      padding: 0.25rem 0;
-    }
-
-    .pricing-card-link {
-      text-decoration: none;
+    .pricing-card li {
+      margin: 0.5rem 0;
+      font-size: 1rem;
     }
 
     .fine-print {
-      font-size: 0.875rem;
+      font-size: 0.9rem;
       margin-top: 2rem;
-      max-width: 600px;
+      color: var(--text-color);
+      max-width: 800px;
       margin-left: auto;
       margin-right: auto;
-      opacity: 0.9;
     }
   </style>
 </head>
 <body>
 
-  <section class="hero">
+  <!-- Hero Section -->
+  <section class="hero-section">
     <div class="hero-content">
-      <h1>Website Pricing Plans</h1>
-      <p>Custom websites built for your vacation rental, small business, or creative brand. Choose a plan that works for you and let's bring your vision to life.</p>
+      <h1>Custom Websites That Work for You</h1>
+      <p>Clean, modern, and affordable — scroll down to see our pricing options tailored for all needs.</p>
+      <div class="scroll-cue">Scroll for Pricing ↓</div>
     </div>
   </section>
 
-  <section class="pricing-preview">
+  <!-- Pricing Section -->
+  <section class="pricing-preview reveal-on-scroll">
     <h2>Our Pricing Plans</h2>
     <div class="pricing-grid">
       <a href="contact.html?plan=Basic" class="pricing-card-link">
-        <div class="pricing-card hover-card">
+        <div class="pricing-card" style="height: 420px;">
           <div class="label">Select Customers Only</div>
           <h3>Basic</h3>
           <div class="price">$0/Hour + Domain Cost</div>
@@ -161,8 +178,9 @@
           </ul>
         </div>
       </a>
+
       <a href="contact.html?plan=Regular" class="pricing-card-link">
-        <div class="pricing-card hover-card">
+        <div class="pricing-card" style="height: 420px;">
           <h3>Regular</h3>
           <div class="price">$15/Hour + Domain Cost</div>
           <ul>
@@ -173,8 +191,9 @@
           </ul>
         </div>
       </a>
+
       <a href="contact.html?plan=Premium" class="pricing-card-link">
-        <div class="pricing-card hover-card">
+        <div class="pricing-card" style="height: 420px;">
           <h3>Premium</h3>
           <div class="price">$20/Hour + Domain Cost</div>
           <ul>
@@ -186,8 +205,21 @@
         </div>
       </a>
     </div>
-    <p class="fine-print">All packages include fully customizable websites tailored to your goals. Depending on your plan, extra features like upkeep and photoshoots may include hourly rates.</p>
+    <p class="fine-print">
+      All packages include fully customizable websites that suit your needs. Depending on the price plan, additional hourly rates may apply for photoshoots and a $5/month upkeep fee.
+    </p>
   </section>
 
+  <script>
+    // Reveal pricing section on scroll
+    const reveal = document.querySelector('.reveal-on-scroll');
+    window.addEventListener('scroll', () => {
+      const windowHeight = window.innerHeight;
+      const revealTop = reveal.getBoundingClientRect().top;
+      if (revealTop < windowHeight - 100) {
+        reveal.classList.add('visible');
+      }
+    });
+  </script>
 </body>
 </html>
