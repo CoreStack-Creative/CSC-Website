@@ -2,73 +2,106 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smooth Scroll Webpage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paradisaic Getaway</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* Scroll snap for smooth transition */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    .full-page {
+    .fullscreen-hero {
       height: 100vh;
-      background-color: var(--primary-color);
+      background: url('https://your-image-url.jpg') center/cover no-repeat;
       display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      color: var(--text-color);
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 60px 20px;
+      color: white;
       text-align: center;
-      padding: 40px;
       position: relative;
     }
 
-    .scroll-down-indicator {
+    .fullscreen-hero::before {
+      content: "";
       position: absolute;
-      bottom: 20px;
-      font-size: 1.2rem;
-      animation: float 2s infinite;
-      cursor: pointer;
-      color: var(--text-color);
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 173, 181, 0.85), rgba(0, 173, 181, 0.3));
+      z-index: 0;
     }
 
-    .more-info {
+    .fullscreen-hero .content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .fullscreen-hero h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    .info-section {
+      background-color: var(--accent-color);
+      color: var(--text-color);
       padding: 60px 20px;
-      background-color: var(--light-bg);
-      color: #333;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
       text-align: center;
     }
 
-    .more-info h2 {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
+    .info-box {
+      flex: 1 1 200px;
+      margin: 20px;
+      max-width: 250px;
     }
 
-    .more-info p {
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto;
+    .info-box i {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .info-box h3 {
+      margin-bottom: 10px;
+    }
+
+    .info-box p {
+      font-size: 0.95rem;
     }
   </style>
+  <!-- Optional: Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <!-- First Section -->
-  <section class="full-page">
-    <div>
-      <h1>Welcome to Our Page</h1>
-      <p>Scroll to discover more</p>
-      <a href="#more" class="scroll-down-indicator">↓</a>
+
+  <section class="fullscreen-hero">
+    <div class="content">
+      <h1>Purely Paradisaic</h1>
+      <p>We have prepared the ultimate beach getaway for our guests and given you all the amenities to fully relax your worries away.</p>
     </div>
   </section>
 
-  <!-- More Info Section -->
-  <section id="more" class="more-info">
-    <h2>More About Us</h2>
-    <p>
-      We offer creative solutions that help businesses grow. Learn about our
-      services, philosophy, and how we can support your goals through thoughtful
-      design and strategy.
-    </p>
+  <section class="info-section">
+    <div class="info-box">
+      <i class="fas fa-door-open"></i>
+      <h3>Secure entry and convenient host contact options</h3>
+      <p>In hac habitasse platea dictumst. In porta enim.</p>
+    </div>
+    <div class="info-box">
+      <i class="fas fa-swimmer"></i>
+      <h3>Luxury amenities all within the house resort</h3>
+      <p>In hac habitasse platea dictumst. In porta enim.</p>
+    </div>
+    <div class="info-box">
+      <i class="fas fa-umbrella-beach"></i>
+      <h3>Quiet private romantic get away island spot</h3>
+      <p>In hac habitasse platea dictumst. In porta enim.</p>
+    </div>
+    <div class="info-box">
+      <i class="fas fa-utensils"></i>
+      <h3>Michelin and Bib Gourmand restaurants around</h3>
+      <p>In hac habitasse platea dictumst. In porta enim.</p>
+    </div>
   </section>
+
 </body>
 </html>
