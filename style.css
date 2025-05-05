@@ -1,287 +1,362 @@
 :root {
-    --primary-color: #222831;
-    --accent-color: #00adb5;
-    --light-bg: #f5f5f5;
-    --dark-bg: #393e46;
-    --text-color: #eeeeee;
+  --primary-color: #222831;
+  --accent-color: #00adb5;
+  --light-bg: #f5f5f5;
+  --dark-bg: #393e46;
+  --text-color: #eeeeee;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--light-bg);
+  color: #333;
+}
+
+header {
+  background-color: var(--primary-color);
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header img.logo {
+  height: 40px;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: var(--accent-color);
+  padding: 60px 20px;
+  flex-wrap: wrap;
+  animation: fadeIn 1.5s ease;
+}
+
+.hero-text {
+  max-width: 500px;
+  color: white;
+}
+
+.hero-text h1 {
+  font-size: 2.5em;
+}
+
+.hero-graphic img {
+  max-width: 300px;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pricing Preview Section */
+.pricing-preview {
+  background: var(--accent-color);
+  color: var(--text-color);
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.pricing-preview h2 {
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+}
+
+.pricing-preview a {
+  display: inline-block;
+  margin-top: 15px;
+  background: var(--accent-color);
+  color: #fff;
+  padding: 0px 0px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.pricing-preview a:hover {
+  background: #028991;
+}
+
+.fine-print {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  margin-top: 2rem;
+}
+
+/* New Pricing Cards (inside pricing-preview) */
+.pricing-card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.pricing-card {
+  background: white;
+  color: #333;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 300px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.pricing-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.pricing-card li {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.pricing-card .price {
+  font-size: 1.6rem;
+  margin: 1rem 0;
+}
+
+.label {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #ff6347;
+  color: white;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.75rem;
+  border-radius: 4px;
+}
+
+.hover-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+footer {
+  background: var(--primary-color);
+  color: var(--text-color);
+  padding: 20px;
+  text-align: center;
+  border-radius: 12px;
+  margin: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: block;
+}
+
+footer img {
+  height: 40px;
+  background: #fff;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+footer p,
+footer a {
+  margin: 5px 10px;
+  color: var(--text-color);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+/* Footer Buttons */
+.footer-button {
+  display: inline-block;
+  margin: 10px;
+  background: var(--accent-color);
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.footer-button:hover {
+  background: #028991;
+  transform: scale(1.05);
+}
+
+/* Hero Button Link */
+.button-link {
+  display: inline-block;
+  margin-top: 20px;
+  background: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.button-link:hover {
+  background: #028991;
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
   }
-  
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: var(--light-bg);
-    color: #333;
+  50% {
+    transform: translateY(-10px);
   }
-  
-  header {
-    background-color: var(--primary-color);
-    padding: 10px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  header img.logo {
-    height: 40px;
-    background-color: #fff;
-    padding: 5px;
-    border-radius: 5px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  nav a {
-    margin: 0 15px;
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: bold;
-  }
-  
-  .hero {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background-color: var(--accent-color);
-    padding: 60px 20px;
-    flex-wrap: wrap;
-    animation: fadeIn 1.5s ease;
-  }
-  
-  .hero-text {
-    max-width: 500px;
-    color: white;
-  }
-  
-  .hero-text h1 {
-    font-size: 2.5em;
-  }
-  
-  .hero-graphic img {
-    max-width: 300px;
-    animation: float 3s ease-in-out infinite;
-  }
-  
-  /* Pricing Preview Section */
-  .pricing-preview {
-    background: var(--dark-bg);
-    color: var(--text-color);
-    text-align: center;
-    padding: 60px 20px;
-  }
-  
-  .pricing-preview h2 {
-    margin-bottom: 2rem;
-    font-size: 2.2rem;
-  }
-  
-  .pricing-preview a {
-    display: inline-block;
-    margin-top: 15px;
-    background: var(--dark-bg);
-    color: #fff;
-    padding: 0px 0px;
-    text-decoration: none;
-    border-radius: 5px;
-  }
-  
-  .pricing-preview a:hover {
-    background: #028991;
-  }
-  
-  .fine-print {
-    font-size: 0.9rem;
-    color: var(--text-color);
-    margin-top: 2rem;
-  }
-  
-  /* New Pricing Cards (inside pricing-preview) */
-  .pricing-card-link {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  .pricing-card {
-    background: white;
-    color: #333;
-    border-radius: 16px;
-    padding: 2rem;
-    width: 300px;
-    text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-  }
-  
-  .pricing-card ul {
-    list-style: none;
-    padding-left: 0;
-  }
-  
-  .pricing-card li {
-    margin: 0.5rem 0;
-    font-size: 1rem;
-  }
-  
-  .pricing-card .price {
-    font-size: 1.6rem;
-    margin: 1rem 0;
-  }
-  
-  .label {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #ff6347;
-    color: white;
-    padding: 0.3rem 0.6rem;
-    font-size: 0.75rem;
-    border-radius: 4px;
-  }
-  
-  .hover-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Footer */
-  footer {
-    background: var(--primary-color);
-    color: var(--text-color);
-    padding: 20px;
-    text-align: center;
-    border-radius: 12px;
-    margin: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    display: block;
-  }
-  
-  footer img {
-    height: 40px;
-    background: #fff;
-    padding: 5px;
-    border-radius: 5px;
-  }
-  
-  footer p,
-  footer a {
-    margin: 5px 10px;
-    color: var(--text-color);
-    font-size: 14px;
-    text-decoration: none;
-  }
-  
-  /* Footer Buttons */
-  .footer-button {
-    display: inline-block;
-    margin: 10px;
-    background: var(--accent-color);
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background 0.3s ease, transform 0.3s ease;
-  }
-  
-  .footer-button:hover {
-    background: #028991;
-    transform: scale(1.05);
-  }
-  
-  /* Hero Button Link */
-  .button-link {
-    display: inline-block;
-    margin-top: 20px;
-    background: var(--primary-color);
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background 0.3s ease, transform 0.3s ease;
-  }
-  
-  .button-link:hover {
-    background: #028991;
-    transform: scale(1.05);
-  }
-  
-  /* Animations */
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .map-section {
-    text-align: center;
-    padding: 60px 20px;
-    background-color: var(--light-bg);
-    color: #333;
-  }
-  
-  .map-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .map-section p {
-    font-size: 1.1rem;
-    margin-bottom: 2rem;
-  }
-  
-  .map-section iframe {
-    width: 100%;
-    max-width: 600px;
-    height: 400px;
-    border: 0;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Portfolio Gallery Additions */
-  .portfolio-gallery {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-    margin-top: 40px;
-  }
-  
-  .info-box,
-  .image-box {
-    background: white;
-    color: #333;
-    border-radius: 16px;
-    padding: 40px;
-    width: 90%;
-    max-width: 800px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .info-box p {
-    font-size: 1.25rem;
-    margin: 0;
-  }
-  
-  .image-box img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
-  }
-  
+}
+
+.map-section {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: var(--light-bg);
+  color: #333;
+}
+
+.map-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.map-section p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.map-section iframe {
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+  border: 0;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Portfolio Gallery Additions */
+.portfolio-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.info-box,
+.image-box {
+  background: white;
+  color: #333;
+  border-radius: 16px;
+  padding: 40px;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.info-box p {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.image-box img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* Web Design Steps Section */
+.web-design-steps {
+  background: var(--dark-bg);
+  color: var(--text-color);
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.web-design-steps h2 {
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+}
+
+.steps-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.step-box {
+  background: white;
+  color: #333;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 280px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step-box h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.step-box p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.step-image {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+/* Hover/Highlight Animation */
+.hover-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+.hover-card:hover .step-image {
+  transform: scale(1.08) rotate(1deg);
+}
+
+/* Scroll Animation */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal-up.active {
+  opacity: 1;
+  transform: translateY(0);
+}
