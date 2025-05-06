@@ -64,7 +64,7 @@ nav a {
 
 /* Pricing Preview Section */
 .pricing-preview {
-  background: var(--accent-color);
+  background: var(--dark-bg);
   color: var(--text-color);
   text-align: center;
   padding: 60px 20px;
@@ -78,7 +78,7 @@ nav a {
 .pricing-preview a {
   display: inline-block;
   margin-top: 15px;
-  background: var(--accent-color);
+  background: var(--dark-bg);
   color: #fff;
   padding: 0px 0px;
   text-decoration: none;
