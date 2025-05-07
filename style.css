@@ -473,3 +473,43 @@ body.map-open::before {
   transform: translateX(0);
 }
  
+.text-slider-section {
+  background: var(--primary-color);
+  color: var(--text-color);
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.text-slider-box {
+  background: var(--dark-bg);
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.scramble-text {
+  min-height: 80px;
+}
+
+.arrow-button {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  font-size: 2rem;
+  color: var(--accent-color);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.arrow-button:hover {
+  transform: scale(1.2);
+}
+
+.scramble-text .ghost {
+  opacity: 0.4;
+}
