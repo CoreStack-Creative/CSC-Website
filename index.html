@@ -86,15 +86,20 @@
     <a href="pricing.html">View Pricing</a>
   </section>
 
-  <section class="map-section">
-    <h2>We Serve Carrboro, NC</h2>
-    <p>Proudly supporting local businesses in Carrboro and surrounding areas.</p>
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3236.326078708646!2d-79.07211518434358!3d35.91024688014366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89ace5109c7eea23%3A0xd5775fbbd7d69d5e!2sCarrboro%2C%20NC!5e0!3m2!1sen!2sus!4v1682915172761"
-      allowfullscreen=""
-      loading="lazy"
-    ></iframe>
-  </section>
+  <section class="map-section" id="mapSection">
+    <div class="map-text">
+      <h2>We Serve Carrboro, NC</h2>
+      <p>Proudly supporting local businesses in Carrboro and surrounding areas.</p>
+    </div>
+    <div class="map-embed" id="mapEmbed">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3236.326078708646!2d-79.07211518434358!3d35.91024688014366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89ace5109c7eea23%3A0xd5775fbbd7d69d5e!2sCarrboro%2C%20NC!5e0!3m2!1sen!2sus!4v1682915172761"
+        allowfullscreen=""
+        loading="lazy"
+      ></iframe>
+      <button class="close-map" id="closeMapBtn">&times;</button>
+    </div>
+  </section>  
 
   <footer style="
     background: var(--primary-color);
@@ -139,6 +144,33 @@
     window.addEventListener('scroll', revealOnScroll);
     window.addEventListener('load', revealOnScroll); // run on load in case it's already visible
   </script>
+  
+  <script>
+    const mapEmbed = document.getElementById('mapEmbed');
+    const closeMapBtn = document.getElementById('closeMapBtn');
+  
+    mapEmbed.addEventListener('click', (e) => {
+      if (!mapEmbed.classList.contains('active')) {
+        e.stopPropagation();
+        mapEmbed.classList.add('active');
+        document.body.classList.add('map-open');
+      }
+    });
+  
+    closeMapBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      mapEmbed.classList.remove('active');
+      document.body.classList.remove('map-open');
+    });
+  
+    document.addEventListener('click', (e) => {
+      if (mapEmbed.classList.contains('active') && !mapEmbed.contains(e.target)) {
+        mapEmbed.classList.remove('active');
+        document.body.classList.remove('map-open');
+      }
+    });
+  </script>
+  
   
 </body>
 </html>
