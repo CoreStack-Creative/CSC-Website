@@ -5,7 +5,7 @@ const observer = new IntersectionObserver((entries, observer) => {
     if (entry.isIntersecting) {
       setTimeout(() => {
         entry.target.classList.add('visible');
-      }, index * 400); // stagger delay (0ms, 200ms, 400ms...)
+      }, index * 200); // stagger delay (0ms, 200ms, 400ms...)
       observer.unobserve(entry.target); // stop watching after animation
     }
   });

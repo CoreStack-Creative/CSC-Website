@@ -459,3 +459,17 @@ body.map-open::before {
   background: rgba(0, 0, 0, 0.6);
   z-index: 9998;
 }
+
+
+
+.step-box {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.step-box.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+ 
