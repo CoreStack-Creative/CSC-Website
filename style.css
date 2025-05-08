@@ -473,67 +473,122 @@ body.map-open::before {
   transform: translateX(0);
 }
  
-.text-slider-section {
-  background: var(--primary-color);
-  color: var(--text-color);
+.bulletin-board-section {
+  background: var(--dark-bg);
   padding: 60px 20px;
   text-align: center;
 }
 
-.text-slider-box {
-  background: var(--dark-bg);
-  border-radius: 16px;
-  padding: 40px;
-  max-width: 600px;
-  margin: 0 auto;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+.bulletin-board-section .board-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.bulletin-board-section .note-card {
+  background: var(--light-bg);
+  color: var(--primary-color);
+  border-radius: 12px;
+  padding: 20px;
+  width: 260px;
+  box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.2);
   position: relative;
-  font-size: 1.5rem;
-  transition: transform 0.3s ease;
+  text-align: left;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.scramble-text {
-  min-height: 80px;
-}
-
-.arrow-button {
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  font-size: 2rem;
+.bulletin-board-section .note-card h3 {
+  margin-top: 0;
+  font-size: 1.4rem;
   color: var(--accent-color);
-  cursor: pointer;
-  transition: transform 0.2s ease;
 }
 
-.arrow-button:hover {
-  transform: scale(1.2);
+.bulletin-board-section .note-card p {
+  font-size: 1.1rem;
+  margin: 10px 0;
+  font-weight: bold;
 }
 
-.scramble-text .ghost {
-  opacity: 0.4;
+.bulletin-board-section .note-card ul {
+  padding-left: 1.2em;
 }
 
-@keyframes fadeUp {
-  from {
+.bulletin-board-section .note-card ul li {
+  list-style-type: disc;
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+.bulletin-board-section .note-card.pinned::before {
+  content: '';
+  width: 14px;
+  height: 14px;
+  background: crimson;
+  border-radius: 50%;
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.bulletin-board-section .note-card:hover {
+  transform: rotate(-1.5deg) scale(1.04);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+@keyframes tackIn {
+  0% {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(-40px) rotate(-3deg) scale(0.95);
   }
-  to {
+  60% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(8px) rotate(2deg) scale(1.02);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
   }
 }
 
-.fade-in-section {
+/* Initial hidden state */
+.note-card {
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease-out;
-  will-change: opacity, transform;
+  transform: translateY(40px);
 }
 
-.fade-in-section.visible {
-  opacity: 1;
-  transform: none;
-  animation: fadeUp 0.6s ease-out;
+/* Tack-on animation trigger */
+.note-card.tack-in {
+  animation: tackIn 0.7s ease-out forwards;
 }
+
+/* Keyframes for the "tacked-on" effect */
+@keyframes tackIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-60px) rotate(-15deg) scale(2);
+  } 
+  20% {
+    opacity: 0; 
+    transform: translateY(-45px) rotate(-10deg) scale(1.8);
+  } 
+  40% { 
+    opacity: 0; 
+    transform: translateY(-30px) rotate(-5deg)  scale(1.6);
+  }
+  60% {
+    opacity: 0;
+    transform: translateY(-15px) rotate(0deg) scale(1.4);
+  }
+  80% { 
+    transform: translateY(-5px) rotate(10deg) scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+
