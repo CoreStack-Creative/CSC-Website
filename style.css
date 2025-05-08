@@ -534,25 +534,6 @@ body.map-open::before {
   box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
-.bulletin-board-section .note-card:hover {
-  transform: rotate(-1.5deg) scale(1.04);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-}
-
-@keyframes tackIn {
-  0% {
-    opacity: 0;
-    transform: translateY(-40px) rotate(-3deg) scale(0.95);
-  }
-  60% {
-    opacity: 1;
-    transform: translateY(8px) rotate(2deg) scale(1.02);
-  }
-  100% {
-    transform: translateY(0) rotate(0deg) scale(1);
-  }
-}
-
 /* Initial hidden state */
 .note-card {
   opacity: 0;
@@ -561,34 +542,33 @@ body.map-open::before {
 
 /* Tack-on animation trigger */
 .note-card.tack-in {
-  animation: tackIn 0.7s ease-out forwards;
+  animation: tackIn 0.5s ease-out forwards;
 }
 
 /* Keyframes for the "tacked-on" effect */
 @keyframes tackIn {
   0% {
-    opacity: 0;
-    transform: translateY(-60px) rotate(-15deg) scale(2);
+    opacity: 1;
+    transform: translateX(-200px) translateY(200px) scale(2);
   } 
   20% {
-    opacity: 0; 
-    transform: translateY(-45px) rotate(-10deg) scale(1.8);
+    opacity: 1; 
+    transform: translateX(-150px) translateY(150px) scale(1.8);
   } 
   40% { 
-    opacity: 0; 
-    transform: translateY(-30px) rotate(-5deg)  scale(1.6);
+    opacity: 1; 
+    transform: translateX(-100px) translateY(100px) scale(1.6);
   }
   60% {
-    opacity: 0;
-    transform: translateY(-15px) rotate(0deg) scale(1.4);
+    opacity: 1;
+    transform: translateX(-60px) translateY(60px) scale(1.4);
   }
   80% { 
-    transform: translateY(-5px) rotate(10deg) scale(1.2);
+    opacity: 1;
+    transform: translateX(-30px) translateY(30px) scale(1.2);
   }
   100% {
     opacity: 1;
-    transform: translateY(0) rotate(0deg) scale(1);
+    transform: translateX(0px)translateY(0px) scale(1);
   }
 }
-
-

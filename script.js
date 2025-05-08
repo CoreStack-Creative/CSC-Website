@@ -23,7 +23,7 @@ stepBoxes.forEach(box => {
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
-          entry.target.style.animationDelay = `${index * 400}ms`;
+          entry.target.style.animationDelay = `${index * 500}ms`;
           entry.target.classList.add('tack-in');
           observer.unobserve(entry.target);
         }
