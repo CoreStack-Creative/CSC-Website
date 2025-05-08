@@ -34,7 +34,7 @@
     <section style="background-color: var(--light-bg); padding: 60px 20px; animation: fadeIn 1.5s ease;">
       
       <!-- Top Row: Image Left, Text Right -->
-      <div class="about-row" style="display: flex; gap: 40px; align-items: stretch; margin-bottom: 60px;">
+      <div class="about-row fade-in-section" style="display: flex; gap: 40px; align-items: stretch; margin-bottom: 60px;">
         <div class="about-image" style="flex: 1;">
           <img src="images/about.png" alt="Our Team Graphic" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
         </div>
@@ -51,7 +51,7 @@
       </div>
   
       <!-- Bottom Row: Text Left, Image Right (Mirrored) -->
-      <div class="about-row" style="display: flex; gap: 40px; align-items: stretch;">
+      <div class="about-row fade-in-section" style="display: flex; gap: 40px; align-items: stretch;">
         <div class="about-text" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 30px;">
           <div class="info-box" style="flex: 1; background-color: var(--accent-color); color: var(--text-color); padding: 20px; border-radius: 12px;">
             <h2>How We Work</h2>
@@ -68,7 +68,28 @@
       </div>
   
     </section>
-  </section>          
+  </section>
+  
+  <script>
+    const faders = document.querySelectorAll('.fade-in-section');
+  
+    const appearOptions = {
+      threshold: 0.2,
+      rootMargin: "0px 0px -50px 0px"
+    };
+  
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // Remove this line if you want to animate again on re-entry
+      });
+    }, appearOptions);
+  
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  </script>  
     
   <footer style="
   background: var(--primary-color);
