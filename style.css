@@ -3,7 +3,8 @@
   --accent-color: #00adb5;
   --light-bg: #f5f5f5;
   --dark-bg: #393e46;
-  --text-color: #222831;
+  --text-color: #24272f; 
+  --secondtext-color: #ffffff; 
 }
 
 body {
@@ -34,7 +35,7 @@ header img.logo {
 nav a {
   margin: 0 15px;
   text-decoration: none;
-  color: var(--text-color);
+  color: var(--secondtext-color);
   font-weight: bold;
 }
 
@@ -42,7 +43,7 @@ nav a {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-color: var(--accent-color);
+  background-color: var(--dark-bg);
   padding: 60px 20px;
   flex-wrap: wrap;
   animation: fadeIn 1.5s ease;
@@ -165,7 +166,7 @@ footer img {
 footer p,
 footer a {
   margin: 5px 10px;
-  color: var(--text-color);
+  color: var(--secondtext-color);
   font-size: 14px;
   text-decoration: none;
 }
@@ -571,4 +572,4 @@ body.map-open::before {
     opacity: 1;
     transform: translateX(0px)translateY(0px) scale(1);
   }
-}
+} 
