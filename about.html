@@ -30,45 +30,39 @@
     </div>
   </section>  
 
-  <section style="background-color: var(--dark-bg); padding: 60px 20px; animation: fadeIn 1.5s ease;">
-    <section style="background-color: var(--light-bg); padding: 60px 20px; animation: fadeIn 1.5s ease;">
-      
-      <!-- Top Row: Image Left, Text Right -->
-      <div class="about-row fade-in-section" style="display: flex; gap: 40px; align-items: stretch; margin-bottom: 60px;">
-        <div class="about-image" style="flex: 1;">
-          <img src="images/about.png" alt="Our Team Graphic" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+  <section class="pricing-preview">
+    <div class="portfolio-gallery">
+  
+      <!-- Row 1: Image | Text -->
+      <div class="row">
+        <div class="image-box">
+          <img src="images/about.png" alt="Our Team Graphic">
         </div>
-        <div class="about-text" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 30px;">
-          <div class="info-box" style="flex: 1; background-color: var(--accent-color); color: var(--text-color); padding: 20px; border-radius: 12px;">
-            <h2>Who We Are</h2>
-            <p>We're a team of motivated teens passionate about web design and helping small businesses succeed online. We're launching our business with a fresh perspective, strong technical skills, and a commitment to delivering real results.</p>
-          </div>
-          <div class="info-box" style="flex: 1; background-color: var(--accent-color); color: var(--text-color); padding: 20px; border-radius: 12px;">
-            <h2>What We Do</h2>
-            <p>We create fast, affordable, and professional websites tailored specifically for small businesses. Whether you need a brand-new site or an upgrade to your existing one, we build with efficiency, quality, and your business goals in mind.</p>
-          </div>
+        <div class="info-box">
+          <h2>Who We Are</h2>
+          <p>We're a team of motivated teens passionate about web design and helping small businesses succeed online. We're launching our business with a fresh perspective, strong technical skills, and a commitment to delivering real results.</p>
         </div>
       </div>
   
-      <!-- Bottom Row: Text Left, Image Right (Mirrored) -->
-      <div class="about-row fade-in-section" style="display: flex; gap: 40px; align-items: stretch;">
-        <div class="about-text" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 30px;">
-          <div class="info-box" style="flex: 1; background-color: var(--accent-color); color: var(--text-color); padding: 20px; border-radius: 12px;">
-            <h2>How We Work</h2>
-            <p>Our pricing is simple and fair — based on the size and complexity of your project. We also help you purchase and own your own domain, making the process easy from start to finish. You stay in control of your brand and your online presence.</p>
-          </div>
-          <div class="info-box" style="flex: 1; background-color: var(--accent-color); color: var(--text-color); padding: 20px; border-radius: 12px;">
-            <h2>Our Promise</h2>
-            <p>Even as a new business, we are dedicated to providing the best service possible. We care about your success and treat every project with the attention, creativity, and professionalism it deserves. Our mission is to help small businesses grow — while growing ourselves as young entrepreneurs.</p>
-          </div>
+      <!-- Row 2: Text | Image -->
+      <div class="row">
+        <div class="info-box">
+          <h2>What We Do</h2>
+          <p>We create fast, affordable, and professional websites tailored specifically for small businesses. Whether you need a brand-new site or an upgrade to your existing one, we build with efficiency, quality, and your business goals in mind.</p>
         </div>
-        <div class="about-image" style="flex: 1;">
-          <img src="images/about2.png" alt="Our Team Graphic" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+        <div class="image-box">
+          <img src="images/about2.png" alt="Work Process Graphic">
         </div>
       </div>
   
-    </section>
-  </section>
+      <!-- Row 3: Full-width Text Only -->
+      <div class="info-box full-width">
+        <h2>Our Promise</h2>
+        <p>Even as a new business, we are dedicated to providing the best service possible. We care about your success and treat every project with the attention, creativity, and professionalism it deserves. Our mission is to help small businesses grow — while growing ourselves as young entrepreneurs.</p>
+      </div>
+  
+    </div>
+  </section>    
   
   <script>
     const faders = document.querySelectorAll('.fade-in-section');
@@ -82,39 +76,33 @@
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // Remove this line if you want to animate again on re-entry
+        observer.unobserve(entry.target);
       });
     }, appearOptions);
   
     faders.forEach(fader => {
       appearOnScroll.observe(fader);
     });
-  </script>  
+  </script>    
     
-  <footer style="
-  background: var(--primary-color);
-  color: var(--text-color);
-  padding: 20px;
-  text-align: center;
-  border-radius: 12px;
-  margin: 20px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-">
-  <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap;">
-    <img src="https://i.ibb.co/7J7bKyN3/logo1.png" alt="CoreStack Logo" style="margin-right: 10px;">
-    <p style="margin: 0; font-size: 18px; font-weight: bold;">CoreStack Creative — Web Design for Local Businesses</p>
-  </div>
-
-  <div style="margin: 20px 0;">
-    <a href="contact.html" class="footer-button">Contact</a>
-    <a href="pricing.html" class="footer-button">Pricing</a>
-  </div>
-
-  <p>Email us: 
-    <a href="mailto:velo.guidrycsc@gmail.com">velo.guidrycsc@gmail.com</a> | 
-    <a href="mailto:baxter.caresscsc@gmail.com">baxter.caresscsc@gmail.com</a>
-  </p>
-</footer>
+    <div class="footer-wrapper">
+      <footer class="footer">
+        <div class="footer-content">
+          <img src="https://i.ibb.co/7J7bKyN3/logo1.png" alt="CoreStack Logo">
+          <p>CoreStack Creative — Web Design for Local Businesses</p>
+        </div>
+    
+        <div class="footer-links">
+          <a href="contact.html" class="footer-button">Contact</a>
+          <a href="pricing.html" class="footer-button">Pricing</a>
+        </div>
+    
+        <p>Email us: 
+          <a href="mailto:velo.guidrycsc@gmail.com">velo.guidrycsc@gmail.com</a> | 
+          <a href="mailto:baxter.caresscsc@gmail.com">baxter.caresscsc@gmail.com</a>
+        </p>
+      </footer>
+    </div>
 
 
 </body>

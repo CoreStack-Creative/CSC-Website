@@ -63,12 +63,16 @@ nav a {
   animation: float 3s ease-in-out infinite;
 }
 
-/* Pricing Preview Section */
 .pricing-preview {
-  background: var(--light-bg);
+  background-image: url('images/whitebg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: var(--text-color);
   text-align: center;
   padding: 60px 20px;
+  position: relative;
+  z-index: 1;
 }
 
 .pricing-preview h2 {
@@ -144,42 +148,73 @@ nav a {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Footer */
-footer {
+.footer-wrapper {
+  background-image: url('images/whitebg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 60px 20px;
+}
+
+footer.footer {
   background: var(--primary-color);
   color: var(--text-color);
-  padding: 20px;
+  padding: 20px 20px;         /* Reduced vertical padding */
   text-align: center;
   border-radius: 12px;
-  margin: 20px;
+  max-width: 1100px;          /* Increased width */
+  margin: auto;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  display: block;
 }
 
-footer img {
-  height: 40px;
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.footer-content img {
+  height: 50px;
   background: #fff;
-  padding: 5px;
-  border-radius: 5px;
+  padding: 6px;
+  border-radius: 8px;
 }
 
-footer p,
-footer a {
-  margin: 5px 10px;
-  color: var(--secondtext-color);
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+footer p {
+  margin: 8px 0;
   font-size: 14px;
+  color: var(--secondtext-color);
+}
+
+footer a {
+  color: var(--secondtext-color);
   text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--accent-color);
 }
 
 /* Footer Buttons */
 .footer-button {
   display: inline-block;
-  margin: 10px;
   background: var(--accent-color);
   color: #fff;
   padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
   text-decoration: none;
-  border-radius: 5px;
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
@@ -286,17 +321,20 @@ footer a {
   border-radius: 12px;
 }
 
-/* Web Design Steps Section */
 .web-design-steps {
-  background: var(--light-bg);
-  color: var(--text-color);
-  text-align: center;
+  background-image: url('images/whitebg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 60px 20px;
+  color: #000;
+  text-align: center; /* ✅ Center text content */
 }
 
 .web-design-steps h2 {
   font-size: 2.2rem;
   margin-bottom: 3rem;
+  text-align: center; /* ✅ Ensure heading is centered */
 }
 
 .steps-container {
@@ -475,7 +513,7 @@ body.map-open::before {
 }
  
 .bulletin-board-section {
-  background: var(--light-bg);
+  background: transparent; /* allows background image from parent to show through */
   padding: 60px 20px;
   text-align: center;
 }
@@ -572,4 +610,38 @@ body.map-open::before {
     opacity: 1;
     transform: translateX(0px)translateY(0px) scale(1);
   }
-} 
+}
+
+/* Row layout for horizontal alignment */
+.portfolio-gallery .row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  width: 100%;
+}
+
+/* Reverse layout for alternating row */
+.portfolio-gallery .row.reverse {
+  flex-direction: row-reverse;
+}
+
+/* Keep existing box styles */
+.image-box,
+.info-box {
+  flex: 1 1 400px;
+  max-width: 600px;
+  box-sizing: border-box;
+  padding: 40px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Make the last text box span full width */
+.info-box.full-width {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+}
