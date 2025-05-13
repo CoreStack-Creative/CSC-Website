@@ -645,3 +645,81 @@ body.map-open::before {
   max-width: 1000px;
   margin: auto;
 }
+
+.timeline-image {
+  width: 63vw;               /* Slightly smaller, 75% of the viewport width */
+  height: 125px;             /* Slightly smaller height */
+  object-fit: cover;         /* Cut and crop the image to fill the container */
+  object-position: center;   /* Center the image horizontally */
+  display: block;
+  margin: 0 auto 40px auto;  /* Center it and add space below */
+}
+
+.step-timeline-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.step-no-box {
+  max-width: 30%;
+  text-align: center;
+  margin: 0;
+}
+
+.step-no-box img.step-image {
+  width: 100%;
+  max-width: 240px;           /* Increased max-width for the images */
+  height: auto;
+  margin-bottom: 15px;
+}
+
+/* Optional specific positioning */
+.step-left {
+  align-self: flex-start;
+}
+
+.step-center {
+  align-self: center;
+}
+
+.step-right {
+  align-self: flex-end;
+}
+
+/* Base reveal animation */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-up.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delays for each step */
+.step-timeline-container .step-no-box:nth-child(1) {
+  transition-delay: 0.2s;
+}
+
+.step-timeline-container .step-no-box:nth-child(2) {
+  transition-delay: 0.6s;
+}
+
+.step-timeline-container .step-no-box:nth-child(3) {
+  transition-delay: 1s;
+}
+
+.step-image {
+  transition: transform 0.3s ease; /* Smooth transition for the transformation */
+}
+
+.step-image:hover {
+  transform: rotate(5deg); /* Tilt the image slightly on hover */
+}
