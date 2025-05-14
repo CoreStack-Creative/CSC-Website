@@ -14,8 +14,9 @@ body {
   color: #333;
 }
 
+/* Modify header to be slightly transparent when scrolling up */
 header {
-  background-color: transparent; /* remove the bar */
+  background-color: transparent;
   padding: 20px 0;
   display: flex;
   flex-direction: column;
@@ -23,8 +24,19 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
+  transition: background-color 0.3s ease-in-out, top 0.3s ease-in-out; /* Smooth transition */
 }
 
+/* When the header should fade in */
+header.faded {
+  background-color: rgba(255, 255, 255, 0.9); /* Lighter background */
+}
+
+header.hidden {
+  top: -100px; /* Push header out of view */
+}
+
+/* Style for the logo, remains the same */
 header img.logo {
   height: 50px;
   background-color: #fff;

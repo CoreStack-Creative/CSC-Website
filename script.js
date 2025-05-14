@@ -1,3 +1,26 @@
+document.addEventListener("DOMContentLoaded", () => {
+  let lastScrollY = window.scrollY;
+  const header = document.querySelector("header");
+
+  window.addEventListener("scroll", () => {
+    const currentScrollY = window.scrollY;
+
+    if (currentScrollY > lastScrollY) {
+      header.style.top = "-100px";
+      header.classList.remove("faded");
+    } else {
+      header.style.top = "0";
+      if (currentScrollY > 50) {
+        header.classList.add("faded");
+      } else {
+        header.classList.remove("faded");
+      }
+    }
+
+    lastScrollY = currentScrollY;
+  });
+});
+
 const stepBoxes = document.querySelectorAll('.step-box');
 
 const observer = new IntersectionObserver((entries, observer) => {
