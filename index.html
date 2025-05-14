@@ -13,51 +13,37 @@
   <header>
     <img src="images/logo.png" alt="CoreStack Logo" class="logo" />
     <nav>
-      <a href="index.html">Home</a>
+      <a href="index.html" class="active">Home</a>
+      <span>|</span>
       <a href="about.html">About</a>
+      <span>|</span>
       <a href="portfolio.html">Portfolio</a>
+      <span>|</span>
       <a href="pricing.html">Pricing</a>
+      <span>|</span>
       <a href="contact.html">Contact</a>
     </nav>
-  </header>
+  </header>  
 
-  <section class="hero" style="position: relative; overflow: hidden;">
-    <div style="
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('images/home.png') center/cover no-repeat;
-      filter: blur(10px);
-      transform: scale(1.1);
-      z-index: 0;
-    "></div>
-
-    <div style="
-      position: relative;
-      z-index: 1;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding: 100px 20px;
-      text-align: center;
-      color: white;
-      border-radius: 20px;
-    ">
-      <h1 style="font-size: 5rem;">CoreStack Creative</h1>
-      <p style="font-size: 1.5rem;">Rapid upgrades. Remarkable websites.</p>
+  <section class="profile-highlight diagonal-hero with-bg-image relative w-full max-w-7xl mx-auto px-4 py-12">
+    <div class="hero-left z-10">
+      <div class="hero-text reveal-up text-left text-white">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">CoreStack Creative</h1>
+        <p class="hero-slogan text-lg md:text-xl text-accent mb-2">Rapid upgrades. Remarkable websites.</p>
+        <p class="hero-subtext text-base md:text-lg text-gray-100 mb-6 leading-relaxed">
+          We build fast, professional websites tailored for small businesses.
+          Whether you're starting fresh or improving an existing site, our process is smooth, efficient, and stress-free.
+          From domain setup to deployment, you’ll have full control and ownership from day one.
+        </p>
+        <a href="#about" class="button-link inline-block">About Us</a>
+      </div>
     </div>
-  </section>
-
-  <section class="hero">
-    <div class="hero-text">
-      <h1>What we do</h1>
-      <p>We build fast, professional websites designed specifically for small businesses. Whether you need a brand-new site or an upgrade to your current one, we focus on making the process smooth, efficient, and stress-free.</p>
-      <p>Our goal is to help you establish a strong online presence that reflects the quality of your business and drives real results. We also assist with domain setup, making sure you fully own and control your website from day one.</p>
-      <a href="about.html" class="button-link">More about us</a>
+  
+    <div class="hero-right z-10 mt-10 md:mt-0">
+      <img src="images/home.png" alt="Creative Design Illustration" class="w-full max-w-md md:max-w-lg h-auto object-cover rounded-xl shadow-lg" />
     </div>
-    <div class="hero-graphic">
-      <img src="images/graphic.png" alt="Web Design Graphic">
-    </div>
-  </section>
+  
+  </section>        
 
 <!-- Pricing section moved above -->
 <section class="pricing-preview">
