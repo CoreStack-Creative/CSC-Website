@@ -6,10 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentScrollY = window.scrollY;
 
     if (currentScrollY > lastScrollY) {
-      header.style.top = "-100px";
+      // Scrolling down – hide the header completely
+      header.classList.add("hidden");
       header.classList.remove("faded");
     } else {
-      header.style.top = "0";
+      // Scrolling up – show the header
+      header.classList.remove("hidden");
+
       if (currentScrollY > 50) {
         header.classList.add("faded");
       } else {

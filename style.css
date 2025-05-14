@@ -16,6 +16,7 @@ body {
 
 /* Modify header to be slightly transparent when scrolling up */
 header {
+  height: 100px; /* Match the top offset in .hidden */
   background-color: transparent;
   padding: 20px 0;
   display: flex;
@@ -24,7 +25,8 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  transition: background-color 0.3s ease-in-out, top 0.3s ease-in-out; /* Smooth transition */
+  transition: background-color 0.3s ease-in-out, top 0.3s ease-in-out;
+  overflow: hidden; /* Important: prevents contents from sticking out */
 }
 
 /* When the header should fade in */
@@ -33,7 +35,7 @@ header.faded {
 }
 
 header.hidden {
-  top: -100px; /* Push header out of view */
+  top: -125px;
 }
 
 /* Style for the logo, remains the same */
