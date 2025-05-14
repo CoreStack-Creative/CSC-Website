@@ -791,11 +791,13 @@ body.map-open::before {
   position: relative;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
   align-items: stretch;
-  height: 90vh;
-  overflow: hidden;
+  min-height: 100vh; /* Use min-height to allow growth */
+  overflow: visible; /* Allow content to flow beyond the section */
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
   z-index: 0;
+  padding-top: 2rem; /* Optional: Add some spacing */
 }
 
 .diagonal-hero::before {
@@ -879,5 +881,28 @@ body.map-open::before {
   to {
     opacity: 1;
     transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .diagonal-hero {
+    flex-direction: column;
+    clip-path: none; /* Optional: remove clipping on small screens */
+    padding: 2rem 1rem;
+  }
+
+  .diagonal-hero .hero-left,
+  .diagonal-hero .hero-right {
+    clip-path: none;
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .diagonal-hero h1 {
+    font-size: 2rem;
+  }
+
+  .diagonal-hero p {
+    font-size: 1rem;
   }
 }
