@@ -153,6 +153,14 @@ nav a.active::after {
   border-radius: 5px;
 }
 
+.pricing-preview a.button-link {
+  background: var(--primary-color);
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
 .pricing-preview a:hover {
   background: #028991;
 }
