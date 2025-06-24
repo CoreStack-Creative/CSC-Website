@@ -30,18 +30,87 @@
       <p>Here are some of the projects we've brought to life for local businesses.</p>
     </div>
     <div class="hero-graphic">
-      <img src="images/portfolio.png" alt="Portfolio Graphic">
+      <img src="images/portfolio.png" alt="Pricing Graphic">
     </div>
   </section>
 
-  <section class="pricing-preview">
-    <div class="portfolio-gallery">
-      <div class="info-box">
-        <p>Currently working on several sites, page will be updated soon.</p>
-      </div>
-  
-      <div class="image-box">
-        <img src="https://i.ibb.co/qYbcc8hm/Chat-GPT-Image-May-2-2025-05-27-23-PM.png" alt="Work in Progress">
+  <section class="portfolio-section">
+    <div class="portfolio-container">
+      <div class="portfolio-grid">
+        
+        <!-- Website Box 1 -->
+        <div class="website-box" data-url="https://corestack-creative.github.io/piedmont-environmental/index.html" data-title="Project Name 1">
+          <div class="website-preview">
+            <div class="preview-header">
+              <div class="browser-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+            <div class="preview-content" style="background-image: url('images/pescreenshot.png');">
+              <h3>Piedmont Environmental</h3>
+              <p>Piedmont Environmental is a company designed to meet all your ecological landscaping needs, whether it is deer fences, planting, and so much more.</p>
+              <div class="preview-overlay">
+                <span>Click to Preview</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Website Box 2 -->
+        <div class="website-box" data-url="https://example2.com" data-title="Project Name 2">
+          <div class="website-preview">
+            <div class="preview-header">
+              <div class="browser-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+            <div class="preview-content" style="background-image: url('path/to/website2-screenshot.jpg');">
+              <h3>Project Name 2</h3>
+              <p>Brief description of the project</p>
+              <div class="preview-overlay">
+                <span>Click to Preview</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Website Box 3 -->
+        <div class="website-box" data-url="https://example3.com" data-title="Project Name 3">
+          <div class="website-preview">
+            <div class="preview-header">
+              <div class="browser-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+            <div class="preview-content" style="background-image: url('path/to/website3-screenshot.jpg');">
+              <h3>Project Name 3</h3>
+              <p>Brief description of the project</p>
+              <div class="preview-overlay">
+                <span>Click to Preview</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    <!-- Lightbox Modal -->
+    <div id="website-lightbox" class="lightbox-overlay">
+      <div class="lightbox-container">
+        <div class="lightbox-header">
+          <h3 id="lightbox-title">Website Preview</h3>
+          <button class="close-btn" id="close-lightbox">&times;</button>
+        </div>
+        <div class="lightbox-content">
+          <iframe id="website-iframe" src="about:blank" frameborder="0"></iframe>
+        </div>
+        <div class="lightbox-footer">
+          <a id="visit-website" href="#" target="_blank" class="visit-btn">Visit Website</a>
+        </div>
       </div>
     </div>
   </section>
