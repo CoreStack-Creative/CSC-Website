@@ -355,4 +355,273 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 // Example usage of addWebsiteBox function:
-// addWebsiteBox('https://example.com', 'New Project', 'Description of new project');
+// addWebsiteBox('https://example.com', 'New Project', 'Description of new project'); 
+
+// Pricing Section Professional Animations
+// Pricing Section Advanced Animations
+class PricingAnimations {
+  constructor() {
+    this.particles = [];
+    this.mouseX = 0;
+    this.mouseY = 0;
+    this.init();
+  }
+
+  init() {
+    this.createParticles();
+    this.setupEventListeners();
+    this.animateParticles();
+    this.setupIntersectionObserver();
+    this.animateTitleWords();
+    this.animateFeatureItems();
+    this.setupCardHoverEffects();
+    this.setupButtonRippleEffect();
+  }
+
+  // Create floating particles
+  createParticles() {
+    const particleField = document.querySelector('.particle-field');
+    const particleCount = 20;
+
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.cssText = `
+        position: absolute;
+        width: ${Math.random() * 6 + 2}px;
+        height: ${Math.random() * 6 + 2}px;
+        background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+        border-radius: 50%;
+        opacity: ${Math.random() * 0.5 + 0.2};
+        left: ${Math.random() * 100}%;
+        top: ${Math.random() * 100}%;
+        animation: particleFloat ${Math.random() * 10 + 15}s ease-in-out infinite;
+        animation-delay: ${Math.random() * 5}s;
+      `;
+      particleField.appendChild(particle);
+      this.particles.push({
+        element: particle,
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        size: Math.random() * 6 + 2
+      });
+    }
+  }
+
+  // Animate particles
+  animateParticles() {
+    const animateFrame = () => {
+      this.particles.forEach(particle => {
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+
+        // Bounce off edges
+        if (particle.x < 0 || particle.x > window.innerWidth) {
+          particle.vx *= -1;
+        }
+        if (particle.y < 0 || particle.y > window.innerHeight) {
+          particle.vy *= -1;
+        }
+
+        // Mouse interaction
+        const dx = this.mouseX - particle.x;
+        const dy = this.mouseY - particle.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance < 100) {
+          const force = (100 - distance) / 100;
+          particle.x -= dx * force * 0.01;
+          particle.y -= dy * force * 0.01;
+        }
+
+        particle.element.style.left = particle.x + 'px';
+        particle.element.style.top = particle.y + 'px';
+      });
+
+      requestAnimationFrame(animateFrame);
+    };
+    animateFrame();
+  }
+
+  // Setup event listeners
+  setupEventListeners() {
+    document.addEventListener('mousemove', (e) => {
+      this.mouseX = e.clientX;
+      this.mouseY = e.clientY;
+    });
+
+    window.addEventListener('resize', () => {
+      this.particles.forEach(particle => {
+        particle.x = Math.random() * window.innerWidth;
+        particle.y = Math.random() * window.innerHeight;
+      });
+    });
+  }
+
+  // Animate title words
+  animateTitleWords() {
+    const titleWords = document.querySelectorAll('.title-word');
+    titleWords.forEach((word, index) => {
+      const delay = parseInt(word.dataset.delay);
+      word.style.animationDelay = `${delay}ms`;
+    });
+  }
+
+  // Animate feature items
+  animateFeatureItems() {
+    const featureItems = document.querySelectorAll('.features-list li');
+    featureItems.forEach((item, index) => {
+      const delay = parseInt(item.dataset.delay) || 0;
+      item.style.animationDelay = `${delay}ms`;
+    });
+  }
+
+  // Setup intersection observer for scroll animations
+  setupIntersectionObserver() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.pricing-card-wrapper, .fine-print-item').forEach(el => {
+      observer.observe(el);
+    });
+  }
+
+  // Setup card hover effects
+  setupCardHoverEffects() {
+    const cards = document.querySelectorAll('.pricing-card');
+    
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        this.createCardSparkles(card);
+      });
+
+      card.addEventListener('mousemove', (e) => {
+        this.updateCardTilt(card, e);
+      });
+
+      card.addEventListener('mouseleave', () => {
+        this.resetCardTilt(card);
+      });
+    });
+  }
+
+  // Create sparkle effect on card hover
+  createCardSparkles(card) {
+    for (let i = 0; i < 5; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.cssText = `
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: var(--accent-color);
+        border-radius: 50%;
+        pointer-events: none;
+        left: ${Math.random() * 100}%;
+        top: ${Math.random() * 100}%;
+        animation: sparkleAnimation 1s ease-out forwards;
+      `;
+      card.appendChild(sparkle);
+      
+      setTimeout(() => sparkle.remove(), 1000);
+    }
+  }
+
+  // Update card tilt based on mouse position
+  updateCardTilt(card, e) {
+    const rect = card.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const rotateX = (e.clientY - centerY) / 10;
+    const rotateY = (centerX - e.clientX) / 10;
+    
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px) scale(1.02)`;
+  }
+
+  // Reset card tilt
+  resetCardTilt(card) {
+    card.style.transform = '';
+  }
+
+  // Setup button ripple effect
+  setupButtonRippleEffect() {
+    const buttons = document.querySelectorAll('.select-plan-btn');
+    
+    buttons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        const ripple = button.querySelector('.btn-ripple');
+        const rect = button.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.width = size + 'px';
+        ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        ripple.style.transform = 'scale(0)';
+        
+        setTimeout(() => {
+          ripple.style.transform = 'scale(4)';
+        }, 10);
+      });
+    });
+  }
+}
+
+// Price counter animation
+class PriceCounter {
+  constructor() {
+    this.counters = document.querySelectorAll('.price-number');
+    this.init();
+  }
+
+  init() {
+    this.animateCounters();
+  }
+
+  animateCounters() {
+    this.counters.forEach(counter => {
+      const target = parseInt(counter.textContent);
+      const duration = 2000;
+      const increment = target / (duration / 16);
+      let current = 0;
+
+      const timer = setInterval(() => {
+        current += increment;
+        counter.textContent = Math.floor(current);
+        
+        if (current >= target) {
+          counter.textContent = target;
+          clearInterval(timer);
+        }
+      }, 16);
+    });
+  }
+}
+
+// Pricing Header Grow/Shrink on Scroll
+(function() {
+  let lastScrollY = window.scrollY;
+  const pricingHeader = document.querySelector('.pricing-header');
+  if (!pricingHeader) return;
+
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    if (currentScrollY > lastScrollY) {
+      // Scrolling down – grow the bar
+      pricingHeader.classList.add('grow');
+    } else {
+      // Scrolling up – shrink the bar
+      pricingHeader.classList.remove('grow');
+    }
+    lastScrollY = currentScrollY;
+  });
+})();
