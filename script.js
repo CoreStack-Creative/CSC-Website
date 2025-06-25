@@ -173,5 +173,186 @@ function addWebsiteBox(url, title, description, parentElement = '.portfolio-grid
     grid.appendChild(websiteBox);
 }
 
+// Pricing Section JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Intersection Observer for reveal animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    // Observe all elements with reveal-up class
+    const revealElements = document.querySelectorAll('.reveal-up');
+    revealElements.forEach(element => {
+        observer.observe(element);
+    });
+
+    // Enhanced hover effects for pricing cards
+    const pricingCards = document.querySelectorAll('.pricing-card');
+    
+    pricingCards.forEach(card => {
+        // Add subtle tilt effect on mouse move
+        card.addEventListener('mousemove', function(e) {
+            const rect = card.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            const mouseX = e.clientX - centerX;
+            const mouseY = e.clientY - centerY;
+            
+            const rotateX = (mouseY / rect.height) * -10;
+            const rotateY = (mouseX / rect.width) * 10;
+            
+            card.style.transform = `
+                translateY(-10px) 
+                scale(${card.classList.contains('featured') ? '1.07' : '1.02'}) 
+                rotateX(${rotateX}deg) 
+                rotateY(${rotateY}deg)
+            `;
+        });
+        
+        // Reset transform on mouse leave
+        card.addEventListener('mouseleave', function() {
+            card.style.transform = '';
+        });
+        
+        // Add click ripple effect to CTA buttons
+        const ctaButton = card.querySelector('.cta-button');
+        if (ctaButton) {
+            ctaButton.addEventListener('click', function(e) {
+                // Only preventDefault if the button is a <button>, not an <a>
+                if (ctaButton.tagName.toLowerCase() === 'button') {
+                    e.preventDefault();
+                }
+                
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                const rect = ctaButton.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s ease-out;
+                    pointer-events: none;
+                `;
+                
+                ctaButton.style.position = 'relative';
+                ctaButton.style.overflow = 'hidden';
+                ctaButton.appendChild(ripple);
+                
+                // Remove ripple after animation
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+                
+                // Add success feedback
+                const originalText = ctaButton.textContent;
+                ctaButton.textContent = 'Let\'s Talk!';
+                ctaButton.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
+                
+                setTimeout(() => {
+                    ctaButton.textContent = originalText;
+                    ctaButton.style.background = '';
+                }, 1500);
+            });
+        }
+    });
+
+    // Parallax effect for floating orbs
+    let ticking = false;
+    
+    function updateParallax() {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5;
+        
+        const orbs = document.querySelectorAll('.floating-orb');
+        orbs.forEach((orb, index) => {
+            const speed = 0.3 + (index * 0.1);
+            orb.style.transform = `translateY(${rate * speed}px)`;
+        });
+        
+        ticking = false;
+    }
+
+    function requestTick() {
+        if (!ticking) {
+            requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    }
+
+    // Only add scroll listener if reduced motion is not preferred
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        window.addEventListener('scroll', requestTick);
+    }
+
+    // Add subtle animation delay for staggered card appearance
+    const cards = document.querySelectorAll('.pricing-card[data-delay]');
+    cards.forEach((card, index) => {
+        card.style.animationDelay = `${0.1 * (index + 1)}s`;
+    });
+
+    // Add smooth scroll behavior for any internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+});
+
+// CSS Animation for ripple effect
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes ripple {
+        from {
+            transform: scale(0);
+            opacity: 1;
+        }
+        to {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+    
+    /* Accessibility: Respect user's motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+        .pricing-card,
+        .floating-orb,
+        .card-shine {
+            animation: none !important;
+            transition: none !important;
+        }
+        
+        .pricing-card:hover {
+            transform: none !important;
+        }
+    }
+`;
+document.head.appendChild(style);
 // Example usage of addWebsiteBox function:
 // addWebsiteBox('https://example.com', 'New Project', 'Description of new project');
