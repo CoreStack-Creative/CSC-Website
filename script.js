@@ -630,7 +630,6 @@ class PriceCounter {
 })();
 
 
-// Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     const hamburger = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobileNav');
@@ -660,41 +659,3 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-
-// Add this function globally for inline onclick handlers
-function closeMobileNav() {
-    const hamburger = document.getElementById('hamburger');
-    const mobileNav = document.getElementById('mobileNav');
-    if (hamburger && mobileNav) {
-        hamburger.classList.remove('active');
-        mobileNav.classList.remove('active');
-    }
-}
-
-// Optional: Add scroll behavior for header fade/hide effects
-// Uncomment and modify as needed for your existing scroll functionality
-/*
-let lastScrollTop = 0;
-const header = document.querySelector('header');
-
-window.addEventListener('scroll', function() {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    if (scrollTop > lastScrollTop) {
-        // Scrolling down
-        header.classList.add('hidden');
-    } else {
-        // Scrolling up
-        header.classList.remove('hidden');
-    }
-    
-    // Add fade effect when scrolled
-    if (scrollTop > 50) {
-        header.classList.add('faded');
-    } else {
-        header.classList.remove('faded');
-    }
-    
-    lastScrollTop = scrollTop;
-});
-*/

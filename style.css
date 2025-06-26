@@ -14,9 +14,9 @@ body {
   color: #333;
 }
 
-/* Modify header to be slightly transparent when scrolling up */
+/* Header styles */
 header {
-    height: 6.25rem; /* Match the top offset in .hidden */
+    height: 6.25rem;
     background-color: transparent;
     padding: 1.25rem 0;
     display: flex;
@@ -26,25 +26,23 @@ header {
     top: 0;
     z-index: 1000;
     transition: background-color 0.3s ease-in-out, top 0.3s ease-in-out;
-    overflow: hidden; /* Important: prevents contents from sticking out */
+    overflow: hidden;
     max-width: 75rem;
     margin: 0 auto;
     padding-left: 1.25rem;
     padding-right: 1.25rem;
 }
 
-/* When the header should fade in */
 header.faded {
-    background-color: rgba(255, 255, 255, 0.9); /* Lighter background */
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 header.hidden {
     top: -7.8125rem;
 }
 
-/* Style for the logo, remains the same */
 header img.logo {
-    height: 3.125rem;
+    height: 6rem;
     background-color: #fff;
     padding: 0.375rem;
     border-radius: 0.5rem;
@@ -111,9 +109,10 @@ nav a.active::after {
     flex-direction: column;
     cursor: pointer;
     padding: 0.3125rem;
-    z-index: 2001; /* Increased z-index to ensure it's above .mobile-nav */
+    z-index: 2001;
     transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    position: relative; /* Ensure stacking context */
+    position: relative;
+    margin-top: 1.4rem;
 }
 
 .hamburger span {
@@ -127,10 +126,8 @@ nav a.active::after {
         background 0.3s;
     border-radius: 0.125rem;
     transform-origin: center;
-    display: block;
 }
 
-/* X animation for hamburger */
 .hamburger.active span:nth-child(1) {
     transform: rotate(45deg) translate(0.375rem, 0.375rem);
 }
@@ -153,7 +150,7 @@ nav a.active::after {
     width: 100%;
     height: 100vh;
     background-color: rgba(255, 255, 255, 0.98);
-    z-index: 2000; /* Adjusted z-index */
+    z-index: 2000;
     padding-top: 7.5rem;
     text-align: center;
     opacity: 0;
@@ -190,13 +187,6 @@ nav a.active::after {
     pointer-events: auto;
 }
 
-/* Mobile nav link animations */
-.mobile-nav.active a:nth-child(1) { transition-delay: 0.1s; }
-.mobile-nav.active a:nth-child(2) { transition-delay: 0.2s; }
-.mobile-nav.active a:nth-child(3) { transition-delay: 0.3s; }
-.mobile-nav.active a:nth-child(4) { transition-delay: 0.4s; }
-.mobile-nav.active a:nth-child(5) { transition-delay: 0.5s; }
-
 .mobile-nav a:last-child {
     border-bottom: none;
 }
@@ -218,7 +208,7 @@ nav a.active::after {
         position: fixed;
         top: 1.2rem;
         right: 1.2rem;
-        z-index: 3000; /* Above .mobile-nav */
+        z-index: 3000;
         background: white;
         border-radius: 50%;
         box-shadow: 0 2px 8px rgba(0,0,0,0.07);
@@ -230,7 +220,7 @@ nav a.active::after {
     }
 
     header img.logo {
-        height: 3.75rem; /* Larger logo on mobile */
+        height: 3.75rem;
     }
 
     header {
@@ -239,7 +229,7 @@ nav a.active::after {
     }
 
     .mobile-nav {
-        padding-top: 6rem; /* Add space for hamburger */
+        padding-top: 6rem;
     }
 }
 
