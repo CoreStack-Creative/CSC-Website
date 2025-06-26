@@ -11,19 +11,37 @@
 <body>
 
   <header>
-    <img src="images/logo.png" alt="CoreStack Logo" class="logo" />
-    <nav>
-      <a href="index.html" class="active">Home</a>
-      <span>|</span>
-      <a href="about.html">About</a>
-      <span>|</span>
-      <a href="portfolio.html">Portfolio</a>
-      <span>|</span>
-      <a href="pricing.html">Pricing</a>
-      <span>|</span>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>    
+      <img src="images/logo.png" alt="CoreStack Logo" class="logo" />
+    
+      <!-- Desktop Navigation -->
+      <nav>
+          <a href="index.html" class="active">Home</a>
+          <span>|</span>
+          <a href="about.html">About</a>
+          <span>|</span>
+          <a href="portfolio.html">Portfolio</a>
+          <span>|</span>
+          <a href="pricing.html">Pricing</a>
+          <span>|</span>
+          <a href="contact.html">Contact</a>
+      </nav>
+
+      <!-- Hamburger Menu Button -->
+      <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+      </div>
+  </header>
+
+  <!-- Mobile Navigation Menu -->
+  <div class="mobile-nav" id="mobileNav">
+      <a href="index.html" class="active" onclick="closeMobileNav()">Home</a>
+      <a href="about.html" onclick="closeMobileNav()">About</a>
+      <a href="portfolio.html" onclick="closeMobileNav()">Portfolio</a>
+      <a href="pricing.html" onclick="closeMobileNav()">Pricing</a>
+      <a href="contact.html" onclick="closeMobileNav()">Contact</a>
+  </div>   
 
   <section class="profile-highlight diagonal-hero with-bg-image relative w-full max-w-7xl mx-auto px-0 py-0 overflow-hidden">
     <div class="hero-image absolute inset-0 z-0">

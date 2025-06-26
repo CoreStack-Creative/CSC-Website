@@ -70,68 +70,71 @@ document.addEventListener('DOMContentLoaded', function() {
     const visitWebsiteBtn = document.getElementById('visit-website');
     const closeBtn = document.getElementById('close-lightbox');
     
-    let currentWebsiteUrl = '';
-    
-    // Open lightbox when website box is clicked
-    websiteBoxes.forEach(box => {
-        box.addEventListener('click', function() {
-            const url = this.getAttribute('data-url');
-            const title = this.getAttribute('data-title');
-            
-            openLightbox(url, title);
+    // Only run lightbox code if all required elements exist
+    if (lightbox && iframe && lightboxTitle && visitWebsiteBtn && closeBtn) {
+        let currentWebsiteUrl = '';
+        
+        // Open lightbox when website box is clicked
+        websiteBoxes.forEach(box => {
+            box.addEventListener('click', function() {
+                const url = this.getAttribute('data-url');
+                const title = this.getAttribute('data-title');
+                
+                openLightbox(url, title);
+            });
         });
-    });
-    
-    // Close lightbox when close button is clicked
-    closeBtn.addEventListener('click', closeLightbox);
-    
-    // Close lightbox when clicking on overlay (outside the container)
-    lightbox.addEventListener('click', function(e) {
-        if (e.target === lightbox) {
-            closeLightbox();
+        
+        // Close lightbox when close button is clicked
+        closeBtn.addEventListener('click', closeLightbox);
+        
+        // Close lightbox when clicking on overlay (outside the container)
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+        
+        // Close lightbox when pressing Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+        
+        // Visit website button functionality
+        visitWebsiteBtn.addEventListener('click', function() {
+            if (currentWebsiteUrl) {
+                window.open(currentWebsiteUrl, '_blank');
+            }
+        });
+        
+        function openLightbox(url, title) {
+            currentWebsiteUrl = url;
+            lightboxTitle.textContent = title || 'Website Preview';
+            visitWebsiteBtn.href = url;
+            iframe.src = url;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
         }
-    });
-    
-    // Close lightbox when pressing Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-            closeLightbox();
+        
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            iframe.src = 'about:blank'; // Clear iframe to stop loading
+            document.body.style.overflow = ''; // Restore scrolling
+            currentWebsiteUrl = '';
         }
-    });
-    
-    // Visit website button functionality
-    visitWebsiteBtn.addEventListener('click', function() {
-        if (currentWebsiteUrl) {
-            window.open(currentWebsiteUrl, '_blank');
-        }
-    });
-    
-    function openLightbox(url, title) {
-        currentWebsiteUrl = url;
-        lightboxTitle.textContent = title || 'Website Preview';
-        visitWebsiteBtn.href = url;
-        iframe.src = url;
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        
+        // Handle iframe loading errors (optional)
+        iframe.addEventListener('error', function() {
+            console.warn('Could not load website in iframe. This may be due to X-Frame-Options restrictions.');
+        });
+        
+        // Optional: Add loading state
+        iframe.addEventListener('load', function() {
+            // You can add loading indicators here if needed
+            console.log('Website loaded in lightbox');
+        });
     }
-    
-    function closeLightbox() {
-        lightbox.classList.remove('active');
-        iframe.src = 'about:blank'; // Clear iframe to stop loading
-        document.body.style.overflow = ''; // Restore scrolling
-        currentWebsiteUrl = '';
-    }
-    
-    // Handle iframe loading errors (optional)
-    iframe.addEventListener('error', function() {
-        console.warn('Could not load website in iframe. This may be due to X-Frame-Options restrictions.');
-    });
-    
-    // Optional: Add loading state
-    iframe.addEventListener('load', function() {
-        // You can add loading indicators here if needed
-        console.log('Website loaded in lightbox');
-    });
 });
 
 // Function to dynamically add new website boxes (for easy expansion)
@@ -625,3 +628,73 @@ class PriceCounter {
     lastScrollY = currentScrollY;
   });
 })();
+
+
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    
+    // Add click event to hamburger
+    hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        mobileNav.classList.toggle('active');
+    });
+    
+    // Close mobile nav when clicking on a link
+    const mobileLinks = mobileNav.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('active');
+        });
+    });
+    
+    // Close mobile nav when clicking outside
+    document.addEventListener('click', function(event) {
+        if (mobileNav.classList.contains('active') && 
+            !mobileNav.contains(event.target) && 
+            !hamburger.contains(event.target)) {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('active');
+        }
+    });
+});
+
+// Add this function globally for inline onclick handlers
+function closeMobileNav() {
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    if (hamburger && mobileNav) {
+        hamburger.classList.remove('active');
+        mobileNav.classList.remove('active');
+    }
+}
+
+// Optional: Add scroll behavior for header fade/hide effects
+// Uncomment and modify as needed for your existing scroll functionality
+/*
+let lastScrollTop = 0;
+const header = document.querySelector('header');
+
+window.addEventListener('scroll', function() {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (scrollTop > lastScrollTop) {
+        // Scrolling down
+        header.classList.add('hidden');
+    } else {
+        // Scrolling up
+        header.classList.remove('hidden');
+    }
+    
+    // Add fade effect when scrolled
+    if (scrollTop > 50) {
+        header.classList.add('faded');
+    } else {
+        header.classList.remove('faded');
+    }
+    
+    lastScrollTop = scrollTop;
+});
+*/
