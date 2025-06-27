@@ -957,5 +957,111 @@ function initializeScrollAnimations() {
     }
 }
 
-// Initialize scroll animations
-initializeScrollAnimations();
+document.addEventListener('DOMContentLoaded', function() {
+    const cursorBlob = document.querySelector('.cursor-blob');
+    const heroSection = document.querySelector('.hero-section');
+    
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let blobX = 0;
+    let blobY = 0;
+    let randomOffset = { x: 0, y: 0 };
+    
+    // Friction/damping values
+    const friction = 0.08;
+    
+    // Random movement parameters
+    function updateRandomMovement() {
+        randomOffset.x = (Math.random() - 0.5) * 40;
+        randomOffset.y = (Math.random() - 0.5) * 40;
+    }
+    
+    // Update random movement every 3-5 seconds
+    setInterval(updateRandomMovement, Math.random() * 2000 + 3000);
+    
+    // Smooth following animation with pseudopods
+    function animateBlob() {
+        // Calculate the distance from center to mouse
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+        
+        // Calculate target position with random offset
+        const targetX = (mouseX - centerX) * 0.4 + randomOffset.x;
+        const targetY = (mouseY - centerY) * 0.4 + randomOffset.y;
+        
+        // Apply friction
+        const deltaX = targetX - blobX;
+        const deltaY = targetY - blobY;
+        
+        blobX += deltaX * friction;
+        blobY += deltaY * friction;
+        
+        // Calculate distance to cursor for pseudopod intensity
+        const distanceToCursor = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+        const pseudopodStrength = Math.min(distanceToCursor * 0.003, 1);
+        
+        // Calculate direction to cursor
+        const angle = Math.atan2(deltaY, deltaX);
+        
+        // Create pseudopod effect by manipulating border-radius
+        // The blob reaches out in the direction of the cursor
+        const reach = pseudopodStrength * 40; // Max reach amount
+        
+        // Calculate which "side" should reach out based on angle
+        const normalizedAngle = ((angle * 180 / Math.PI) + 360) % 360;
+        
+        let borderRadius;
+        
+        if (normalizedAngle >= 315 || normalizedAngle < 45) {
+            // Reaching right
+            borderRadius = `${40 - reach}% ${60 + reach}% ${30}% ${70}% / ${60}% ${30 + reach}% ${70}% ${40 - reach}%`;
+        } else if (normalizedAngle >= 45 && normalizedAngle < 135) {
+            // Reaching down
+            borderRadius = `${40}% ${60}% ${30 + reach}% ${70 - reach}% / ${60 - reach}% ${30}% ${70 + reach}% ${40}%`;
+        } else if (normalizedAngle >= 135 && normalizedAngle < 225) {
+            // Reaching left
+            borderRadius = `${40 + reach}% ${60 - reach}% ${30}% ${70}% / ${60}% ${30 - reach}% ${70}% ${40 + reach}%`;
+        } else {
+            // Reaching up
+            borderRadius = `${40}% ${60}% ${30 - reach}% ${70 + reach}% / ${60 + reach}% ${30}% ${70 - reach}% ${40}%`;
+        }
+        
+        // Apply subtle size variation
+        const baseScale = 0.95 + Math.sin(Date.now() * 0.0008) * 0.1;
+        
+        // Update blob position and shape
+        cursorBlob.style.transform = `
+            translate(calc(-50% + ${blobX}px), calc(-50% + ${blobY}px)) 
+            scale(${baseScale})
+        `;
+        
+        cursorBlob.style.borderRadius = borderRadius;
+        
+        // Continue animation
+        requestAnimationFrame(animateBlob);
+    }
+    
+    // Track mouse movement
+    heroSection.addEventListener('mousemove', function(e) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+    
+    // Handle mouse leave - return to center slowly
+    heroSection.addEventListener('mouseleave', function() {
+        mouseX = window.innerWidth / 2;
+        mouseY = window.innerHeight / 2;
+    });
+    
+    // Initialize random movement
+    updateRandomMovement();
+    
+    // Start animation
+    animateBlob();
+    
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        mouseX = window.innerWidth / 2;
+        mouseY = window.innerHeight / 2;
+    });
+});
