@@ -362,6 +362,20 @@ document.head.appendChild(style);
 
 // Pricing Section Professional Animations
 // Pricing Section Advanced Animations
+// Pricing Section Professional Animations
+class PricingAnimations {
+  constructor() {
+    this.particles = [];
+    this.init();
+  }
+
+  init() {
+    this.createSubtleParticles();
+    this.setupIntersectionObserver();
+    this.animateTitleWords();
+    this.animateFeatureItems();
+    this.setupCardHoverEffects();
+    this.setupButtonRippleEffect// Pricing Section Advanced Animations
 class PricingAnimations {
   constructor() {
     this.particles = [];
@@ -609,6 +623,8 @@ class PriceCounter {
     });
   }
 }
+
+//
 
 // Pricing Header Grow/Shrink on Scroll
 (function() {
