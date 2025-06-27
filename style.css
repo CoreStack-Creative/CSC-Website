@@ -272,7 +272,8 @@ nav a.active::after {
   min-height: 80vh;
   padding: 60px 20px;
   padding-bottom: 80px; /* Added extra bottom padding */
-  background: linear-gradient(135deg, var(--light-bg) 0%, #e8e8e8 100%);
+  background-image: url('images/whitebg.png');
+  background-size: cover;
   overflow: hidden;
 }
 
