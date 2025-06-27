@@ -260,7 +260,8 @@ nav a.active::after {
 .pricing-preview {
   position: relative;
   min-height: 100vh;
-  padding: 80px 20px;
+  padding: 5rem 1.25rem;
+  padding-bottom: 6.25; /* Added extra bottom padding */
   background: linear-gradient(135deg, var(--light-bg) 0%, #e8e8e8 100%);
   overflow: hidden;
 }
@@ -270,6 +271,7 @@ nav a.active::after {
   position: relative;
   min-height: 80vh;
   padding: 60px 20px;
+  padding-bottom: 80px; /* Added extra bottom padding */
   background: linear-gradient(135deg, var(--light-bg) 0%, #e8e8e8 100%);
   overflow: hidden;
 }
@@ -412,7 +414,7 @@ nav a.active::after {
   font-size: 0.75rem;
   font-weight: 600;
   z-index: 3;
-  box-shadow: 0 4px 15px rgba(0, 173, 181, 0.3);
+  box-shadow: 0 4px 15px rgba(0,173,181,0.3);
 }
 
 /* Pricing Cards */
@@ -453,7 +455,7 @@ nav a.active::after {
 
 .featured .pricing-card {
   border: 2px solid var(--accent-color);
-  box-shadow: 0 8px 25px rgba(0, 173, 181, 0.15);
+  box-shadow: 0 8px 25px rgba(0,173,181,0.15);
 }
 
 /* Card Glow Effect */
@@ -753,8 +755,13 @@ nav a.active::after {
 }
 
 @media (max-width: 768px) {
+  .pricing-preview {
+    padding: 60px 15px;
+    padding-bottom: 80px; /* Ensure extra bottom padding on mobile */
+  }
   .pricing-preview-condensed {
     padding: 50px 15px;
+    padding-bottom: 70px; /* Ensure extra bottom padding on mobile */
   }
   
   .desktop-grid {
@@ -777,8 +784,13 @@ nav a.active::after {
 }
 
 @media (max-width: 480px) {
+  .pricing-preview {
+    padding: 40px 10px;
+    padding-bottom: 60px; /* Ensure extra bottom padding on small screens */
+  }
   .pricing-preview-condensed {
     padding: 40px 10px;
+    padding-bottom: 50px; /* Ensure extra bottom padding on small screens */
   }
   
   .pricing-header {
@@ -1899,6 +1911,7 @@ body.map-open::before {
   position: relative;
   min-height: 100vh;
   padding: 80px 20px;
+  padding-bottom: 100px; /* Added extra bottom padding */
   background: linear-gradient(135deg, var(--light-bg) 0%, #e8e8e8 100%);
   overflow: hidden;
 }
@@ -2035,7 +2048,7 @@ body.map-open::before {
   font-size: 0.8rem;
   font-weight: 600;
   z-index: 3;
-  box-shadow: 0 4px 15px rgba(0, 173, 181, 0.3);
+  box-shadow: 0 4px 15px rgba(0,173,181,0.3);
   animation: badgeGlow 3s ease-in-out infinite;
 }
 
@@ -2082,7 +2095,7 @@ body.map-open::before {
 
 .featured .pricing-card {
   border: 2px solid var(--accent-color);
-  box-shadow: 0 10px 30px rgba(0, 173, 181, 0.15);
+  box-shadow: 0 10px 30px rgba(0,173,181,0.15);
 }
 
 /* Card Glow Effect */
@@ -2303,31 +2316,24 @@ body.map-open::before {
 @media (max-width: 768px) {
   .pricing-preview {
     padding: 60px 15px;
+    padding-bottom: 80px; /* Ensure extra bottom padding on mobile */
+  }
+  .pricing-preview-condensed {
+    padding: 50px 15px;
+    padding-bottom: 70px; /* Ensure extra bottom padding on mobile */
   }
   
-  .pricing-grid {
-    grid-template-columns: 1fr;
-    gap: 25px;
-    padding: 0 5px;
+  .desktop-grid {
+    display: none;
+  }
+  
+  .mobile-only {
+    display: block;
   }
   
   .pricing-card {
-    padding: 30px 20px;
-    min-height: 400px;
-  }
-  
-  .plan-header {
-    margin-bottom: 20px;
-  }
-  
-  .plan-icon {
-    width: 35px;
-    height: 35px;
-  }
-  
-  .fine-print-section {
-    padding: 25px 15px;
-    margin-top: 40px;
+    min-height: 350px;
+    margin: 0 5px;
   }
   
   .floating-shapes::before,
@@ -2339,28 +2345,35 @@ body.map-open::before {
 @media (max-width: 480px) {
   .pricing-preview {
     padding: 40px 10px;
+    padding-bottom: 60px; /* Ensure extra bottom padding on small screens */
+  }
+  .pricing-preview-condensed {
+    padding: 40px 10px;
+    padding-bottom: 50px; /* Ensure extra bottom padding on small screens */
   }
   
   .pricing-header {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
   }
   
   .pricing-card {
-    padding: 25px 15px;
+    padding: 20px 15px;
     border-radius: 16px;
+    min-height: 320px;
   }
   
-  .price-container {
-    justify-content: center;
+  .carousel-track .pricing-card-wrapper {
+    padding: 0 5px;
   }
   
-  .features-list li {
-    padding: 8px 0;
-    padding-left: 20px;
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
   }
   
-  .select-plan-btn {
-    padding: 12px 16px;
+  .important-notes {
+    padding: 15px;
   }
 }
 
