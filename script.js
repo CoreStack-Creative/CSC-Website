@@ -637,68 +637,135 @@ class PriceCounter {
   });
 })();
 
-// Mobile Navigation
-document.addEventListener('DOMContentLoaded', function() {
-    const hamburger = document.getElementById('hamburger');
-    const mobileNav = document.getElementById('mobileNav');
-    
-    if (!hamburger || !mobileNav) return;
-    
-    // Add click event to hamburger
-    hamburger.addEventListener('click', function() {
-        hamburger.classList.toggle('active');
-        mobileNav.classList.toggle('active');
-    });
-    
-    // Close mobile nav when clicking on a link
-    const mobileLinks = mobileNav.querySelectorAll('a');
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            hamburger.classList.remove('active');
-            mobileNav.classList.remove('active');
-        });
-    });
-    
-    // Close mobile nav when clicking outside
-    document.addEventListener('click', function(event) {
-        if (mobileNav.classList.contains('active') && 
-            !mobileNav.contains(event.target) && 
-            !hamburger.contains(event.target)) {
-            hamburger.classList.remove('active');
-            mobileNav.classList.remove('active');
+// Mobile Navigation Handler
+class MobileNavigation {
+    constructor() {
+        this.hamburger = document.getElementById('hamburger');
+        this.mobileNav = document.getElementById('mobileNav');
+        this.init();
+    }
+
+    init() {
+        // Check if elements exist before adding event listeners
+        if (!this.hamburger || !this.mobileNav) {
+            console.warn('Hamburger or mobile nav elements not found');
+            return;
         }
-    });
+
+        this.addEventListeners();
+    }
+
+    addEventListeners() {
+        // Toggle menu when hamburger is clicked
+        this.hamburger.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.toggleMenu();
+        });
+
+        // Close menu when clicking on navigation links
+        const mobileLinks = this.mobileNav.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                this.closeMenu();
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (event) => {
+            if (this.isMenuOpen() && 
+                !this.mobileNav.contains(event.target) && 
+                !this.hamburger.contains(event.target)) {
+                this.closeMenu();
+            }
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && this.isMenuOpen()) {
+                this.closeMenu();
+            }
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && this.isMenuOpen()) {
+                this.closeMenu();
+            }
+        });
+    }
+
+    toggleMenu() {
+        if (this.isMenuOpen()) {
+            this.closeMenu();
+        } else {
+            this.openMenu();
+        }
+    }
+
+    openMenu() {
+        this.hamburger.classList.add('active');
+        this.mobileNav.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+
+    closeMenu() {
+        this.hamburger.classList.remove('active');
+        this.mobileNav.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+
+    isMenuOpen() {
+        return this.mobileNav.classList.contains('active');
+    }
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize mobile navigation
+    new MobileNavigation();
+
+    // Initialize other components if they exist
+    initializeOtherComponents();
 });
 
-// Initialize animations when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
+// Function to initialize other components
+function initializeOtherComponents() {
     // Initialize pricing animations if on pricing page
     if (document.querySelector('.pricing-section')) {
-        new PricingAnimations();
-        new PriceCounter();
+        // Only initialize if the classes exist
+        if (typeof PricingAnimations !== 'undefined') {
+            new PricingAnimations();
+        }
+        if (typeof PriceCounter !== 'undefined') {
+            new PriceCounter();
+        }
     }
-});
 
-document.addEventListener('DOMContentLoaded', function() {
+    // Add other component initializations here as needed
+}
+
+// Alternative simple implementation (if you prefer a more basic approach)
+function initSimpleHamburgerMenu() {
     const hamburger = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobileNav');
-    
-    // Add click event to hamburger
-    hamburger.addEventListener('click', function() {
+
+    if (!hamburger || !mobileNav) return;
+
+    hamburger.addEventListener('click', function(e) {
+        e.preventDefault();
         hamburger.classList.toggle('active');
         mobileNav.classList.toggle('active');
     });
-    
-    // Close mobile nav when clicking on a link
-    const mobileLinks = mobileNav.querySelectorAll('a');
-    mobileLinks.forEach(link => {
+
+    // Close menu when clicking links
+    mobileNav.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', function() {
             hamburger.classList.remove('active');
             mobileNav.classList.remove('active');
         });
     });
-    
-    // Close mobile nav when clicking outside
+
+    // Close menu when clicking outside
     document.addEventListener('click', function(event) {
         if (mobileNav.classList.contains('active') && 
             !mobileNav.contains(event.target) && 
@@ -707,7 +774,10 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileNav.classList.remove('active');
         }
     });
-});
+}
+
+// Uncomment the line below if you want to use the simple version instead
+// document.addEventListener('DOMContentLoaded', initSimpleHamburgerMenu);
 
 // Pricing Section Carousel JavaScript
 document.addEventListener('DOMContentLoaded', function() {
