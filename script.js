@@ -979,33 +979,36 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update random movement every 3-5 seconds
     setInterval(updateRandomMovement, Math.random() * 2000 + 3000);
     
-    // Smooth following animation with pseudopods
+    // Smooth following animation with highly fluid, water-like pseudopods
     function animateBlob() {
         // Calculate the distance from center to mouse
         const centerX = window.innerWidth / 2;
         const centerY = window.innerHeight / 2;
         
         // Calculate target position with random offset
-        const targetX = (mouseX - centerX) * 0.4 + randomOffset.x;
-        const targetY = (mouseY - centerY) * 0.4 + randomOffset.y;
+        const targetX = (mouseX - centerX) * 0.6 + randomOffset.x;
+        const targetY = (mouseY - centerY) * 0.6 + randomOffset.y;
         
         // Apply friction
         const deltaX = targetX - blobX;
         const deltaY = targetY - blobY;
         
-        blobX += deltaX * friction;
-        blobY += deltaY * friction;
+        blobX += deltaX * friction * 1.25; // more fluid
+        blobY += deltaY * friction * 1.25;
         
         // Calculate distance to cursor for pseudopod intensity
         const distanceToCursor = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-        const pseudopodStrength = Math.min(distanceToCursor * 0.003, 1);
+        const pseudopodStrength = Math.min(distanceToCursor * 0.022, 2.2); // allow more reach
         
         // Calculate direction to cursor
         const angle = Math.atan2(deltaY, deltaX);
         
-        // Create pseudopod effect by manipulating border-radius
-        // The blob reaches out in the direction of the cursor
-        const reach = pseudopodStrength * 40; // Max reach amount
+        // Water-like pseudopod: use multiple sine/cosine waves for soft, undulating edge
+        const t = Date.now() * 0.002;
+        const wave1 = Math.sin(t + angle * 2) * 18;
+        const wave2 = Math.cos(t * 0.9 - angle * 2.5) * 14;
+        const wave3 = Math.sin(t * 1.3 + angle * 3.2) * 10;
+        const reach = pseudopodStrength * (38 + wave1 + wave2 + wave3); // Max reach amount, very fluid
         
         // Calculate which "side" should reach out based on angle
         const normalizedAngle = ((angle * 180 / Math.PI) + 360) % 360;
@@ -1014,20 +1017,20 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (normalizedAngle >= 315 || normalizedAngle < 45) {
             // Reaching right
-            borderRadius = `${40 - reach}% ${60 + reach}% ${30}% ${70}% / ${60}% ${30 + reach}% ${70}% ${40 - reach}%`;
+            borderRadius = `${40 - reach}% ${60 + reach}% ${30 + wave2}% ${70 - wave3}% / ${60 + wave1}% ${30 + reach}% ${70 - wave2}% ${40 - reach}%`;
         } else if (normalizedAngle >= 45 && normalizedAngle < 135) {
             // Reaching down
-            borderRadius = `${40}% ${60}% ${30 + reach}% ${70 - reach}% / ${60 - reach}% ${30}% ${70 + reach}% ${40}%`;
+            borderRadius = `${40 + wave3}% ${60 - wave1}% ${30 + reach}% ${70 - reach}% / ${60 - reach}% ${30 + wave2}% ${70 + reach}% ${40 - wave1}%`;
         } else if (normalizedAngle >= 135 && normalizedAngle < 225) {
             // Reaching left
-            borderRadius = `${40 + reach}% ${60 - reach}% ${30}% ${70}% / ${60}% ${30 - reach}% ${70}% ${40 + reach}%`;
+            borderRadius = `${40 + reach}% ${60 - reach}% ${30 - wave1}% ${70 + wave2}% / ${60 - wave3}% ${30 - reach}% ${70 + wave1}% ${40 + reach}%`;
         } else {
             // Reaching up
-            borderRadius = `${40}% ${60}% ${30 - reach}% ${70 + reach}% / ${60 + reach}% ${30}% ${70 - reach}% ${40}%`;
+            borderRadius = `${40 - wave2}% ${60 + wave3}% ${30 - reach}% ${70 + reach}% / ${60 + reach}% ${30 - wave1}% ${70 - reach}% ${40 + wave2}%`;
         }
         
-        // Apply subtle size variation
-        const baseScale = 0.95 + Math.sin(Date.now() * 0.0008) * 0.1;
+        // Apply more pronounced size and organic variation
+        const baseScale = 0.99 + Math.sin(Date.now() * 0.0007) * 0.17 + Math.cos(t * 0.8) * 0.09;
         
         // Update blob position and shape
         cursorBlob.style.transform = `
