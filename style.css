@@ -2465,6 +2465,7 @@ body.map-open::before {
 }
 
 .company-name {
+    position: relative;
     font-size: clamp(3rem, 8vw, 6rem);
     font-weight: 200;
     letter-spacing: 0.02em;
@@ -2474,7 +2475,8 @@ body.map-open::before {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: fadeInUp 1s ease-out; 
-    margin-top: -15rem;
+    margin-top: -26rem; 
+    margin-left: -20rem;
 }
 
 .tagline {
@@ -2484,9 +2486,11 @@ body.map-open::before {
     color: #999999;
     text-transform: lowercase;
     animation: fadeInUp 1s ease-out 0.3s both; 
-    margin: 0;
     padding: 0;
-    text-align: right;
+    text-align: right; 
+    margin-left: 50rem;  
+    margin-bottom; 50rem;
+
     /* Remove previous margin/padding overrides */
 }
 
