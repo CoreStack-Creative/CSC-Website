@@ -1228,36 +1228,28 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    const cursorBlob = document.querySelector('.cursor-blob');
     const heroSection = document.querySelector('.hero-section');
+    const floatingLayers = document.querySelector('.floating-layers');
+    
+    // Only proceed if floating layers exist
+    if (!floatingLayers) return;
     
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
     let isMouseInside = false;
     
-    // Enhanced smooth interpolation for ultra-fluid movement
+    // Smooth interpolation values
+    let currentTiltX = 0;
+    let currentTiltY = 0;
     let currentX = 0;
     let currentY = 0;
-    let velocityX = 0;
-    let velocityY = 0;
-    let targetX = 0;
-    let targetY = 0;
     
-    // Slime-like physics constants for viscous movement
-    const friction = 0.98; // Very high friction for slow, viscous movement
-    const spring = 0.015; // Much lower spring for minimal bounce
-    const maxStretch = 1.8; // Reduced stretch for more realistic slime behavior
-    const followStrength = 0.25; // Much lower for slow, reluctant following
+    // Animation constants
+    const maxTilt = 12; // Maximum tilt in degrees
+    const maxMove = 15; // Maximum position offset in pixels
+    const smoothing = 0.08; // Smoothing factor (lower = smoother)
     
-    // Heavy smoothing for slime-like sluggish movement
-    let smoothMouseX = mouseX;
-    let smoothMouseY = mouseY;
-    let ultraSmoothX = mouseX;
-    let ultraSmoothY = mouseY;
-    const primarySmoothing = 0.05; // Very heavy smoothing
-    const secondarySmoothing = 0.03; // Even heavier smoothing
-    
-    // Enhanced center positioning
+    // Center positioning
     let centerX = window.innerWidth / 2;
     let centerY = window.innerHeight / 2;
     
@@ -1266,219 +1258,133 @@ document.addEventListener('DOMContentLoaded', function() {
     const targetFPS = 60;
     const frameTime = 1000 / targetFPS;
     
-    function easeOutQuart(t) {
-        return 1 - Math.pow(1 - t, 4);
-    }
-    
-    function easeInOutCubic(t) {
-        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    }
-    
-    function animateBlob(currentTime) {
-        // Frame rate control for consistent performance
+    function animateLayers(currentTime) {
+        // Frame rate control
         if (currentTime - lastTime < frameTime) {
-            requestAnimationFrame(animateBlob);
+            requestAnimationFrame(animateLayers);
             return;
         }
         lastTime = currentTime;
         
-        const time = currentTime * 0.0006;
+        let targetTiltX = 0;
+        let targetTiltY = 0;
+        let targetX = 0;
+        let targetY = 0;
         
-        // Multi-layer mouse smoothing for liquid-like following
-        smoothMouseX += (mouseX - smoothMouseX) * primarySmoothing;
-        smoothMouseY += (mouseY - smoothMouseY) * primarySmoothing;
-        ultraSmoothX += (smoothMouseX - ultraSmoothX) * secondarySmoothing;
-        ultraSmoothY += (smoothMouseY - ultraSmoothY) * secondarySmoothing;
-        
-        if (!isMouseInside) {
-            // Very slow return-to-center like thick slime settling
-            const returnSpring = 0.008; // Much slower return
-            const returnFriction = 0.98; // High friction even when returning
+        if (isMouseInside) {
+            // Calculate mouse offset from center
+            const offsetX = mouseX - centerX;
+            const offsetY = mouseY - centerY;
             
-            velocityX += (0 - currentX) * returnSpring;
-            velocityY += (0 - currentY) * returnSpring;
-            velocityX *= returnFriction;
-            velocityY *= returnFriction;
+            // Calculate normalized values (-1 to 1)
+            const normalizedX = Math.max(-1, Math.min(1, offsetX / (window.innerWidth / 2)));
+            const normalizedY = Math.max(-1, Math.min(1, offsetY / (window.innerHeight / 2)));
             
-            currentX += velocityX;
-            currentY += velocityY;
-            
-            // Very slow, gentle breathing animation
-            const breathe1 = Math.sin(time * 0.3) * 1.2;
-            const breathe2 = Math.cos(time * 0.2) * 1.0;
-            const breathe3 = Math.sin(time * 0.4) * 0.8;
-            const breathe4 = Math.cos(time * 0.5) * 0.6;
-            
-            const borderRadius = `${50 + breathe1}% ${50 - breathe2}% ${50 + breathe3}% ${50 - breathe1}% / ${50 - breathe4}% ${50 + breathe2}% ${50 - breathe3}% ${50 + breathe4}%`;
-            
-            const scale = 1 + Math.sin(time * 0.3) * 0.02;
-            
-            cursorBlob.style.transform = `translate(calc(-50% + ${currentX}px), calc(-50% + ${currentY}px)) scale(${scale})`;
-            cursorBlob.style.borderRadius = borderRadius;
-            requestAnimationFrame(animateBlob);
-            return;
+            // Calculate target tilt and position
+            targetTiltX = -normalizedY * maxTilt; // Negative for correct tilt direction
+            targetTiltY = normalizedX * maxTilt;
+            targetX = normalizedX * maxMove;
+            targetY = normalizedY * maxMove;
         }
         
-        // Calculate direct movement towards cursor with slime-like resistance
-        const targetMouseX = ultraSmoothX;
-        const targetMouseY = ultraSmoothY;
+        // Smooth interpolation
+        currentTiltX += (targetTiltX - currentTiltX) * smoothing;
+        currentTiltY += (targetTiltY - currentTiltY) * smoothing;
+        currentX += (targetX - currentX) * smoothing;
+        currentY += (targetY - currentY) * smoothing;
         
-        // Slime-like reluctant following with heavy resistance
-        const directTargetX = (targetMouseX - centerX) * followStrength;
-        const directTargetY = (targetMouseY - centerY) * followStrength;
+        // Apply the transform to only the floating layers container
+        floatingLayers.style.transform = `
+            translate(calc(-50% + ${currentX}px), calc(-50% + ${currentY}px))
+            rotateX(${currentTiltX}deg)
+            rotateY(${currentTiltY}deg)
+            perspective(1000px)
+        `;
         
-        // Minimal target calculation for slow, viscous movement
-        targetX = directTargetX;
-        targetY = directTargetY;
-        
-        // Very minimal predictive adjustment (slime doesn't anticipate)
-        const mouseVelX = (smoothMouseX - ultraSmoothX) * 0.03;
-        const mouseVelY = (smoothMouseY - ultraSmoothY) * 0.03;
-        targetX += mouseVelX;
-        targetY += mouseVelY;
-        
-        // Calculate distance for minimal stretching
-        const cursorDistance = Math.sqrt(directTargetX * directTargetX + directTargetY * directTargetY);
-        const distanceNormalized = Math.min(cursorDistance / (Math.min(window.innerWidth, window.innerHeight) * 0.5), 1);
-        
-        // Apply slime-like physics - no dynamic changes, just consistent viscosity
-        const dynamicSpring = spring; // No variation - consistent slime behavior
-        const dynamicFriction = friction;
-        
-        velocityX += (targetX - currentX) * dynamicSpring;
-        velocityY += (targetY - currentY) * dynamicSpring;
-        velocityX *= dynamicFriction;
-        velocityY *= dynamicFriction;
-        
-        currentX += velocityX;
-        currentY += velocityY;
-        
-        // Minimal stretch calculation for slime-like behavior
-        const maxDistance = Math.min(window.innerWidth, window.innerHeight) * 0.6;
-        let stretchFactorBase = Math.min(cursorDistance / maxDistance, 1) * maxStretch;
-        
-        // Very minimal velocity influence (slime moves slowly)
-        const velocityMagnitude = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
-        const velocityInfluence = Math.min(velocityMagnitude * 0.5, 1); // Much less influence
-        stretchFactorBase += velocityInfluence * 0.3; // Minimal velocity stretching
-        
-        // Direction towards cursor (slow and steady)
-        const cursorAngle = Math.atan2(directTargetY, directTargetX);
-        const velocityAngle = Math.atan2(velocityY, velocityX);
-        
-        // Very slow, gentle wave system for slime-like deformation
-        const time1 = time * 0.2;
-        const time2 = time * 0.15;
-        const time3 = time * 0.1;
-        
-        const wave1 = Math.sin(time1 + cursorDistance * 0.003) * 2;
-        const wave2 = Math.cos(time2 + cursorDistance * 0.002) * 1.8;
-        const wave3 = Math.sin(time3 + cursorDistance * 0.004) * 1.5;
-        const wave4 = Math.cos(time1 * 0.8 + cursorDistance * 0.0025) * 1.2;
-        const wave5 = Math.sin(time2 * 0.6 + cursorDistance * 0.0035) * 1;
-        const wave6 = Math.cos(time3 * 0.9 + cursorDistance * 0.002) * 0.8;
-        
-        // VOLUME-PRESERVING STRETCH: Minimal stretch for slime behavior
-        const horizontalStretch = 1 + Math.abs(Math.cos(cursorAngle)) * stretchFactorBase * 0.7;
-        const verticalStretch = 1 + Math.abs(Math.sin(cursorAngle)) * stretchFactorBase * 0.7;
-        
-        // Preserve volume by inverse scaling
-        const volumePreservationFactor = 1 / Math.sqrt(horizontalStretch * verticalStretch);
-        const finalHorizontalStretch = horizontalStretch * volumePreservationFactor;
-        const finalVerticalStretch = verticalStretch * volumePreservationFactor;
-        
-        // Minimal velocity-based stretching for slime movement feedback
-        const movementAngle = Math.atan2(velocityY, velocityX);
-        const directionalStretchX = 1 + Math.abs(Math.cos(movementAngle)) * velocityInfluence * 0.2;
-        const directionalStretchY = 1 + Math.abs(Math.sin(movementAngle)) * velocityInfluence * 0.2;
-        
-        // Apply volume preservation to directional stretch
-        const directionalVolumePreservation = 1 / Math.sqrt(directionalStretchX * directionalStretchY);
-        const finalDirectionalStretchX = directionalStretchX * directionalVolumePreservation;
-        const finalDirectionalStretchY = directionalStretchY * directionalVolumePreservation;
-        
-        // Combine stretch effects with minimal blending for slime consistency
-        const combinedStretchX = finalHorizontalStretch * finalDirectionalStretchX;
-        const combinedStretchY = finalVerticalStretch * finalDirectionalStretchY;
-        
-        // Final volume preservation
-        const finalVolumePreservation = 1 / Math.sqrt(combinedStretchX * combinedStretchY);
-        const stretchX = combinedStretchX * finalVolumePreservation;
-        const stretchY = combinedStretchY * finalVolumePreservation;
-        
-        // Create gentle, slime-like border radius
-        const baseRadius = 50;
-        const stretchInfluence = (stretchX + stretchY - 2) * 8; // Reduced influence for subtlety
-        
-        const flowRadius1 = baseRadius + wave1 + stretchInfluence * Math.cos(cursorAngle);
-        const flowRadius2 = baseRadius + wave2 + stretchInfluence * Math.sin(cursorAngle);
-        const flowRadius3 = baseRadius + wave3 + stretchInfluence * Math.cos(cursorAngle + Math.PI);
-        const flowRadius4 = baseRadius + wave4 + stretchInfluence * Math.sin(cursorAngle + Math.PI);
-        const flowRadius5 = baseRadius + wave5 + stretchInfluence * Math.cos(cursorAngle + Math.PI * 0.5);
-        const flowRadius6 = baseRadius + wave6 + stretchInfluence * Math.sin(cursorAngle + Math.PI * 0.5);
-        const flowRadius7 = baseRadius - wave1 + stretchInfluence * Math.cos(cursorAngle + Math.PI * 1.5);
-        const flowRadius8 = baseRadius - wave2 + stretchInfluence * Math.sin(cursorAngle + Math.PI * 1.5);
-        
-        const borderRadius = `${flowRadius1}% ${flowRadius2}% ${flowRadius3}% ${flowRadius4}% / ${flowRadius5}% ${flowRadius6}% ${flowRadius7}% ${flowRadius8}%`;
-        
-        // Very minimal rotation for slime-like sluggish behavior
-        const rotation = cursorAngle * 0.008 + Math.sin(time * 0.15) * 0.005;
-        
-        // Apply volume-preserving stretch transformation
-        cursorBlob.style.transform = `translate(calc(-50% + ${currentX}px), calc(-50% + ${currentY}px)) scale(${stretchX}, ${stretchY}) rotate(${rotation}rad)`;
-        cursorBlob.style.borderRadius = borderRadius;
-        
-        requestAnimationFrame(animateBlob);
+        requestAnimationFrame(animateLayers);
     }
     
-    // Enhanced mouse tracking with sub-pixel precision
-    heroSection.addEventListener('mousemove', function(e) {
-        const rect = heroSection.getBoundingClientRect();
-        mouseX = e.clientX - rect.left + rect.left;
-        mouseY = e.clientY - rect.top + rect.top;
-        isMouseInside = true;
-    });
+    // Mouse tracking - only for hero section
+    if (heroSection) {
+        heroSection.addEventListener('mousemove', function(e) {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            isMouseInside = true;
+        });
+        
+        heroSection.addEventListener('mouseenter', function() {
+            isMouseInside = true;
+        });
+        
+        heroSection.addEventListener('mouseleave', function() {
+            isMouseInside = false;
+        });
+    }
     
-    heroSection.addEventListener('mouseenter', function() {
-        isMouseInside = true;
-    });
-    
-    heroSection.addEventListener('mouseleave', function() {
-        isMouseInside = false;
-    });
-    
-    // Smooth window resize handling
+    // Window resize handling
     window.addEventListener('resize', function() {
         centerX = window.innerWidth / 2;
         centerY = window.innerHeight / 2;
-        if (!isMouseInside) {
-            mouseX = centerX;
-            mouseY = centerY;
-            smoothMouseX = centerX;
-            smoothMouseY = centerY;
-            ultraSmoothX = centerX;
-            ultraSmoothY = centerY;
-        }
     });
     
-    // Start the enhanced animation
-    requestAnimationFrame(animateBlob);
+    // Start the animation
+    requestAnimationFrame(animateLayers);
     
-    // Enhanced button ripple effect
+    // Button ripple effect
     const contactBtn = document.querySelector('.hero-contact-btn');
     if (contactBtn) {
         contactBtn.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default link behavior for demo
+            
             const ripple = this.querySelector('.btn-ripple');
             if (ripple) {
-                ripple.style.width = '350px';
-                ripple.style.height = '350px';
-                ripple.style.opacity = '0.8';
+                // Reset ripple
+                ripple.style.width = '0';
+                ripple.style.height = '0';
+                ripple.style.opacity = '0';
+                
+                // Trigger ripple effect
+                setTimeout(() => {
+                    ripple.style.width = '350px';
+                    ripple.style.height = '350px';
+                    ripple.style.opacity = '0.8';
+                    
+                    setTimeout(() => {
+                        ripple.style.width = '0';
+                        ripple.style.height = '0';
+                        ripple.style.opacity = '0';
+                    }, 600);
+                }, 10);
+            }
+            
+            // Add subtle scale effect to layers on button click
+            if (floatingLayers) {
+                floatingLayers.style.transition = 'transform 0.2s ease';
+                floatingLayers.style.transform += ' scale(1.05)';
                 
                 setTimeout(() => {
-                    ripple.style.width = '0';
-                    ripple.style.height = '0';
-                    ripple.style.opacity = '0';
-                }, 600);
+                    floatingLayers.style.transition = '';
+                    floatingLayers.style.transform = floatingLayers.style.transform.replace(' scale(1.05)', '');
+                }, 200);
+            }
+        });
+        
+        // Enhanced hover effect for button
+        contactBtn.addEventListener('mouseenter', function() {
+            if (floatingLayers) {
+                const layersImage = floatingLayers.querySelector('.layers-image');
+                if (layersImage) {
+                    layersImage.style.filter = 'drop-shadow(0 15px 40px rgba(0, 173, 181, 0.5)) brightness(1.1)';
+                }
+            }
+        });
+        
+        contactBtn.addEventListener('mouseleave', function() {
+            if (floatingLayers) {
+                const layersImage = floatingLayers.querySelector('.layers-image');
+                if (layersImage) {
+                    layersImage.style.filter = 'drop-shadow(0 10px 30px rgba(0, 173, 181, 0.3))';
+                }
             }
         });
     }

@@ -2541,73 +2541,84 @@ body.map-open::before {
     transition: all 0.3s ease;
 }
 
-.cursor-blob {
+/* Static browser window - stays in background */
+.static-browser-window {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 24rem;
-    height: 24rem;
-    background: radial-gradient(
-        ellipse at 38% 32%, 
-        rgba(35, 35, 35, 0.95) 0%, 
-        rgba(55, 55, 55, 0.8) 12%,
-        rgba(75, 75, 75, 0.6) 25%, 
-        rgba(50, 50, 50, 0.45) 40%,
-        rgba(40, 40, 40, 0.3) 55%,
-        rgba(30, 30, 30, 0.18) 70%,
-        rgba(25, 25, 25, 0.08) 85%,
-        transparent 100%
-    );
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 5;
     transform: translate(-50%, -50%);
-    filter: blur(1.2px) contrast(1.15) saturate(1.1);
-    transition: none;
-    will-change: transform, border-radius;
-    backface-visibility: hidden;
-    transform-style: preserve-3d;
-    mix-blend-mode: multiply;
-    opacity: 0.9;
+    width: 320px;
+    height: 220px;
+    border: 3px solid #4a9ca0;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+    z-index: 5;
+    pointer-events: none;
 }
 
-/* Enhanced blob with multiple layers for ultra-smooth appearance */
-.cursor-blob::before {
-    content: '';
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    width: 80%;
-    height: 80%;
-    background: radial-gradient(
-        ellipse at 45% 40%, 
-        rgba(60, 60, 60, 0.4) 0%, 
-        rgba(45, 45, 45, 0.25) 30%,
-        rgba(35, 35, 35, 0.12) 60%,
-        transparent 85%
-    );
-    border-radius: 50%;
-    filter: blur(0.8px);
-    mix-blend-mode: multiply;
+.browser-header {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid #555;
 }
 
-.cursor-blob::after {
-    content: '';
+.browser-buttons {
     position: absolute;
-    top: 20%;
-    left: 20%;
-    width: 60%;
-    height: 60%;
-    background: radial-gradient(
-        ellipse at 50% 45%, 
-        rgba(80, 80, 80, 0.3) 0%, 
-        rgba(60, 60, 60, 0.15) 40%,
-        transparent 70%
-    );
+    top: 12px;
+    left: 16px;
+    display: flex;
+    gap: 8px;
+}
+
+.browser-buttons span {
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    filter: blur(0.6px);
-    mix-blend-mode: screen;
-    opacity: 0.6;
+}
+
+.btn-close {
+    background: #ff5f57;
+}
+
+.btn-minimize {
+    background: #ffbd2e;
+}
+
+.btn-maximize {
+    background: #28ca42;
+}
+
+.browser-address-bar {
+    position: absolute;
+    top: 12px;
+    left: 80px;
+    right: 16px;
+    height: 16px;
+    background: linear-gradient(90deg, #333 0%, #444 100%);
+    border-radius: 4px;
+    border: 1px solid #555;
+}
+
+/* Moving layers container */
+.floating-layers {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 8;
+    pointer-events: none;
+    transform-origin: center center;
+    will-change: transform;
+    perspective: 1000px;
+}
+
+.layers-image {
+    width: 200px;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 10px 30px rgba(0, 173, 181, 0.3));
+    transition: filter 0.3s ease;
 }
 
 .hero-cta-row {
@@ -2701,9 +2712,13 @@ body.map-open::before {
         font-size: clamp(0.95rem, 2.3vw, 1.4rem);
     }
     
-    .cursor-blob {
-        width: 20rem;
-        height: 20rem;
+    .static-browser-window {
+        width: 280px;
+        height: 180px;
+    }
+    
+    .layers-image {
+        width: 160px;
     }
 }
 
@@ -2730,9 +2745,13 @@ body.map-open::before {
         font-size: clamp(0.9rem, 2.2vw, 1.3rem);
     }
     
-    .cursor-blob {
-        width: 18rem;
-        height: 18rem;
+    .static-browser-window {
+        width: 250px;
+        height: 160px;
+    }
+    
+    .layers-image {
+        width: 140px;
     }
     
     .hero-cta-row {
@@ -2759,9 +2778,13 @@ body.map-open::before {
         font-size: clamp(0.85rem, 2vw, 1.2rem);
     }
     
-    .cursor-blob {
-        width: 16rem;
-        height: 16rem;
+    .static-browser-window {
+        width: 220px;
+        height: 140px;
+    }
+    
+    .layers-image {
+        width: 120px;
     }
     
     .hero-cta-row {
@@ -2790,9 +2813,13 @@ body.map-open::before {
         font-size: clamp(0.8rem, 1.8vw, 1.1rem);
     }
     
-    .cursor-blob {
-        width: 14rem;
-        height: 14rem;
+    .static-browser-window {
+        width: 180px;
+        height: 120px;
+    }
+    
+    .layers-image {
+        width: 100px;
     }
     
     .hero-contact-btn {
@@ -2802,23 +2829,23 @@ body.map-open::before {
 }
 
 /* Performance optimizations for smooth animations */
-.cursor-blob,
-.cursor-blob::before,
-.cursor-blob::after {
+.floating-layers {
     transform-origin: center center;
     contain: layout style paint;
 }
 
 /* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
-    .cursor-blob {
-        animation: none;
+    .floating-layers {
         transform: translate(-50%, -50%) !important;
-        border-radius: 50% !important;
     }
     
     .hero-contact-btn {
         transition: none;
+    }
+    
+    .layers-image {
+        filter: none;
     }
 }
 
