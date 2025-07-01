@@ -2547,8 +2547,8 @@ body.map-open::before {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 320px;
-    height: 220px;
+    width: 23rem;
+    height: 14rem;
     border: 3px solid #4a9ca0;
     border-radius: 12px;
     background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
@@ -2614,10 +2614,9 @@ body.map-open::before {
 }
 
 .layers-image {
-    width: 13rem;
+    width: 14.5rem;
     height: auto;
     display: block;
-    filter: drop-shadow(0 10px 30px rgba(0, 173, 181, 0.3));
     transition: filter 0.3s ease;
 }
 
