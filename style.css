@@ -2614,7 +2614,7 @@ body.map-open::before {
 }
 
 .layers-image {
-    width: 200px;
+    width: 13rem;
     height: auto;
     display: block;
     filter: drop-shadow(0 10px 30px rgba(0, 173, 181, 0.3));
