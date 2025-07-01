@@ -1368,24 +1368,5 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 200);
             }
         });
-        
-        // Enhanced hover effect for button
-        contactBtn.addEventListener('mouseenter', function() {
-            if (floatingLayers) {
-                const layersImage = floatingLayers.querySelector('.layers-image');
-                if (layersImage) {
-                    layersImage.style.filter = 'drop-shadow(0 15px 40px rgba(0, 173, 181, 0.5)) brightness(1.1)';
-                }
-            }
-        });
-        
-        contactBtn.addEventListener('mouseleave', function() {
-            if (floatingLayers) {
-                const layersImage = floatingLayers.querySelector('.layers-image');
-                if (layersImage) {
-                    layersImage.style.filter = 'drop-shadow(0 10px 30px rgba(0, 173, 181, 0.3))';
-                }
-            }
-        });
     }
 });
