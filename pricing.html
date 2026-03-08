@@ -5,17 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pricing - CoreStack Creative</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="pricing-new.css" />
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
-<body>
-
+<body class="pricing-page">
 
   <!-- =========================================================
        HEADER & NAVIGATION
        ========================================================= -->
   <header>
     <img src="images/logo.png" alt="CoreStack Logo" class="logo" />
-
     <nav>
       <a href="index.html">Home</a>
       <span>|</span>
@@ -27,7 +28,6 @@
       <span>|</span>
       <a href="contact.html">Contact</a>
     </nav>
-
     <div class="hamburger" id="hamburger">
       <span></span><span></span><span></span>
     </div>
@@ -43,168 +43,341 @@
 
 
   <!-- =========================================================
-       PAGE HERO BANNER
+       HERO — CINEMATIC ENTRY
        ========================================================= -->
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Pricing Plans</h1>
-      <p>Choose a plan that fits your needs. All packages include customizable options, great service, and ready-to-go websites.</p>
+  <section class="px-hero">
+    <div class="px-hero__noise"></div>
+    <div class="px-hero__grid"></div>
+
+    <div class="px-hero__content">
+      <div class="px-hero__eyebrow">
+        <span class="px-dot"></span>
+        Transparent. Simple. Yours.
+        <span class="px-dot"></span>
+      </div>
+      <h1 class="px-hero__title">
+        <span class="px-hero__line" data-word="Choose">Choose</span>
+        <span class="px-hero__line px-hero__line--accent" data-word="your">your</span>
+        <span class="px-hero__line" data-word="launch">launch</span>
+        <span class="px-hero__line px-hero__line--outline" data-word="plan.">plan.</span>
+      </h1>
+      <p class="px-hero__sub">Every package ships with real results — fast turnaround, local support, and a site your customers will remember.</p>
+
+      <div class="px-hero__scroll-hint">
+        <div class="px-scroll-line"></div>
+        <span>Scroll to explore</span>
+      </div>
     </div>
-    <div class="hero-graphic">
-      <img src="images/pricing.png" alt="Pricing graphic">
+
+    <!-- Floating stat badges -->
+    <div class="px-stat px-stat--1">
+      <span class="px-stat__num">3</span>
+      <span class="px-stat__label">Plans</span>
+    </div>
+    <div class="px-stat px-stat--2">
+      <span class="px-stat__num">$200</span>
+      <span class="px-stat__label">Starting at</span>
+    </div>
+    <div class="px-stat px-stat--3">
+      <span class="px-stat__num">100%</span>
+      <span class="px-stat__label">Custom built</span>
     </div>
   </section>
 
 
   <!-- =========================================================
-       FULL PRICING SECTION
+       PLAN SELECTOR RAIL
        ========================================================= -->
-  <section class="pricing-preview">
-
-    <!-- Animated background elements -->
-    <div class="background-animation">
-      <div class="floating-shapes"></div>
-      <div class="particle-field"></div>
+  <section class="px-selector">
+    <div class="px-selector__track">
+      <button class="px-tab" data-plan="basic" aria-selected="false">
+        <span class="px-tab__tier">01</span>
+        <span class="px-tab__name">Basic</span>
+        <span class="px-tab__price">$200</span>
+      </button>
+      <div class="px-tab__divider"></div>
+      <button class="px-tab px-tab--active" data-plan="regular" aria-selected="true">
+        <span class="px-tab__tier">02</span>
+        <span class="px-tab__name">Regular</span>
+        <span class="px-tab__price">$350</span>
+        <span class="px-tab__badge">Popular</span>
+      </button>
+      <div class="px-tab__divider"></div>
+      <button class="px-tab" data-plan="premium" aria-selected="false">
+        <span class="px-tab__tier">03</span>
+        <span class="px-tab__name">Premium</span>
+        <span class="px-tab__price">$500</span>
+      </button>
     </div>
+    <div class="px-selector__indicator"></div>
+  </section>
 
-    <div class="pricing-container">
 
-      <div class="pricing-header">
-        <h2 class="pricing-title">
-          <span class="title-word" data-delay="0">Our</span>
-          <span class="title-word" data-delay="200">Pricing</span>
-          <span class="title-word" data-delay="400">Plans</span>
-        </h2>
-        <div class="title-underline"></div>
+  <!-- =========================================================
+       MAIN PLAN DISPLAY
+       ========================================================= -->
+  <section class="px-stage">
+    <div class="px-stage__container">
+
+      <!-- LEFT: Plan Details Panel -->
+      <div class="px-panel px-panel--details">
+
+        <div class="px-plan-head">
+          <div class="px-plan-number" id="planNumber">02</div>
+          <div class="px-plan-meta">
+            <h2 class="px-plan-name" id="planName">Regular</h2>
+            <div class="px-plan-tagline" id="planTagline">The sweet spot for most small businesses</div>
+          </div>
+        </div>
+
+        <div class="px-price-display">
+          <span class="px-price-sym">$</span>
+          <span class="px-price-val" id="planPrice">350</span>
+          <span class="px-price-suffix">+ domain</span>
+        </div>
+
+        <!-- Time Estimate Bar -->
+        <div class="px-timeline">
+          <div class="px-timeline__label">
+            <span>Estimated Delivery</span>
+            <span class="px-timeline__val" id="timelineVal">2–3 weeks</span>
+          </div>
+          <div class="px-timeline__track">
+            <div class="px-timeline__fill" id="timelineFill"></div>
+            <div class="px-timeline__marker px-timeline__marker--start">Day 1</div>
+            <div class="px-timeline__marker px-timeline__marker--end" id="timelineEnd">~Week 3</div>
+          </div>
+          <div class="px-timeline__phases" id="timelinePhases">
+            <div class="px-phase">
+              <div class="px-phase__bar px-phase__bar--discovery"></div>
+              <span>Discovery</span>
+            </div>
+            <div class="px-phase">
+              <div class="px-phase__bar px-phase__bar--design"></div>
+              <span>Design</span>
+            </div>
+            <div class="px-phase">
+              <div class="px-phase__bar px-phase__bar--build"></div>
+              <span>Build</span>
+            </div>
+            <div class="px-phase">
+              <div class="px-phase__bar px-phase__bar--launch"></div>
+              <span>Launch</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature list -->
+        <ul class="px-features" id="planFeatures">
+          <!-- populated by JS -->
+        </ul>
+
+        <!-- Fine print -->
+        <div class="px-addons">
+          <div class="px-addon">
+            <span class="px-addon__icon">📸</span>
+            <span>Extra photoshoots <strong>$15 ea.</strong></span>
+          </div>
+          <div class="px-addon">
+            <span class="px-addon__icon">🔧</span>
+            <span>Upkeep <strong>$7/mo</strong> or <strong>$20/update</strong></span>
+          </div>
+          <div class="px-addon">
+            <span class="px-addon__icon">⏱</span>
+            <span>20 hr cap — overage rates apply</span>
+          </div>
+        </div>
+
+        <a class="px-cta" id="planCta" href="contact.html?plan=Regular">
+          <span class="px-cta__text">Get Started — Regular</span>
+          <span class="px-cta__arrow">→</span>
+          <div class="px-cta__shine"></div>
+        </a>
       </div>
 
-      <!-- Three plan cards -->
-      <div class="pricing-grid">
 
-        <!-- Basic -->
-        <div class="pricing-card-wrapper" data-plan="basic">
-          <div class="pricing-card">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <div class="plan-header">
-                <h3 class="plan-name">Basic</h3>
-                <div class="plan-icon">$</div>
-              </div>
-              <div class="price-section">
-                <div class="price-container">
-                  <span class="currency">$</span>
-                  <span class="price-number">200</span>
-                  <span class="price-plus">+ Domain</span>
-                </div>
-              </div>
-              <ul class="features-list">
-                <li data-delay="0">Full website</li>
-                <li data-delay="100">HTML code</li>
-                <li data-delay="200">Basic Support</li>
-                <li data-delay="300">Paid Upkeep</li>
-                <li data-delay="400">1 free photoshoot</li>
-              </ul>
-              <div class="card-button">
-                <a href="contact.html?plan=Basic" class="select-plan-btn">
-                  <span>Select Plan</span>
-                  <div class="btn-ripple"></div>
-                </a>
-              </div>
-            </div>
+      <!-- RIGHT: Live Preview Panel -->
+      <div class="px-panel px-panel--preview">
+        <div class="px-preview-header">
+          <span class="px-preview-label">Live Site Preview</span>
+          <div class="px-preview-dots">
+            <span></span><span></span><span></span>
           </div>
         </div>
 
-        <!-- Regular (featured) -->
-        <div class="pricing-card-wrapper featured" data-plan="regular">
-          <div class="featured-badge"><span>Most Popular</span></div>
-          <div class="pricing-card">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <div class="plan-header">
-                <h3 class="plan-name">Regular</h3>
-                <div class="plan-icon">$$</div>
-              </div>
-              <div class="price-section">
-                <div class="price-container">
-                  <span class="currency">$</span>
-                  <span class="price-number">350</span>
-                  <span class="price-plus">+ Domain</span>
-                </div>
-              </div>
-              <ul class="features-list">
-                <li data-delay="0">Full Website</li>
-                <li data-delay="100">HTML or Weebly</li>
-                <li data-delay="200">Normal Turnaround</li>
-                <li data-delay="300">Lowered Price</li>
-                <li data-delay="400">Paid Upkeep</li>
-                <li data-delay="500">3 free photoshoots</li>
-                <li data-delay="600">Mobile device support</li>
-              </ul>
-              <div class="card-button">
-                <a href="contact.html?plan=Regular" class="select-plan-btn">
-                  <span>Select Plan</span>
-                  <div class="btn-ripple"></div>
-                </a>
-              </div>
+        <div class="px-browser">
+          <div class="px-browser__chrome">
+            <div class="px-browser__btns">
+              <span class="b-close"></span>
+              <span class="b-min"></span>
+              <span class="b-max"></span>
             </div>
+            <div class="px-browser__bar">
+              <span class="px-lock">🔒</span>
+              <span class="px-url" id="previewUrl">corestackcreative.com/your-site</span>
+            </div>
+          </div>
+
+          <div class="px-browser__viewport" id="browserViewport">
+            <!-- Site preview rendered here by JS -->
           </div>
         </div>
 
-        <!-- Premium -->
-        <div class="pricing-card-wrapper" data-plan="premium">
-          <div class="pricing-card">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <div class="plan-header">
-                <h3 class="plan-name">Premium</h3>
-                <div class="plan-icon">$$$</div>
-              </div>
-              <div class="price-section">
-                <div class="price-container">
-                  <span class="currency">$</span>
-                  <span class="price-number">500</span>
-                  <span class="price-plus">+ Domain</span>
-                </div>
-              </div>
-              <ul class="features-list">
-                <li data-delay="0">Maximized Website</li>
-                <li data-delay="100">Online store options</li>
-                <li data-delay="200">HTML, Weebly, or Shopify</li>
-                <li data-delay="300">Jump Ahead in Queue</li>
-                <li data-delay="400">Unlimited photoshoots</li>
-                <li data-delay="500">Paid upkeep</li>
-                <li data-delay="600">Mobile device support</li>
-              </ul>
-              <div class="card-button">
-                <a href="contact.html?plan=Premium" class="select-plan-btn">
-                  <span>Select Plan</span>
-                  <div class="btn-ripple"></div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /.pricing-grid -->
-
-      <!-- Fine print / notes -->
-      <div class="fine-print-section">
-        <div class="fine-print-content">
-          <div class="fine-print-item">
-            <p>All packages include fully customizable websites that are great for your needs.</p>
-          </div>
-          <div class="fine-print-item">
-            <p>There is a maximum of 20 hours on all packages — $400 for Basic, $700 for Regular, and $1,000 for Premium.</p>
-          </div>
-          <div class="fine-print-item">
-            <p><strong>Not included:</strong></p>
-            <p>— Additional photoshoots ($15 each)</p>
-            <p>— Upkeep ($7/month or $20 per update)</p>
-          </div>
+        <!-- What's included label chips -->
+        <div class="px-chip-row" id="chipRow">
+          <!-- rendered by JS -->
         </div>
       </div>
 
-    </div><!-- /.pricing-container -->
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       COMPARISON TABLE
+       ========================================================= -->
+  <section class="px-compare">
+    <div class="px-compare__container">
+      <div class="px-compare__header">
+        <h2>Compare Plans</h2>
+        <p>Not sure which to pick? Here's everything side-by-side.</p>
+      </div>
+
+      <div class="px-table-wrap">
+        <table class="px-table">
+          <thead>
+            <tr>
+              <th class="px-table__feature-col">Feature</th>
+              <th data-plan-col="basic">
+                <div class="px-th-inner">
+                  <span class="px-th-name">Basic</span>
+                  <span class="px-th-price">$200</span>
+                </div>
+              </th>
+              <th data-plan-col="regular" class="px-table__featured-col">
+                <div class="px-th-inner">
+                  <span class="px-th-badge">Popular</span>
+                  <span class="px-th-name">Regular</span>
+                  <span class="px-th-price">$350</span>
+                </div>
+              </th>
+              <th data-plan-col="premium">
+                <div class="px-th-inner">
+                  <span class="px-th-name">Premium</span>
+                  <span class="px-th-price">$500</span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Website build</td>
+              <td><span class="px-check">✓</span></td>
+              <td class="px-table__featured-col"><span class="px-check">✓</span></td>
+              <td><span class="px-check px-check--gold">✓ Max</span></td>
+            </tr>
+            <tr>
+              <td>Platform options</td>
+              <td>HTML only</td>
+              <td class="px-table__featured-col">HTML or Weebly</td>
+              <td>HTML, Weebly, or Shopify</td>
+            </tr>
+            <tr>
+              <td>Mobile support</td>
+              <td><span class="px-dash">—</span></td>
+              <td class="px-table__featured-col"><span class="px-check">✓</span></td>
+              <td><span class="px-check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Online store</td>
+              <td><span class="px-dash">—</span></td>
+              <td class="px-table__featured-col"><span class="px-dash">—</span></td>
+              <td><span class="px-check">✓</span></td>
+            </tr>
+            <tr>
+              <td>Free photoshoots</td>
+              <td>1 session</td>
+              <td class="px-table__featured-col">3 sessions</td>
+              <td>Unlimited</td>
+            </tr>
+            <tr>
+              <td>Queue priority</td>
+              <td>Standard</td>
+              <td class="px-table__featured-col">Standard</td>
+              <td><span class="px-check">Jump ahead</span></td>
+            </tr>
+            <tr>
+              <td>Support level</td>
+              <td>Basic</td>
+              <td class="px-table__featured-col">Standard</td>
+              <td>Priority</td>
+            </tr>
+            <tr>
+              <td>Est. delivery</td>
+              <td>1–2 weeks</td>
+              <td class="px-table__featured-col">2–3 weeks</td>
+              <td>3–4 weeks</td>
+            </tr>
+            <tr class="px-table__cta-row">
+              <td></td>
+              <td><a href="contact.html?plan=Basic" class="px-table-btn">Select Basic</a></td>
+              <td class="px-table__featured-col"><a href="contact.html?plan=Regular" class="px-table-btn px-table-btn--featured">Select Regular</a></td>
+              <td><a href="contact.html?plan=Premium" class="px-table-btn">Select Premium</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       FAQ / FINE PRINT STRIP
+       ========================================================= -->
+  <section class="px-faq">
+    <div class="px-faq__container">
+      <h2 class="px-faq__title">Good to know</h2>
+      <div class="px-faq__grid">
+
+        <div class="px-faq__item">
+          <div class="px-faq__q">What does "+ domain" mean?</div>
+          <div class="px-faq__a">Your plan price covers the design and build. Domain registration (e.g., yourname.com) is a small annual fee paid to a registrar — usually $10–20/year. We help you set it up.</div>
+        </div>
+
+        <div class="px-faq__item">
+          <div class="px-faq__q">What's the 20-hour cap?</div>
+          <div class="px-faq__a">Each plan includes up to 20 hours of work. Basic caps at $400, Regular at $700, and Premium at $1,000 total. Anything beyond is billed at our hourly rate.</div>
+        </div>
+
+        <div class="px-faq__item">
+          <div class="px-faq__q">How does upkeep work?</div>
+          <div class="px-faq__a">After launch, we can maintain and update your site for $7/month on retainer, or $20 per individual update. No long-term contracts required.</div>
+        </div>
+
+        <div class="px-faq__item">
+          <div class="px-faq__q">What are photoshoots for?</div>
+          <div class="px-faq__a">We photograph your business, team, or products to use as custom imagery on your site — way better than stock photos. Additional sessions are $15 each after your included ones.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       FOOTER CTA
+       ========================================================= -->
+  <section class="px-footer-cta">
+    <div class="px-footer-cta__inner">
+      <div class="px-footer-cta__noise"></div>
+      <h2>Ready to get started?</h2>
+      <p>Tell us about your business and we'll find the right plan together.</p>
+      <a href="contact.html" class="px-cta px-cta--light">
+        <span class="px-cta__text">Contact Us</span>
+        <span class="px-cta__arrow">→</span>
+        <div class="px-cta__shine"></div>
+      </a>
+    </div>
   </section>
 
 
@@ -223,13 +396,5 @@
       </div>
       <p>
         Email us:
-        <a href="mailto:velo.guidrycsc@gmail.com">velo.guidrycsc@gmail.com</a> |
-        <a href="mailto:baxter.caresscsc@gmail.com">baxter.caresscsc@gmail.com</a>
-      </p>
-    </footer>
-  </div>
-
-
-  <script src="script.js"></script>
-</body>
-</html>
+        <a href="/cdn-cgi/l/email-protection#4137242d2e6f26342825333822322201262c20282d6f222e2c"><span class="__cf_email__" data-cfemail="4d3b282122632a3824293f342e3e2e0d2a202c2421632e2220">[email&#160;protected]</span></a> |
+        <a href="/cdn-cgi/l/email-protection#305251484455421e535142

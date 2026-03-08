@@ -736,4 +736,559 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   `;
   document.head.appendChild(style);
+})(); 
+/* =============================================================================
+   PRICING-NEW.JS — CoreStack Creative Interactive Pricing Logic
+   Handles: plan switching, live preview, timeline animation, feature list
+   ============================================================================= */
+
+(function PricingPage() {
+
+  // ── Plan Data ──────────────────────────────────────────────────────────────
+
+  const PLANS = {
+    basic: {
+      number: '01',
+      name: 'Basic',
+      tagline: 'Perfect for getting your business online fast',
+      price: 200,
+      timelineWidth: '35%',
+      timelineVal: '1–2 weeks',
+      timelineEnd: '~Week 2',
+      features: [
+        'Full website build',
+        'Clean HTML code',
+        'Basic email support',
+        '1 free photoshoot',
+        'Paid upkeep available',
+      ],
+      chips: ['HTML', '1 Photoshoot', 'Basic Support', '1–2 Weeks'],
+      ctaHref: 'contact.html?plan=Basic',
+      ctaText: 'Get Started — Basic',
+      url: 'yourbusiness.com',
+      previewId: 'preview-basic',
+    },
+    regular: {
+      number: '02',
+      name: 'Regular',
+      tagline: 'The sweet spot for most small businesses',
+      price: 350,
+      timelineWidth: '55%',
+      timelineVal: '2–3 weeks',
+      timelineEnd: '~Week 3',
+      features: [
+        'Full website build',
+        'HTML or Weebly platform',
+        'Normal turnaround time',
+        '3 free photoshoots',
+        'Mobile device support',
+        'Paid upkeep available',
+      ],
+      chips: ['HTML or Weebly', '3 Photoshoots', 'Mobile Ready', '2–3 Weeks'],
+      ctaHref: 'contact.html?plan=Regular',
+      ctaText: 'Get Started — Regular',
+      url: 'yourbusiness.com/premium',
+      previewId: 'preview-regular',
+    },
+    premium: {
+      number: '03',
+      name: 'Premium',
+      tagline: 'Maximum impact with a full e-commerce option',
+      price: 500,
+      timelineWidth: '80%',
+      timelineVal: '3–4 weeks',
+      timelineEnd: '~Week 4',
+      features: [
+        'Maximized website build',
+        'HTML, Weebly, or Shopify',
+        'Online store integration',
+        'Priority queue position',
+        'Unlimited photoshoots',
+        'Mobile device support',
+        'Priority support level',
+      ],
+      chips: ['HTML / Weebly / Shopify', 'Online Store', 'Unlimited Photoshoots', 'Priority Queue', '3–4 Weeks'],
+      ctaHref: 'contact.html?plan=Premium',
+      ctaText: 'Get Started — Premium',
+      url: 'yourstore.com/shop',
+      previewId: 'preview-premium',
+    },
+  };
+
+
+  // ── Preview HTML Templates ─────────────────────────────────────────────────
+
+  function buildPreviewBasic() {
+    return `
+      <div class="pxp pxp-basic">
+        <div class="pxp-basic__nav">
+          <div class="pxp-basic__logo"></div>
+          <div class="pxp-basic__links">
+            <div class="pxp-basic__link"></div>
+            <div class="pxp-basic__link"></div>
+            <div class="pxp-basic__link"></div>
+          </div>
+        </div>
+        <div class="pxp-basic__hero">
+          <div class="pxp-basic__h1"></div>
+          <div class="pxp-basic__sub"></div>
+          <div class="pxp-basic__sub2"></div>
+          <div class="pxp-basic__btn"></div>
+        </div>
+        <div class="pxp-basic__content">
+          <div class="pxp-basic__card">
+            <div class="pxp-basic__card-icon"></div>
+            <div class="pxp-basic__card-line"></div>
+            <div class="pxp-basic__card-line"></div>
+          </div>
+          <div class="pxp-basic__card">
+            <div class="pxp-basic__card-icon"></div>
+            <div class="pxp-basic__card-line"></div>
+            <div class="pxp-basic__card-line"></div>
+          </div>
+          <div class="pxp-basic__card">
+            <div class="pxp-basic__card-icon"></div>
+            <div class="pxp-basic__card-line"></div>
+            <div class="pxp-basic__card-line"></div>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function buildPreviewRegular() {
+    return `
+      <div class="pxp pxp-regular">
+        <div class="pxp-regular__nav">
+          <div class="pxp-regular__logo"></div>
+          <div class="pxp-regular__links">
+            <div class="pxp-regular__link"></div>
+            <div class="pxp-regular__link"></div>
+            <div class="pxp-regular__link"></div>
+          </div>
+        </div>
+        <div class="pxp-regular__hero">
+          <div class="pxp-regular__hero-text">
+            <div class="pxp-regular__h1"></div>
+            <div class="pxp-regular__h1b"></div>
+            <div class="pxp-regular__sub"></div>
+            <div class="pxp-regular__sub2"></div>
+            <div class="pxp-regular__btns">
+              <div class="pxp-regular__btn-primary"></div>
+              <div class="pxp-regular__btn-sec"></div>
+            </div>
+          </div>
+          <div class="pxp-regular__hero-img"></div>
+        </div>
+        <div class="pxp-regular__mobile-badge">
+          <div class="pxp-regular__mobile-icon"></div>
+          Mobile Optimised
+        </div>
+        <div class="pxp-regular__features">
+          <div class="pxp-regular__feat">
+            <div class="pxp-regular__feat-icon"></div>
+            <div class="pxp-regular__feat-text">
+              <div class="pxp-regular__feat-line"></div>
+              <div class="pxp-regular__feat-line"></div>
+            </div>
+          </div>
+          <div class="pxp-regular__feat">
+            <div class="pxp-regular__feat-icon"></div>
+            <div class="pxp-regular__feat-text">
+              <div class="pxp-regular__feat-line"></div>
+              <div class="pxp-regular__feat-line"></div>
+            </div>
+          </div>
+          <div class="pxp-regular__feat">
+            <div class="pxp-regular__feat-icon"></div>
+            <div class="pxp-regular__feat-text">
+              <div class="pxp-regular__feat-line"></div>
+              <div class="pxp-regular__feat-line"></div>
+            </div>
+          </div>
+          <div class="pxp-regular__feat">
+            <div class="pxp-regular__feat-icon"></div>
+            <div class="pxp-regular__feat-text">
+              <div class="pxp-regular__feat-line"></div>
+              <div class="pxp-regular__feat-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function buildPreviewPremium() {
+    return `
+      <div class="pxp pxp-premium">
+        <div class="pxp-premium__nav">
+          <div class="pxp-premium__logo"></div>
+          <div class="pxp-premium__links">
+            <div class="pxp-premium__link"></div>
+            <div class="pxp-premium__link"></div>
+            <div class="pxp-premium__link"></div>
+            <div class="pxp-premium__cart"></div>
+          </div>
+        </div>
+        <div class="pxp-premium__hero">
+          <div class="pxp-premium__tag">Now with Online Store</div>
+          <div class="pxp-premium__h1"></div>
+          <div class="pxp-premium__h1b"></div>
+          <div class="pxp-premium__sub"></div>
+          <div class="pxp-premium__sub2"></div>
+          <div class="pxp-premium__btns">
+            <div class="pxp-premium__btn-primary"></div>
+            <div class="pxp-premium__btn-sec"></div>
+          </div>
+        </div>
+        <div class="pxp-premium__shopify-badge">
+          <div class="pxp-premium__shopify-dot"></div>
+          Powered by Shopify — E-commerce Ready
+        </div>
+        <div class="pxp-premium__store">
+          <div class="pxp-premium__product">
+            <div class="pxp-premium__product-img"></div>
+            <div class="pxp-premium__product-info">
+              <div class="pxp-premium__product-line"></div>
+              <div class="pxp-premium__product-price"></div>
+            </div>
+          </div>
+          <div class="pxp-premium__product">
+            <div class="pxp-premium__product-img"></div>
+            <div class="pxp-premium__product-info">
+              <div class="pxp-premium__product-line"></div>
+              <div class="pxp-premium__product-price"></div>
+            </div>
+          </div>
+          <div class="pxp-premium__product">
+            <div class="pxp-premium__product-img"></div>
+            <div class="pxp-premium__product-info">
+              <div class="pxp-premium__product-line"></div>
+              <div class="pxp-premium__product-price"></div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  const PREVIEWS = {
+    basic:   buildPreviewBasic,
+    regular: buildPreviewRegular,
+    premium: buildPreviewPremium,
+  };
+
+
+  // ── DOM References ─────────────────────────────────────────────────────────
+
+  const tabs         = document.querySelectorAll('.px-tab');
+  const planNumber   = document.getElementById('planNumber');
+  const planName     = document.getElementById('planName');
+  const planTagline  = document.getElementById('planTagline');
+  const planPrice    = document.getElementById('planPrice');
+  const planFeatures = document.getElementById('planFeatures');
+  const planCta      = document.getElementById('planCta');
+  const timelineFill = document.getElementById('timelineFill');
+  const timelineVal  = document.getElementById('timelineVal');
+  const timelineEnd  = document.getElementById('timelineEnd');
+  const chipRow      = document.getElementById('chipRow');
+  const browserViewport = document.getElementById('browserViewport');
+  const previewUrl   = document.getElementById('previewUrl');
+
+  if (!tabs.length) return; // Not on pricing page
+
+
+  // ── State ──────────────────────────────────────────────────────────────────
+
+  let activePlan = 'regular';
+  let isAnimating = false;
+
+
+  // ── Helper: animate counting price ────────────────────────────────────────
+
+  function animatePrice(from, to) {
+    if (!planPrice) return;
+    const duration = 500;
+    const startTime = performance.now();
+
+    function step(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      // ease-out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      planPrice.textContent = Math.round(from + (to - from) * eased);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  }
+
+
+  // ── Helper: render feature list ───────────────────────────────────────────
+
+  function renderFeatures(features) {
+    if (!planFeatures) return;
+    planFeatures.innerHTML = features
+      .map((f, i) => `<li style="animation-delay:${i * 60}ms">${f}</li>`)
+      .join('');
+  }
+
+
+  // ── Helper: render chip row ───────────────────────────────────────────────
+
+  function renderChips(chips) {
+    if (!chipRow) return;
+    chipRow.innerHTML = chips
+      .map((c, i) => `<span class="px-chip" style="animation-delay:${i * 60}ms">${c}</span>`)
+      .join('');
+  }
+
+
+  // ── Helper: render browser preview ────────────────────────────────────────
+
+  let currentPreviewEl = null;
+
+  function renderPreview(planKey) {
+    if (!browserViewport) return;
+
+    // Create new preview
+    const newEl = document.createElement('div');
+    newEl.classList.add('px-site-preview');
+    newEl.innerHTML = PREVIEWS[planKey]();
+    browserViewport.appendChild(newEl);
+
+    // Fade out old, fade in new
+    if (currentPreviewEl) {
+      const old = currentPreviewEl;
+      old.style.opacity = '0';
+      old.style.transform = 'translateY(-10px) scale(0.97)';
+      old.style.transition = 'all 0.35s ease';
+      setTimeout(() => old.remove(), 380);
+    }
+
+    // Trigger reflow then activate
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        newEl.classList.add('active');
+      });
+    });
+
+    currentPreviewEl = newEl;
+  }
+
+
+  // ── Core: switch plan ─────────────────────────────────────────────────────
+
+  function switchPlan(planKey) {
+    if (planKey === activePlan || isAnimating) return;
+    isAnimating = true;
+
+    const prev = PLANS[activePlan];
+    const next = PLANS[planKey];
+    activePlan = planKey;
+
+    // Update tabs
+    tabs.forEach(tab => {
+      const isActive = tab.dataset.plan === planKey;
+      tab.classList.toggle('px-tab--active', isActive);
+      tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+
+    // Animate plan number
+    if (planNumber) {
+      planNumber.classList.add('px-name-animating');
+      setTimeout(() => {
+        planNumber.textContent = next.number;
+        planNumber.classList.remove('px-name-animating');
+      }, 200);
+    }
+
+    // Animate plan name + tagline
+    if (planName) {
+      planName.classList.add('px-name-animating');
+      setTimeout(() => {
+        planName.textContent = next.name;
+        planName.classList.remove('px-name-animating');
+      }, 200);
+    }
+
+    if (planTagline) {
+      setTimeout(() => { planTagline.textContent = next.tagline; }, 200);
+    }
+
+    // Animate price
+    planPrice?.classList.add('px-price-animating');
+    setTimeout(() => {
+      animatePrice(prev.price, next.price);
+      planPrice?.classList.remove('px-price-animating');
+    }, 250);
+
+    // Timeline
+    if (timelineFill) timelineFill.style.width = next.timelineWidth;
+    if (timelineVal)  timelineVal.textContent   = next.timelineVal;
+    if (timelineEnd)  timelineEnd.textContent   = next.timelineEnd;
+
+    // Features
+    setTimeout(() => renderFeatures(next.features), 100);
+
+    // CTA
+    if (planCta) {
+      planCta.href = next.ctaHref;
+      planCta.querySelector('.px-cta__text').textContent = next.ctaText;
+    }
+
+    // URL bar
+    if (previewUrl) {
+      setTimeout(() => { previewUrl.textContent = next.url; }, 200);
+    }
+
+    // Preview
+    setTimeout(() => renderPreview(planKey), 80);
+
+    // Chips
+    setTimeout(() => renderChips(next.chips), 120);
+
+    setTimeout(() => { isAnimating = false; }, 600);
+  }
+
+
+  // ── Init ───────────────────────────────────────────────────────────────────
+
+  function init() {
+    // Bind tab click events
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => switchPlan(tab.dataset.plan));
+    });
+
+    // Render initial plan (regular)
+    const initial = PLANS[activePlan];
+    renderFeatures(initial.features);
+    renderChips(initial.chips);
+    renderPreview(activePlan);
+
+    if (timelineFill) timelineFill.style.width = initial.timelineWidth;
+
+    // Check if navigated from home page with a plan in hash/param
+    const urlParams = new URLSearchParams(window.location.search);
+    const startPlan = urlParams.get('highlight');
+    if (startPlan && PLANS[startPlan]) {
+      // Small delay to let page settle, then smoothly switch
+      setTimeout(() => {
+        switchPlan(startPlan);
+        // Scroll to stage
+        const stage = document.querySelector('.px-stage');
+        if (stage) {
+          stage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 600);
+    }
+  }
+
+
+  // ── Scroll-triggered table row reveals ────────────────────────────────────
+
+  function initTableReveal() {
+    const rows = document.querySelectorAll('.px-table tbody tr');
+    if (!rows.length) return;
+
+    rows.forEach((row, i) => {
+      row.style.opacity = '0';
+      row.style.transform = 'translateY(16px)';
+      row.style.transition = `opacity 0.5s ease ${i * 60}ms, transform 0.5s ease ${i * 60}ms`;
+    });
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const tableRows = entry.target.querySelectorAll('tbody tr');
+          tableRows.forEach(r => {
+            r.style.opacity = '1';
+            r.style.transform = 'translateY(0)';
+          });
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    const table = document.querySelector('.px-table-wrap');
+    if (table) observer.observe(table);
+  }
+
+
+  // ── FAQ item hover expand ──────────────────────────────────────────────────
+
+  function initFaqReveal() {
+    const items = document.querySelectorAll('.px-faq__item');
+    if (!items.length) return;
+
+    items.forEach((item, i) => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(20px)';
+      item.style.transition = `opacity 0.5s ease ${i * 80}ms, transform 0.5s ease ${i * 80}ms, border-color 0.3s, box-shadow 0.3s`;
+    });
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    items.forEach(item => observer.observe(item));
+  }
+
+
+  // ── Smooth transition from home page pricing cards ─────────────────────────
+  // The home page pr-cards link to pricing.html
+  // We add a small page-entry highlight if plan param is passed via URL
+
+  function handleEntryFromHome() {
+    // If ?plan= is in URL (from contact page links, not highlight)
+    // nothing extra needed — the selector rail handles visual state.
+
+    // Detect if referrer was index.html (home) for entry animation variant
+    const fromHome = document.referrer.includes('index.html') || document.referrer.endsWith('/');
+    if (fromHome) {
+      document.body.style.opacity = '0';
+      document.body.style.transition = 'opacity 0.4s ease';
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document.body.style.opacity = '1';
+        });
+      });
+    }
+  }
+
+
+  // ── Run ────────────────────────────────────────────────────────────────────
+
+  document.addEventListener('DOMContentLoaded', () => {
+    handleEntryFromHome();
+    init();
+    initTableReveal();
+    initFaqReveal();
+  });
+
+
+  // ── Update home page pricing cards to pass highlight param ────────────────
+  // Run on the home page — intercepts clicks on .pr-card links
+
+  const homeCards = document.querySelectorAll('.pr-card[data-tier]');
+  homeCards.forEach(card => {
+    const href = card.getAttribute('href');
+    if (href && href.includes('pricing.html')) {
+      card.addEventListener('click', function(e) {
+        const tier = this.dataset.tier;
+        if (tier) {
+          e.preventDefault();
+          // Page transition shimmer
+          document.body.style.opacity = '0';
+          document.body.style.transition = 'opacity 0.3s ease';
+          setTimeout(() => {
+            window.location.href = `pricing.html?highlight=${tier}`;
+          }, 280);
+        }
+      });
+    }
+  });
+
 })();
