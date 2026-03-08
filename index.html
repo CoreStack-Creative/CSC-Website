@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CoreStack Creative | Professional Websites for Small Businesses</title>
-  <meta name="description" content="We build fast, professional websites designed specifically for small businesses. Whether you need a brand-new site or an upgrade, we focus on performance, design, and ease of use.">
+  <meta name="description"
+    content="We build fast, professional websites designed specifically for small businesses. Whether you need a brand-new site or an upgrade, we focus on performance, design, and ease of use.">
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 </head>
+
 <body>
 
 
@@ -153,129 +156,103 @@
   <!-- =========================================================
        PRICING PREVIEW (condensed — home page)
        ========================================================= -->
-  <section class="pricing-preview-condensed">
+  <!-- Pricing Section — Rebranded -->
+  <section class="pricing-rebrand" id="pricing-home">
+    <div class="pricing-rebrand__bg-grid"></div>
 
-    <!-- Animated background elements -->
-    <div class="background-animation">
-      <div class="floating-shapes"></div>
-      <div class="particle-field"></div>
-    </div>
+    <div class="pricing-rebrand__container">
 
-    <div class="pricing-container">
-
-      <div class="pricing-header">
-        <h2 class="pricing-title">
-          <span class="title-word" data-delay="0">Choose</span>
-          <span class="title-word" data-delay="200">Your</span>
-          <span class="title-word" data-delay="400">Plan</span>
-        </h2>
-        <div class="title-underline"></div>
+      <div class="pricing-rebrand__header">
+        <span class="pricing-rebrand__eyebrow">Transparent Pricing</span>
+        <h2 class="pricing-rebrand__title">Pick Your Plan</h2>
+        <p class="pricing-rebrand__subtitle">All of our packages will result in a website tailored to your needs and
+          curated twoards your audiance.</p>
       </div>
 
-      <!-- Three plan cards (desktop grid) -->
-      <div class="pricing-grid desktop-grid">
+      <div class="pricing-rebrand__grid">
 
         <!-- Basic -->
-        <div class="pricing-card-wrapper" data-plan="basic">
-          <div class="pricing-card">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <div class="plan-header">
-                <h3 class="plan-name">Basic</h3>
-                <div class="plan-icon"><div class="icon-shape"></div></div>
-              </div>
-              <div class="price-section">
-                <div class="price-container">
-                  <span class="currency">$</span>
-                  <span class="price-number">200</span>
-                  <span class="price-plus">+ Domain</span>
-                </div>
-              </div>
-              <ul class="features-list">
-                <li data-delay="0">Full website</li>
-                <li data-delay="100">HTML code</li>
-                <li data-delay="200">Basic Support</li>
-                <li data-delay="300">1 free photoshoot</li>
-              </ul>
-              <div class="card-button">
-                <a href="contact.html?plan=Basic" class="select-plan-btn" aria-label="Select Basic Plan">
-                  <span>Select Plan</span>
-                  <div class="btn-ripple"></div>
-                </a>
+        <a href="pricing.html" class="pr-card" data-tier="basic">
+          <div class="pr-card__accent-bar"></div>
+          <div class="pr-card__body">
+            <div class="pr-card__top">
+              <div class="pr-card__label">Basic</div>
+              <div class="pr-card__price">
+                <span class="pr-card__dollar">$</span>
+                <span class="pr-card__amount">200</span>
+                <span class="pr-card__domain">+ domain</span>
               </div>
             </div>
+            <ul class="pr-card__features">
+              <li>Full website build</li>
+              <li>Clean HTML code</li>
+              <li>Basic support included</li>
+              <li>1 free photoshoot</li>
+              <li>Paid upkeep available</li>
+            </ul>
+            <div class="pr-card__cta">Get Started</div>
           </div>
-        </div>
+        </a>
 
-        <!-- Regular (featured) -->
-        <div class="pricing-card-wrapper featured" data-plan="regular">
-          <div class="featured-badge"><span>Most Popular</span></div>
-          <div class="pricing-card">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <div class="plan-header">
-                <h3 class="plan-name">Regular</h3>
-                <div class="plan-icon"><div class="icon-shape"></div></div>
-              </div>
-              <div class="price-section">
-                <div class="price-container">
-                  <span class="currency">$</span>
-                  <span class="price-number">350</span>
-                  <span class="price-plus">+ Domain</span>
-                </div>
-              </div>
-              <ul class="features-list">
-                <li data-delay="0">Full Website</li>
-                <li data-delay="100">HTML or Weebly</li>
-                <li data-delay="200">3 free photoshoots</li>
-                <li data-delay="300">Mobile device support</li>
-              </ul>
-              <div class="card-button">
-                <a href="contact.html?plan=Regular" class="select-plan-btn" aria-label="Select Regular Plan">
-                  <span>Select Plan</span>
-                  <div class="btn-ripple"></div>
-                </a>
+        <!-- Regular — Featured -->
+        <a href="pricing.html" class="pr-card pr-card--featured" data-tier="regular">
+          <div class="pr-card__popular-tag">Most Popular</div>
+          <div class="pr-card__accent-bar"></div>
+          <div class="pr-card__body">
+            <div class="pr-card__top">
+              <div class="pr-card__label">Regular</div>
+              <div class="pr-card__price">
+                <span class="pr-card__dollar">$</span>
+                <span class="pr-card__amount">350</span>
+                <span class="pr-card__domain">+ domain</span>
               </div>
             </div>
+            <ul class="pr-card__features">
+              <li>Full website build</li>
+              <li>HTML or Weebly</li>
+              <li>Normal turnaround time</li>
+              <li>3 free photoshoots</li>
+              <li>Mobile device support</li>
+              <li>Paid upkeep available</li>
+            </ul>
+            <div class="pr-card__cta">Get Started</div>
           </div>
-        </div>
+        </a>
 
         <!-- Premium -->
-        <div class="pricing-card-wrapper" data-plan="premium">
-          <div class="pricing-card">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <div class="plan-header">
-                <h3 class="plan-name">Premium</h3>
-                <div class="plan-icon"><div class="icon-shape"></div></div>
-              </div>
-              <div class="price-section">
-                <div class="price-container">
-                  <span class="currency">$</span>
-                  <span class="price-number">500</span>
-                  <span class="price-plus">+ Domain</span>
-                </div>
-              </div>
-              <ul class="features-list">
-                <li data-delay="0">Maximized Website</li>
-                <li data-delay="100">Online store options</li>
-                <li data-delay="200">Priority support</li>
-                <li data-delay="300">Unlimited photoshoots</li>
-              </ul>
-              <div class="card-button">
-                <a href="contact.html?plan=Premium" class="select-plan-btn" aria-label="Select Premium Plan">
-                  <span>Select Plan</span>
-                  <div class="btn-ripple"></div>
-                </a>
+        <a href="pricing.html" class="pr-card" data-tier="premium">
+          <div class="pr-card__accent-bar"></div>
+          <div class="pr-card__body">
+            <div class="pr-card__top">
+              <div class="pr-card__label">Premium</div>
+              <div class="pr-card__price">
+                <span class="pr-card__dollar">$</span>
+                <span class="pr-card__amount">500</span>
+                <span class="pr-card__domain">+ domain</span>
               </div>
             </div>
+            <ul class="pr-card__features">
+              <li>Maximized website build</li>
+              <li>HTML, Weebly, or Shopify</li>
+              <li>Online store options</li>
+              <li>Priority queue position</li>
+              <li>Unlimited photoshoots</li>
+              <li>Mobile device support</li>
+            </ul>
+            <div class="pr-card__cta">Get Started</div>
           </div>
-        </div>
+        </a>
 
-      </div><!-- /.desktop-grid -->
-    </div><!-- /.pricing-container -->
+      </div>
+
+      <div class="pricing-rebrand__footnote">
+        <span>Additional photoshoots avaliable</span>
+        <span class="pricing-rebrand__dot">·</span>
+        <span>Upkeep $7/mo or $20/update</span>
+      </div>
+
+    </div>
   </section>
-
 
   <!-- =========================================================
        STEPS / TIMELINE SECTION
@@ -302,7 +279,8 @@
       <div class="step-no-box reveal-up step-right">
         <img src="images/publish.png" alt="Step 3 – Publish and Enjoy" class="step-image">
         <h3>Publish and enjoy</h3>
-        <p>Once approved, we launch your site and hand over full control — ready for you to grow your online presence.</p>
+        <p>Once approved, we launch your site and hand over full control — ready for you to grow your online presence.
+        </p>
       </div>
     </div>
   </section>
@@ -319,10 +297,7 @@
     <div class="map-embed" id="mapEmbed">
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3236.326078708646!2d-79.07211518434358!3d35.91024688014366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89ace5109c7eea23%3A0xd5775fbbd7d69d5e!2sCarrboro%2C%20NC!5e0!3m2!1sen!2sus!4v1682915172761"
-        allowfullscreen=""
-        loading="lazy"
-        title="Map of Carrboro, NC"
-      ></iframe>
+        allowfullscreen="" loading="lazy" title="Map of Carrboro, NC"></iframe>
       <button class="close-map" id="closeMapBtn">&times;</button>
     </div>
   </section>
@@ -352,4 +327,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
