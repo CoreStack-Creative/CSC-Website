@@ -9,209 +9,227 @@
 </head>
 <body>
 
+
+  <!-- =========================================================
+       HEADER & NAVIGATION
+       ========================================================= -->
   <header>
-     <img src="images/logo.png" alt="CoreStack Logo" class="logo" />
+    <img src="images/logo.png" alt="CoreStack Logo" class="logo" />
 
-      <!-- Desktop Navigation -->
-      <nav>
-          <a href="index.html">Home</a>
-          <span>|</span>
-          <a href="about.html">About</a>
-          <span>|</span>
-          <a href="portfolio.html">Portfolio</a>
-          <span>|</span>
-          <a href="pricing.html" class="active">Pricing</a>
-          <span>|</span>
-          <a href="contact.html">Contact</a>
-      </nav>
+    <nav>
+      <a href="index.html">Home</a>
+      <span>|</span>
+      <a href="about.html">About</a>
+      <span>|</span>
+      <a href="portfolio.html">Portfolio</a>
+      <span>|</span>
+      <a href="pricing.html" class="active">Pricing</a>
+      <span>|</span>
+      <a href="contact.html">Contact</a>
+    </nav>
 
-      <!-- Hamburger Menu Button -->
-      <div class="hamburger" id="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-      </div>
-
-      <!-- Mobile Navigation -->
-      <nav class="mobile-nav" id="mobileNav">
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="portfolio.html">Portfolio</a>
-          <a href="pricing.html">Pricing</a>
-          <a href="contact.html">Contact</a>
-      </nav>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
   </header>
 
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+
+  <!-- =========================================================
+       PAGE HERO BANNER
+       ========================================================= -->
   <section class="hero">
     <div class="hero-text">
       <h1>Pricing Plans</h1>
-      <p>Choose a plan that fits your needs. All packages include customizable options, great service, and ready to go websites.</p>
+      <p>Choose a plan that fits your needs. All packages include customizable options, great service, and ready-to-go websites.</p>
     </div>
     <div class="hero-graphic">
-      <img src="images/pricing.png" alt="Pricing Graphic">
+      <img src="images/pricing.png" alt="Pricing graphic">
     </div>
   </section>
 
-  <section class="pricing-preview">
-       <div class="background-animation">
-           <div class="floating-shapes"></div>
-           <div class="particle-field"></div>
-       </div>
-        
-       <div class="pricing-container">
-          <div class="pricing-header">
-               <h2 class="pricing-title">
-                   <span class="title-word" data-delay="0">Our</span>
-                   <span class="title-word" data-delay="200">Pricing</span>
-                   <span class="title-word" data-delay="400">Plans</span>
-              </h2>
-              <div class="title-underline"></div>
-          </div>
-            
-           <div class="pricing-grid">
-              <div class="pricing-card-wrapper" data-plan="basic">
-                  <div class="pricing-card">
-                      <div class="card-glow"></div>
-                      <div class="card-content">
-                          <div class="plan-header">
-                               <h3 class="plan-name">Basic</h3>
-                              <div class="plan-icon">$</div>
-                           </div>
-                           <div class="price-section">
-                               <div class="price-container">
-                                   <span class="currency">$</span>
-                                   <span class="price-number">200</span>
-                                   <span class="price-plus">+ Domain</span>
-                               </div>
-                           </div>
-                           <ul class="features-list">
-                               <li data-delay="0">Full website</li>
-                               <li data-delay="100">HTML code</li>
-                               <li data-delay="200">Basic Support</li>
-                              <li data-delay="300">Paid Upkeep</li>
-                              <li data-delay="400">1 free photoshoot</li>
-                          </ul>
-                          <div class="card-button">
-                               <a href="contact.html?plan=Basic" class="select-plan-btn">
-                                  <span>Select Plan</span>
-                                  <div class="btn-ripple"></div>
-                              </a>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-                
-               <div class="pricing-card-wrapper featured" data-plan="regular">
-                   <div class="featured-badge">
-                       <span>Most Popular</span>
-                   </div>
-                   <div class="pricing-card">
-                       <div class="card-glow"></div>
-                       <div class="card-content">
-                           <div class="plan-header">
-                              <h3 class="plan-name">Regular</h3>
-                               <div class="plan-icon">$$</div>
-                          </div>
-                          <div class="price-section">
-                              <div class="price-container">
-                                  <span class="currency">$</span>
-                                  <span class="price-number">350</span>
-                                  <span class="price-plus">+ Domain</span>
-                              </div>
-                          </div>
-                          <ul class="features-list">
-                              <li data-delay="0">Full Website</li>
-                              <li data-delay="100">HTML or Weebly</li>
-                              <li data-delay="200">Normal Turnaround</li>
-                              <li data-delay="300">Lowered Price</li>
-                              <li data-delay="400">Paid Upkeep</li>
-                              <li data-delay="500">3 free photoshoots</li>
-                              <li data-delay="600">Mobile device support</li>
-                           </ul>
-                          <div class="card-button">
-                              <a href="contact.html?plan=Regular" class="select-plan-btn">
-                                  <span>Select Plan</span>
-                                  <div class="btn-ripple"></div>
-                              </a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              
-              <div class="pricing-card-wrapper" data-plan="premium">
-                   <div class="pricing-card">
-                      <div class="card-glow"></div>
-                      <div class="card-content">
-                          <div class="plan-header">
-                              <h3 class="plan-name">Premium</h3>
-                              <div class="plan-icon">$$$</div>
-                          </div>
-                          <div class="price-section">
-                               <div class="price-container">
-                                  <span class="currency">$</span>
-                                  <span class="price-number">500</span>
-                                  <span class="price-plus">+ Domain</span>
-                              </div>
-                          </div>
-                          <ul class="features-list">
-                              <li data-delay="0">Maximized Website</li>
-                              <li data-delay="100">Online store options</li>
-                              <li data-delay="200">HTML, Weebly, or Shopify</li>
-                              <li data-delay="300">Jump Ahead in Queue</li>
-                              <li data-delay="400">Unlimited photoshoots</li>
-                              <li data-delay="500">Paid upkeep</li>
-                              <li data-delay="600">Mobile device support</li>
-                          </ul>
-                          <div class="card-button">
-                              <a href="contact.html?plan=Premium" class="select-plan-btn">
-                                  <span>Select Plan</span>
-                                  <div class="btn-ripple"></div>
-                              </a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-            
-          <div class="fine-print-section">
-              <div class="fine-print-content">
-                   <div class="fine-print-item">
-                      <p>All packages include fully customizable websites, that are great for your needs.</p>
-                  </div>
-                  <div class="fine-print-item">
-                       <p>There is a maximum of 20 hours on all packages which is $400 for basic, $700 for regular, and $1000 for premium.</p>
-                  </div>
-                  <div class="fine-print-item">
-                      <p><strong>Not included:</strong></p>
-                      <p>- Additional photoshoots ($15 each)</p>
-                      <p>- Upkeep ($7 a month or $20 per update)</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
-    
 
+  <!-- =========================================================
+       FULL PRICING SECTION
+       ========================================================= -->
+  <section class="pricing-preview">
+
+    <!-- Animated background elements -->
+    <div class="background-animation">
+      <div class="floating-shapes"></div>
+      <div class="particle-field"></div>
+    </div>
+
+    <div class="pricing-container">
+
+      <div class="pricing-header">
+        <h2 class="pricing-title">
+          <span class="title-word" data-delay="0">Our</span>
+          <span class="title-word" data-delay="200">Pricing</span>
+          <span class="title-word" data-delay="400">Plans</span>
+        </h2>
+        <div class="title-underline"></div>
+      </div>
+
+      <!-- Three plan cards -->
+      <div class="pricing-grid">
+
+        <!-- Basic -->
+        <div class="pricing-card-wrapper" data-plan="basic">
+          <div class="pricing-card">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <div class="plan-header">
+                <h3 class="plan-name">Basic</h3>
+                <div class="plan-icon">$</div>
+              </div>
+              <div class="price-section">
+                <div class="price-container">
+                  <span class="currency">$</span>
+                  <span class="price-number">200</span>
+                  <span class="price-plus">+ Domain</span>
+                </div>
+              </div>
+              <ul class="features-list">
+                <li data-delay="0">Full website</li>
+                <li data-delay="100">HTML code</li>
+                <li data-delay="200">Basic Support</li>
+                <li data-delay="300">Paid Upkeep</li>
+                <li data-delay="400">1 free photoshoot</li>
+              </ul>
+              <div class="card-button">
+                <a href="contact.html?plan=Basic" class="select-plan-btn">
+                  <span>Select Plan</span>
+                  <div class="btn-ripple"></div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Regular (featured) -->
+        <div class="pricing-card-wrapper featured" data-plan="regular">
+          <div class="featured-badge"><span>Most Popular</span></div>
+          <div class="pricing-card">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <div class="plan-header">
+                <h3 class="plan-name">Regular</h3>
+                <div class="plan-icon">$$</div>
+              </div>
+              <div class="price-section">
+                <div class="price-container">
+                  <span class="currency">$</span>
+                  <span class="price-number">350</span>
+                  <span class="price-plus">+ Domain</span>
+                </div>
+              </div>
+              <ul class="features-list">
+                <li data-delay="0">Full Website</li>
+                <li data-delay="100">HTML or Weebly</li>
+                <li data-delay="200">Normal Turnaround</li>
+                <li data-delay="300">Lowered Price</li>
+                <li data-delay="400">Paid Upkeep</li>
+                <li data-delay="500">3 free photoshoots</li>
+                <li data-delay="600">Mobile device support</li>
+              </ul>
+              <div class="card-button">
+                <a href="contact.html?plan=Regular" class="select-plan-btn">
+                  <span>Select Plan</span>
+                  <div class="btn-ripple"></div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Premium -->
+        <div class="pricing-card-wrapper" data-plan="premium">
+          <div class="pricing-card">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <div class="plan-header">
+                <h3 class="plan-name">Premium</h3>
+                <div class="plan-icon">$$$</div>
+              </div>
+              <div class="price-section">
+                <div class="price-container">
+                  <span class="currency">$</span>
+                  <span class="price-number">500</span>
+                  <span class="price-plus">+ Domain</span>
+                </div>
+              </div>
+              <ul class="features-list">
+                <li data-delay="0">Maximized Website</li>
+                <li data-delay="100">Online store options</li>
+                <li data-delay="200">HTML, Weebly, or Shopify</li>
+                <li data-delay="300">Jump Ahead in Queue</li>
+                <li data-delay="400">Unlimited photoshoots</li>
+                <li data-delay="500">Paid upkeep</li>
+                <li data-delay="600">Mobile device support</li>
+              </ul>
+              <div class="card-button">
+                <a href="contact.html?plan=Premium" class="select-plan-btn">
+                  <span>Select Plan</span>
+                  <div class="btn-ripple"></div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.pricing-grid -->
+
+      <!-- Fine print / notes -->
+      <div class="fine-print-section">
+        <div class="fine-print-content">
+          <div class="fine-print-item">
+            <p>All packages include fully customizable websites that are great for your needs.</p>
+          </div>
+          <div class="fine-print-item">
+            <p>There is a maximum of 20 hours on all packages — $400 for Basic, $700 for Regular, and $1,000 for Premium.</p>
+          </div>
+          <div class="fine-print-item">
+            <p><strong>Not included:</strong></p>
+            <p>— Additional photoshoots ($15 each)</p>
+            <p>— Upkeep ($7/month or $20 per update)</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.pricing-container -->
+  </section>
+
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
   <div class="footer-wrapper">
     <footer class="footer">
       <div class="footer-content">
         <img src="https://i.ibb.co/7J7bKyN3/logo1.png" alt="CoreStack Logo">
         <p>CoreStack Creative — Web Design for Local Businesses</p>
       </div>
-  
       <div class="footer-links">
         <a href="contact.html" class="footer-button">Contact</a>
         <a href="pricing.html" class="footer-button">Pricing</a>
       </div>
-  
-      <p>Email us: 
-        <a href="mailto:velo.guidrycsc@gmail.com">velo.guidrycsc@gmail.com</a> | 
+      <p>
+        Email us:
+        <a href="mailto:velo.guidrycsc@gmail.com">velo.guidrycsc@gmail.com</a> |
         <a href="mailto:baxter.caresscsc@gmail.com">baxter.caresscsc@gmail.com</a>
       </p>
     </footer>
   </div>
 
-  <script src="script.js"></script>
 
+  <script src="script.js"></script>
 </body>
 </html>

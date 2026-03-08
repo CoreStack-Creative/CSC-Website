@@ -9,137 +9,161 @@
 </head>
 <body>
 
+
+  <!-- =========================================================
+       HEADER & NAVIGATION
+       ========================================================= -->
   <header>
-     <img src="images/logo.png" alt="CoreStack Logo" class="logo" />
+    <img src="images/logo.png" alt="CoreStack Logo" class="logo" />
 
-      <!-- Desktop Navigation -->
-      <nav>
-          <a href="index.html">Home</a>
-          <span>|</span>
-          <a href="about.html">About</a>
-          <span>|</span>
-          <a href="portfolio.html">Portfolio</a>
-          <span>|</span>
-          <a href="pricing.html">Pricing</a>
-          <span>|</span>
-          <a href="contact.html" class="active">Contact</a>
-      </nav>
+    <nav>
+      <a href="index.html">Home</a>
+      <span>|</span>
+      <a href="about.html">About</a>
+      <span>|</span>
+      <a href="portfolio.html">Portfolio</a>
+      <span>|</span>
+      <a href="pricing.html">Pricing</a>
+      <span>|</span>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
 
-      <!-- Hamburger Menu Button -->
-      <div class="hamburger" id="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-      </div>
-
-      <!-- Mobile Navigation -->
-      <nav class="mobile-nav" id="mobileNav">
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="portfolio.html">Portfolio</a>
-          <a href="pricing.html">Pricing</a>
-          <a href="contact.html">Contact</a>
-      </nav>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
   </header>
 
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+
+  <!-- =========================================================
+       PAGE HERO BANNER
+       ========================================================= -->
   <section class="hero">
     <div class="hero-text">
       <h1>Get in Touch</h1>
       <p>Have questions or ready to start your project? We'd love to hear from you. Fill out the form below to contact us directly.</p>
     </div>
     <div class="hero-graphic">
-      <img 
-        src="images/contact.png" 
-        alt="Contact Graphic" 
-        style=" animation: float 3s ease-in-out infinite;"
-      >
+      <img src="images/contact.png" alt="Contact graphic" style="animation: float 3s ease-in-out infinite;">
     </div>
   </section>
-  
+
+
+  <!-- =========================================================
+       CONTACT FORM
+       ========================================================= -->
   <section class="pricing-preview">
     <form id="contactForm" style="max-width: 600px; margin: auto; text-align: left;">
-      <label for="name">Name:</label><br />
-      <input type="text" id="name" name="name" required style="width: 100%; padding: 10px; margin-bottom: 10px;" /><br />
-  
-      <label for="email">Email:</label><br />
-      <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; margin-bottom: 10px;" /><br />
-  
-      <label for="pricing">Select Plan:</label><br />
-      <select id="pricing" name="pricing" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
+
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name" required
+             style="width: 100%; padding: 10px; margin-bottom: 10px;"><br>
+
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" required
+             style="width: 100%; padding: 10px; margin-bottom: 10px;"><br>
+
+      <label for="pricing">Select Plan:</label><br>
+      <select id="pricing" name="pricing" required
+              style="width: 100%; padding: 10px; margin-bottom: 10px;">
         <option value="">-- Please choose an option --</option>
         <option value="Basic">Basic</option>
         <option value="Regular">Regular</option>
         <option value="Premium">Premium</option>
-      </select><br />
-  
-      <label for="message">Message:</label><br />
-      <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 10px; margin-bottom: 10px;"></textarea><br />
-  
-      <button type="submit" style="background: var(--accent-color); color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">Send Message</button>
+      </select><br>
+
+      <label for="message">Message:</label><br>
+      <textarea id="message" name="message" rows="5" required
+                style="width: 100%; padding: 10px; margin-bottom: 10px;"></textarea><br>
+
+      <button type="submit"
+              style="background: var(--accent-color); color: white; padding: 10px 20px;
+                     border: none; border-radius: 5px; cursor: pointer;">
+        Send Message
+      </button>
     </form>
-    <div id="successMessage" style="display: none; color: limegreen; margin-top: 15px; font-weight: bold;">
+
+    <!-- Shown briefly after submission -->
+    <div id="successMessage"
+         style="display: none; color: limegreen; margin-top: 15px; font-weight: bold;">
       Thanks! Your message is being prepared.
     </div>
   </section>
-  
-  <script>
-    // Preselect plan from URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const selectedPlan = urlParams.get('plan');
-    if (selectedPlan) {
-      const planDropdown = document.getElementById('pricing');
-      planDropdown.value = selectedPlan;
-    }
-  
-    document.getElementById('contactForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-  
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const plan = document.getElementById('pricing').value;
-      const message = document.getElementById('message').value.trim();
-  
-      if (!name || !email || !plan || !message) {
-        alert('Please fill out all fields.');
-        return;
-      }
-  
-      const mailtoLink = `mailto:velo.guidrycsc@gmail.com?subject=Website Inquiry - ${plan} Plan&body=Name: ${name}%0DEmail: ${email}%0DPlan: ${plan}%0DMessage: ${message}`;
-  
-      // Show success message
-      const successDiv = document.getElementById('successMessage');
-      successDiv.style.display = 'block';
-  
-      // Reset form after slight delay
-      setTimeout(() => {
-        document.getElementById('contactForm').reset();
-        successDiv.style.display = 'none';
-        window.location.href = mailtoLink;
-      }, 1000);
-    });
-  </script>
-  
 
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
   <div class="footer-wrapper">
     <footer class="footer">
       <div class="footer-content">
         <img src="https://i.ibb.co/7J7bKyN3/logo1.png" alt="CoreStack Logo">
         <p>CoreStack Creative — Web Design for Local Businesses</p>
       </div>
-  
       <div class="footer-links">
         <a href="contact.html" class="footer-button">Contact</a>
         <a href="pricing.html" class="footer-button">Pricing</a>
       </div>
-  
-      <p>Email us: 
-        <a href="mailto:velo.guidrycsc@gmail.com">velo.guidrycsc@gmail.com</a> | 
+      <p>
+        Email us:
+        <a href="mailto:velo.guidrycsc@gmail.com">velo.guidrycsc@gmail.com</a> |
         <a href="mailto:baxter.caresscsc@gmail.com">baxter.caresscsc@gmail.com</a>
       </p>
     </footer>
   </div>
 
-  <script src="script.js"></script>
 
+  <!-- =========================================================
+       CONTACT FORM SCRIPT
+       Pre-selects plan from URL param (?plan=Basic etc.)
+       Builds a mailto: link and opens it on submit.
+       ========================================================= -->
+  <script>
+    // Pre-select plan if passed via URL query string
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedPlan = urlParams.get('plan');
+    if (selectedPlan) {
+      document.getElementById('pricing').value = selectedPlan;
+    }
+
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name    = document.getElementById('name').value.trim();
+      const email   = document.getElementById('email').value.trim();
+      const plan    = document.getElementById('pricing').value;
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !plan || !message) {
+        alert('Please fill out all fields.');
+        return;
+      }
+
+      const mailtoLink =
+        `mailto:velo.guidrycsc@gmail.com` +
+        `?subject=Website Inquiry - ${plan} Plan` +
+        `&body=Name: ${name}%0DEmail: ${email}%0DPlan: ${plan}%0DMessage: ${message}`;
+
+      // Show success message briefly, then open mail client and reset form
+      const successDiv = document.getElementById('successMessage');
+      successDiv.style.display = 'block';
+
+      setTimeout(() => {
+        this.reset();
+        successDiv.style.display = 'none';
+        window.location.href = mailtoLink;
+      }, 1000);
+    });
+  </script>
+
+
+  <script src="script.js"></script>
 </body>
 </html>

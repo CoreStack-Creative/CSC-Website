@@ -9,124 +9,125 @@
 </head>
 <body>
 
+
+  <!-- =========================================================
+       HEADER & NAVIGATION
+       ========================================================= -->
   <header>
-     <img src="images/logo.png" alt="CoreStack Logo" class="logo" />
+    <img src="images/logo.png" alt="CoreStack Logo" class="logo" />
 
-      <!-- Desktop Navigation -->
-      <nav>
-          <a href="index.html">Home</a>
-          <span>|</span>
-          <a href="about.html" class="active">About</a>
-          <span>|</span>
-          <a href="portfolio.html">Portfolio</a>
-          <span>|</span>
-          <a href="pricing.html">Pricing</a>
-          <span>|</span>
-          <a href="contact.html">Contact</a>
-      </nav>
+    <nav>
+      <a href="index.html">Home</a>
+      <span>|</span>
+      <a href="about.html" class="active">About</a>
+      <span>|</span>
+      <a href="portfolio.html">Portfolio</a>
+      <span>|</span>
+      <a href="pricing.html">Pricing</a>
+      <span>|</span>
+      <a href="contact.html">Contact</a>
+    </nav>
 
-      <!-- Hamburger Menu Button -->
-      <div class="hamburger" id="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-      </div>
-
-      <!-- Mobile Navigation -->
-      <nav class="mobile-nav" id="mobileNav">
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="portfolio.html">Portfolio</a>
-          <a href="pricing.html">Pricing</a>
-          <a href="contact.html">Contact</a>
-      </nav>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
   </header>
 
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+
+  <!-- =========================================================
+       PAGE HERO BANNER
+       ========================================================= -->
   <section class="hero">
     <div class="hero-text">
       <h1>About</h1>
       <p>Here is a little bit about who we are and what we do.</p>
     </div>
     <div class="hero-graphic">
-      <img src="images/abouticon.png" alt="Pricing Graphic">
+      <img src="images/abouticon.png" alt="About graphic">
     </div>
-  </section>  
+  </section>
 
+
+  <!-- =========================================================
+       ABOUT CONTENT — ALTERNATING IMAGE / TEXT ROWS
+       ========================================================= -->
   <section class="pricing-preview">
     <div class="portfolio-gallery">
-  
+
       <!-- Row 1: Image | Text -->
       <div class="row">
         <div class="image-box">
-          <img src="images/baxter.jpg" alt="Our Team Graphic">
+          <img src="images/baxter.jpg" alt="Our team">
         </div>
         <div class="info-box">
           <h2>Who We Are</h2>
-          <p>We're a team of motivated teens passionate about web design and helping small businesses succeed online. We're launching our business with a fresh perspective, strong technical skills, and a commitment to delivering real results.</p>
+          <p>
+            We're a team of motivated teens passionate about web design and helping small businesses succeed online.
+            We're launching our business with a fresh perspective, strong technical skills, and a commitment to delivering real results.
+          </p>
         </div>
       </div>
-  
+
       <!-- Row 2: Text | Image -->
       <div class="row">
         <div class="info-box">
           <h2>What We Do</h2>
-          <p>We create fast, affordable, and professional websites tailored specifically for small businesses. Whether you need a brand-new site or an upgrade to your existing one, we build with efficiency, quality, and your business goals in mind.</p>
+          <p>
+            We create fast, affordable, and professional websites tailored specifically for small businesses.
+            Whether you need a brand-new site or an upgrade to your existing one,
+            we build with efficiency, quality, and your business goals in mind.
+          </p>
         </div>
         <div class="image-box">
-          <img src="images/velo.jpg" alt="Work Process Graphic">
+          <img src="images/velo.jpg" alt="Our work process">
         </div>
       </div>
-  
-      <!-- Row 3: Full-width Text Only -->
+
+      <!-- Row 3: Full-width text -->
       <div class="info-box full-width">
         <h2>Our Promise</h2>
-        <p>Even as a new business, we are dedicated to providing the best service possible. We care about your success and treat every project with the attention, creativity, and professionalism it deserves. Our mission is to help small businesses grow — while growing ourselves as young entrepreneurs.</p>
-      </div>
-  
-    </div>
-  </section>    
-  
-  <script>
-    const faders = document.querySelectorAll('.fade-in-section');
-  
-    const appearOptions = {
-      threshold: 0.2,
-      rootMargin: "0px 0px -50px 0px"
-    };
-  
-    const appearOnScroll = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      });
-    }, appearOptions);
-  
-    faders.forEach(fader => {
-      appearOnScroll.observe(fader);
-    });
-  </script>    
-    
-    <div class="footer-wrapper">
-      <footer class="footer">
-        <div class="footer-content">
-          <img src="https://i.ibb.co/7J7bKyN3/logo1.png" alt="CoreStack Logo">
-          <p>CoreStack Creative — Web Design for Local Businesses</p>
-        </div>
-    
-        <div class="footer-links">
-          <a href="contact.html" class="footer-button">Contact</a>
-          <a href="pricing.html" class="footer-button">Pricing</a>
-        </div>
-    
-        <p>Email us: 
-          <a href="mailto:velo.guidrycsc@gmail.com">velo.guidrycsc@gmail.com</a> | 
-          <a href="mailto:baxter.caresscsc@gmail.com">baxter.caresscsc@gmail.com</a>
+        <p>
+          Even as a new business, we are dedicated to providing the best service possible.
+          We care about your success and treat every project with the attention, creativity,
+          and professionalism it deserves. Our mission is to help small businesses grow —
+          while growing ourselves as young entrepreneurs.
         </p>
-      </footer>
+      </div>
+
     </div>
+  </section>
 
-    <script src="script.js"></script>
 
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+  <div class="footer-wrapper">
+    <footer class="footer">
+      <div class="footer-content">
+        <img src="https://i.ibb.co/7J7bKyN3/logo1.png" alt="CoreStack Logo">
+        <p>CoreStack Creative — Web Design for Local Businesses</p>
+      </div>
+      <div class="footer-links">
+        <a href="contact.html" class="footer-button">Contact</a>
+        <a href="pricing.html" class="footer-button">Pricing</a>
+      </div>
+      <p>
+        Email us:
+        <a href="mailto:velo.guidrycsc@gmail.com">velo.guidrycsc@gmail.com</a> |
+        <a href="mailto:baxter.caresscsc@gmail.com">baxter.caresscsc@gmail.com</a>
+      </p>
+    </footer>
+  </div>
+
+
+  <script src="script.js"></script>
 </body>
 </html>

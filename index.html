@@ -10,124 +10,133 @@
 </head>
 <body>
 
+
+  <!-- =========================================================
+       HEADER & NAVIGATION
+       ========================================================= -->
   <header>
-     <img src="images/logo.png" alt="CoreStack Logo" class="logo" />
+    <img src="images/logo.png" alt="CoreStack Logo" class="logo" />
 
-      <!-- Desktop Navigation -->
-      <nav>
-          <a href="index.html" class="active">Home</a>
-          <span>|</span>
-          <a href="about.html">About</a>
-          <span>|</span>
-          <a href="portfolio.html">Portfolio</a>
-          <span>|</span>
-          <a href="pricing.html">Pricing</a>
-          <span>|</span>
-          <a href="contact.html">Contact</a>
-      </nav>
+    <!-- Desktop nav -->
+    <nav>
+      <a href="index.html" class="active">Home</a>
+      <span>|</span>
+      <a href="about.html">About</a>
+      <span>|</span>
+      <a href="portfolio.html">Portfolio</a>
+      <span>|</span>
+      <a href="pricing.html">Pricing</a>
+      <span>|</span>
+      <a href="contact.html">Contact</a>
+    </nav>
 
-      <!-- Hamburger Menu Button -->
-      <div class="hamburger" id="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-      </div>
-
-      <!-- Mobile Navigation -->
-      <nav class="mobile-nav" id="mobileNav">
-          <a href="index.html" class="active">Home</a>
-          <a href="about.html">About</a>
-          <a href="portfolio.html">Portfolio</a>
-          <a href="pricing.html">Pricing</a>
-          <a href="contact.html">Contact</a>
-      </nav>
+    <!-- Hamburger toggle (mobile) -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </header>
 
-  <!-- Mobile Navigation Menu -->
-  <div class="mobile-nav" id="mobileNav">
-      <a href="index.html" class="active" onclick="closeMobileNav()">Home</a>
-      <a href="about.html" onclick="closeMobileNav()">About</a>
-      <a href="portfolio.html" onclick="closeMobileNav()">Portfolio</a>
-      <a href="pricing.html" onclick="closeMobileNav()">Pricing</a>
-      <a href="contact.html" onclick="closeMobileNav()">Contact</a>
-  </div>   
+  <!-- Full-screen mobile nav overlay -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" class="active">Home</a>
+    <a href="about.html">About</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
+
+  <!-- =========================================================
+       HERO SECTION
+       ========================================================= -->
   <section class="hero-section">
-      <div class="content hero-flex">
-          <div class="hero-name-left">
-              <h1 class="company-name">Corestack Creative</h1>
-          </div>
-          <div class="hero-tagline-right">
-              <p class="tagline">freelance web design</p>
-          </div>
+
+    <!-- Company name (left) + tagline (right) -->
+    <div class="content hero-flex">
+      <div class="hero-name-left">
+        <h1 class="company-name">Corestack Creative</h1>
       </div>
-        
-      <!-- Static browser window in background -->
-      <div class="static-browser-window">
-          <div class="browser-header">
-              <div class="browser-buttons">
-                  <span class="btn-close"></span>
-                  <span class="btn-minimize"></span>
-                  <span class="btn-maximize"></span>
-              </div>
-              <div class="browser-address-bar"></div>
-          </div>
+      <div class="hero-tagline-right">
+        <p class="tagline">freelance web design</p>
       </div>
-        
-      <!-- Moving layers image -->
-      <div class="floating-layers">
-          <img src="images/layers.png" alt="Design Layers" class="layers-image">
+    </div>
+
+    <!-- Decorative browser window (background) -->
+    <div class="static-browser-window">
+      <div class="browser-header">
+        <div class="browser-buttons">
+          <span class="btn-close"></span>
+          <span class="btn-minimize"></span>
+          <span class="btn-maximize"></span>
+        </div>
+        <div class="browser-address-bar"></div>
       </div>
-        
-      <div class="hero-cta-row">
-          <div class="hero-cta-side hero-cta-left">
-              <span class="hero-check">✔</span>
-              <span class="hero-cta-text">Fast turnaround</span>
-          </div>
-          <a href="contact.html" class="hero-contact-btn">
-              Contact Us
-              <div class="btn-ripple"></div>
-          </a>
-          <div class="hero-cta-side hero-cta-right">
-              <span class="hero-check">✔</span>
-              <span class="hero-cta-text">Local & friendly</span>
-          </div>
+    </div>
+
+    <!-- Parallax / floating layers image (mouse-tracked) -->
+    <div class="floating-layers">
+      <img src="images/layers.png" alt="Design Layers" class="layers-image">
+    </div>
+
+    <!-- Bottom CTA row: checkmarks + contact button -->
+    <div class="hero-cta-row">
+      <div class="hero-cta-side hero-cta-left">
+        <span class="hero-check">✔</span>
+        <span class="hero-cta-text">Fast turnaround</span>
       </div>
+      <a href="contact.html" class="hero-contact-btn">
+        Contact Us
+        <div class="btn-ripple"></div>
+      </a>
+      <div class="hero-cta-side hero-cta-right">
+        <span class="hero-check">✔</span>
+        <span class="hero-cta-text">Local &amp; friendly</span>
+      </div>
+    </div>
+
   </section>
 
-  <!-- New Responsive Devices Section -->
+
+  <!-- =========================================================
+       RESPONSIVE DEVICES SECTION ("We Create")
+       ========================================================= -->
   <section class="responsive-devices-section">
     <div class="devices-container">
       <div class="devices-content">
+
+        <!-- Device mockups -->
         <div class="devices-image-side">
           <div class="devices-showcase">
             <div class="device desktop-device">
               <div class="device-screen">
-                <img src="images/largescreen.png" alt="CoreStack Creative Website" class="screen-image">
+                <img src="images/largescreen.png" alt="Desktop preview" class="screen-image">
               </div>
             </div>
-          
             <div class="device tablet-device">
               <div class="device-screen">
-                <img src="images/mediumscreen.png" alt="CoreStack Creative Website" class="screen-image">
+                <img src="images/mediumscreen.png" alt="Tablet preview" class="screen-image">
               </div>
             </div>
-          
             <div class="device mobile-device">
               <div class="device-screen">
-                <img src="images/smallscreen.png" alt="CoreStack Creative Website" class="screen-image">
+                <img src="images/smallscreen.png" alt="Mobile preview" class="screen-image">
               </div>
             </div>
           </div>
         </div>
-      
+
+        <!-- Copy -->
         <div class="devices-text-side">
           <div class="text-content">
             <h2 class="devices-title">
               <span class="title-highlight">We</span> Create
             </h2>
             <p class="devices-description">
-              We build fast, professional websites tailored for small businesses. Whether you're starting fresh or improving an existing site, our process is smooth, efficient, and stress-free.
+              We build fast, professional websites tailored for small businesses.
+              Whether you're starting fresh or improving an existing site,
+              our process is smooth, efficient, and stress-free.
             </p>
             <a href="about.html" class="learn-more-btn">
               <span>Learn More</span>
@@ -135,18 +144,25 @@
             </a>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Enhanced Condensed Pricing Preview Section -->
+
+  <!-- =========================================================
+       PRICING PREVIEW (condensed — home page)
+       ========================================================= -->
   <section class="pricing-preview-condensed">
+
+    <!-- Animated background elements -->
     <div class="background-animation">
       <div class="floating-shapes"></div>
       <div class="particle-field"></div>
     </div>
 
     <div class="pricing-container">
+
       <div class="pricing-header">
         <h2 class="pricing-title">
           <span class="title-word" data-delay="0">Choose</span>
@@ -155,18 +171,18 @@
         </h2>
         <div class="title-underline"></div>
       </div>
-  
-      <!-- Desktop/Tablet Grid View -->
+
+      <!-- Three plan cards (desktop grid) -->
       <div class="pricing-grid desktop-grid">
+
+        <!-- Basic -->
         <div class="pricing-card-wrapper" data-plan="basic">
           <div class="pricing-card">
-           <div class="card-glow"></div>
+            <div class="card-glow"></div>
             <div class="card-content">
               <div class="plan-header">
                 <h3 class="plan-name">Basic</h3>
-                <div class="plan-icon">
-                  <div class="icon-shape"></div>
-                </div>
+                <div class="plan-icon"><div class="icon-shape"></div></div>
               </div>
               <div class="price-section">
                 <div class="price-container">
@@ -176,25 +192,13 @@
                 </div>
               </div>
               <ul class="features-list">
-                <li data-delay="0">
-                  <span class="feature-icon">✓</span>
-                  <span class="feature-text">Full website</span>
-                </li>
-                <li data-delay="100">
-                  <span class="feature-icon">✓</span>
-                  <span class="feature-text">HTML code</span>
-                </li>
-                <li data-delay="200">
-                  <span class="feature-icon">✓</span>
-                  <span class="feature-text">Basic Support</span>
-                </li>
-                <li data-delay="300">
-                  <span class="feature-icon">✓</span>
-                  <span class="feature-text">1 free photoshoot</span>
-                </li>
+                <li data-delay="0">Full website</li>
+                <li data-delay="100">HTML code</li>
+                <li data-delay="200">Basic Support</li>
+                <li data-delay="300">1 free photoshoot</li>
               </ul>
               <div class="card-button">
-                <a href="contact.html?plan=Basic" class="select-plan-btn" role="button" aria-label="Select Basic Plan">
+                <a href="contact.html?plan=Basic" class="select-plan-btn" aria-label="Select Basic Plan">
                   <span>Select Plan</span>
                   <div class="btn-ripple"></div>
                 </a>
@@ -202,19 +206,16 @@
             </div>
           </div>
         </div>
-    
+
+        <!-- Regular (featured) -->
         <div class="pricing-card-wrapper featured" data-plan="regular">
-          <div class="featured-badge">
-            <span>Most Popular</span>
-          </div>
+          <div class="featured-badge"><span>Most Popular</span></div>
           <div class="pricing-card">
             <div class="card-glow"></div>
             <div class="card-content">
               <div class="plan-header">
                 <h3 class="plan-name">Regular</h3>
-                <div class="plan-icon">
-                  <div class="icon-shape"></div>
-                </div>
+                <div class="plan-icon"><div class="icon-shape"></div></div>
               </div>
               <div class="price-section">
                 <div class="price-container">
@@ -224,25 +225,13 @@
                 </div>
               </div>
               <ul class="features-list">
-                <li data-delay="0">
-                  <span class="feature-icon">✓</span>
-                  <span class="feature-text">Full Website</span>
-                </li>
-                <li data-delay="100">
-                  <span class="feature-icon">✓</span>
-                  <span class="feature-text">HTML or Weebly</span>
-                </li>
-                <li data-delay="200">
-                  <span class="feature-icon">✓</span>
-                  <span class="feature-text">3 free photoshoots</span>
-                </li>
-                <li data-delay="300">
-                  <span class="feature-icon">✓</span>
-                  <span class="feature-text">Mobile device support</span>
-                </li>
+                <li data-delay="0">Full Website</li>
+                <li data-delay="100">HTML or Weebly</li>
+                <li data-delay="200">3 free photoshoots</li>
+                <li data-delay="300">Mobile device support</li>
               </ul>
               <div class="card-button">
-                <a href="contact.html?plan=Regular" class="select-plan-btn" role="button" aria-label="Select Regular Plan">
+                <a href="contact.html?plan=Regular" class="select-plan-btn" aria-label="Select Regular Plan">
                   <span>Select Plan</span>
                   <div class="btn-ripple"></div>
                 </a>
@@ -250,16 +239,15 @@
             </div>
           </div>
         </div>
-    
-       <div class="pricing-card-wrapper" data-plan="premium">
+
+        <!-- Premium -->
+        <div class="pricing-card-wrapper" data-plan="premium">
           <div class="pricing-card">
             <div class="card-glow"></div>
             <div class="card-content">
               <div class="plan-header">
                 <h3 class="plan-name">Premium</h3>
-                <div class="plan-icon">
-                  <div class="icon-shape"></div>
-                </div>
+                <div class="plan-icon"><div class="icon-shape"></div></div>
               </div>
               <div class="price-section">
                 <div class="price-container">
@@ -269,25 +257,13 @@
                 </div>
               </div>
               <ul class="features-list">
-                <li data-delay="0">
-                  <span class="feature-icon">✓</span>
-                  <span class="feature-text">Maximized Website</span>
-                </li>
-                <li data-delay="100">
-                  <span class="feature-icon">✓</span>
-                  <span class="feature-text">Online store options</span>
-                </li>
-                <li data-delay="200">
-                  <span class="feature-icon">✓</span>
-                  <span class="feature-text">Priority support</span>
-                </li>
-                <li data-delay="300">
-                  <span class="feature-icon">✓</span>
-                  <span class="feature-text">Unlimited photoshoots</span>
-                </li>
+                <li data-delay="0">Maximized Website</li>
+                <li data-delay="100">Online store options</li>
+                <li data-delay="200">Priority support</li>
+                <li data-delay="300">Unlimited photoshoots</li>
               </ul>
               <div class="card-button">
-                <a href="contact.html?plan=Premium" class="select-plan-btn" role="button" aria-label="Select Premium Plan">
+                <a href="contact.html?plan=Premium" class="select-plan-btn" aria-label="Select Premium Plan">
                   <span>Select Plan</span>
                   <div class="btn-ripple"></div>
                 </a>
@@ -295,120 +271,85 @@
             </div>
           </div>
         </div>
+
+      </div><!-- /.desktop-grid -->
+    </div><!-- /.pricing-container -->
+  </section>
+
+
+  <!-- =========================================================
+       STEPS / TIMELINE SECTION
+       ========================================================= -->
+  <section class="web-design-steps">
+    <h2 class="reveal-up">Web design made easy</h2>
+    <h3 class="reveal-up">Just three simple steps.</h3>
+
+    <div class="timeline-image reveal-up">
+      <img src="images/timeline.png" alt="Process timeline">
+    </div>
+
+    <div class="step-timeline-container">
+      <div class="step-no-box reveal-up step-left">
+        <img src="images/goals.png" alt="Step 1 – Goals" class="step-image">
+        <h3>Tell us your goals</h3>
+        <p>We start by understanding your business needs, branding, and what you want your website to achieve.</p>
+      </div>
+      <div class="step-no-box reveal-up step-center">
+        <img src="images/plan.png" alt="Step 2 – Plan and Create" class="step-image">
+        <h3>Plan and create</h3>
+        <p>From layout to content, we design a custom website tailored to your business and audience.</p>
+      </div>
+      <div class="step-no-box reveal-up step-right">
+        <img src="images/publish.png" alt="Step 3 – Publish and Enjoy" class="step-image">
+        <h3>Publish and enjoy</h3>
+        <p>Once approved, we launch your site and hand over full control — ready for you to grow your online presence.</p>
       </div>
     </div>
   </section>
-  
- <!-- Steps section below with timeline -->
- <section class="web-design-steps">
-   <h2 class="reveal-up">Web design made easy</h2>
-   <h3 class="reveal-up">Just three simple steps.</h3>
 
-   <div class="timeline-image reveal-up">
-     <img src="images/timeline.png" alt="Timeline" class="timeline-image">
-   </div>
 
-   <div class="step-timeline-container">
-     <div class="step-no-box reveal-up step-left">
-       <img src="images/goals.png" alt="Step 1 - Goals" class="step-image">
-       <h3>Tell us your goals</h3>
-       <p>We start by understanding your business needs, branding, and what you want your website to achieve.</p>
-     </div>
-
-     <div class="step-no-box reveal-up step-center">
-       <img src="images/plan.png" alt="Step 2 - Plan and Create" class="step-image">
-       <h3>Plan and create</h3>
-       <p>From layout to content, we design a custom website tailored to your business and audience.</p>
-     </div>
-
-     <div class="step-no-box reveal-up step-right">
-       <img src="images/publish.png" alt="Step 3 - Publish and Enjoy" class="step-image">
-       <h3>Publish and enjoy</h3>
-       <p>Once approved, we launch your site and hand over full control—ready for you to grow your online presence.</p>
-     </div>
-   </div>
- </section>
-  
+  <!-- =========================================================
+       MAP SECTION
+       ========================================================= -->
   <section class="map-section" id="mapSection">
     <div class="map-text">
       <h2>We Serve Carrboro, NC</h2>
       <p>Proudly supporting local businesses in Carrboro and surrounding areas.</p>
     </div>
     <div class="map-embed" id="mapEmbed">
-      <iframe 
+      <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3236.326078708646!2d-79.07211518434358!3d35.91024688014366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89ace5109c7eea23%3A0xd5775fbbd7d69d5e!2sCarrboro%2C%20NC!5e0!3m2!1sen!2sus!4v1682915172761"
         allowfullscreen=""
         loading="lazy"
+        title="Map of Carrboro, NC"
       ></iframe>
       <button class="close-map" id="closeMapBtn">&times;</button>
     </div>
-  </section>  
+  </section>
 
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
   <div class="footer-wrapper">
     <footer class="footer">
       <div class="footer-content">
         <img src="https://i.ibb.co/7J7bKyN3/logo1.png" alt="CoreStack Logo">
         <p>CoreStack Creative — Web Design for Local Businesses</p>
       </div>
-  
       <div class="footer-links">
         <a href="contact.html" class="footer-button">Contact</a>
         <a href="pricing.html" class="footer-button">Pricing</a>
       </div>
-  
-      <p>Email us: 
-        <a href="mailto:velo.guidrycsc@gmail.com">velo.guidrycsc@gmail.com</a> | 
+      <p>
+        Email us:
+        <a href="mailto:velo.guidrycsc@gmail.com">velo.guidrycsc@gmail.com</a> |
         <a href="mailto:baxter.caresscsc@gmail.com">baxter.caresscsc@gmail.com</a>
       </p>
     </footer>
   </div>
-  
-  <script>
-    const reveals = document.querySelectorAll('.reveal-up');
-  
-    const revealOnScroll = () => {
-      for (let i = 0; i < reveals.length; i++) {
-        const windowHeight = window.innerHeight;
-        const elementTop = reveals[i].getBoundingClientRect().top;
-        const revealPoint = 150;
-  
-        if (elementTop < windowHeight - revealPoint) {
-          reveals[i].classList.add('active');
-        }
-      }
-    };
-  
-    window.addEventListener('scroll', revealOnScroll);
-    window.addEventListener('load', revealOnScroll); // run on load in case it's already visible
-  </script>
-  
-  <script>
-    const mapEmbed = document.getElementById('mapEmbed');
-    const closeMapBtn = document.getElementById('closeMapBtn');
-  
-    mapEmbed.addEventListener('click', (e) => {
-      if (!mapEmbed.classList.contains('active')) {
-        e.stopPropagation();
-        mapEmbed.classList.add('active');
-        document.body.classList.add('map-open');
-      }
-    });
-  
-    closeMapBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      mapEmbed.classList.remove('active');
-      document.body.classList.remove('map-open');
-    });
-  
-    document.addEventListener('click', (e) => {
-      if (mapEmbed.classList.contains('active') && !mapEmbed.contains(e.target)) {
-        mapEmbed.classList.remove('active');
-        document.body.classList.remove('map-open');
-      }
-    });
-  </script>
-  
-<script src="script.js"></script>
-  
+
+
+  <script src="script.js"></script>
 </body>
 </html>

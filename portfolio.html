@@ -9,151 +9,164 @@
 </head>
 <body>
 
+
+  <!-- =========================================================
+       HEADER & NAVIGATION
+       ========================================================= -->
   <header>
-     <img src="images/logo.png" alt="CoreStack Logo" class="logo" />
+    <img src="images/logo.png" alt="CoreStack Logo" class="logo" />
 
-      <!-- Desktop Navigation -->
-      <nav>
-          <a href="index.html">Home</a>
-          <span>|</span>
-          <a href="about.html">About</a>
-          <span>|</span>
-          <a href="portfolio.html" class="active">Portfolio</a>
-          <span>|</span>
-          <a href="pricing.html">Pricing</a>
-          <span>|</span>
-          <a href="contact.html">Contact</a>
-      </nav>
+    <nav>
+      <a href="index.html">Home</a>
+      <span>|</span>
+      <a href="about.html">About</a>
+      <span>|</span>
+      <a href="portfolio.html" class="active">Portfolio</a>
+      <span>|</span>
+      <a href="pricing.html">Pricing</a>
+      <span>|</span>
+      <a href="contact.html">Contact</a>
+    </nav>
 
-      <!-- Hamburger Menu Button -->
-      <div class="hamburger" id="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-      </div>
-
-      <!-- Mobile Navigation -->
-      <nav class="mobile-nav" id="mobileNav">
-          <a href="index.html">Home</a>
-          <a href="about.html">About</a>
-          <a href="portfolio.html">Portfolio</a>
-          <a href="pricing.html">Pricing</a>
-          <a href="contact.html">Contact</a>
-      </nav>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
   </header>
 
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+
+  <!-- =========================================================
+       PAGE HERO BANNER
+       ========================================================= -->
   <section class="hero">
     <div class="hero-text">
       <h1>Our Work</h1>
       <p>Here are some of the projects we've brought to life for local businesses.</p>
     </div>
     <div class="hero-graphic">
-      <img src="images/portfolio.png" alt="Pricing Graphic">
+      <img src="images/portfolio.png" alt="Portfolio graphic">
     </div>
   </section>
 
+
+  <!-- =========================================================
+       PORTFOLIO GRID
+       To add a new project: copy one .website-box block,
+       update data-url, data-title, the screenshot background-image,
+       the <h3> title, and the <p> description.
+       ========================================================= -->
   <section class="portfolio-section">
     <div class="portfolio-container">
       <div class="portfolio-grid">
-        
-        <!-- Website Box 1 -->
-        <div class="website-box" data-url="https://corestack-creative.github.io/piedmont-environmental/index.html" data-title="Project Name 1">
+
+        <!-- Project 1 -->
+        <div class="website-box"
+             data-url="https://corestack-creative.github.io/piedmont-environmental/index.html"
+             data-title="Piedmont Environmental">
           <div class="website-preview">
             <div class="preview-header">
               <div class="browser-dots">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
               </div>
             </div>
             <div class="preview-content" style="background-image: url('images/pescreenshot.png');">
               <h3>Piedmont Environmental</h3>
-              <p>Piedmont Environmental is a company designed to meet all your ecological landscaping needs, whether it is deer fences, planting, and so much more.</p>
-              <div class="preview-overlay">
-                <span>Click to Preview</span>
-              </div>
+              <p>Ecological landscaping services — deer fences, planting, and much more.</p>
+              <div class="preview-overlay"><span>Click to Preview</span></div>
             </div>
           </div>
         </div>
 
-        <!-- Website Box 2 -->
-        <div class="website-box" data-url="https://example2.com" data-title="Project Name 2">
+        <!-- Project 2 (placeholder) -->
+        <div class="website-box"
+             data-url="https://example2.com"
+             data-title="Project Name 2">
           <div class="website-preview">
             <div class="preview-header">
               <div class="browser-dots">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
               </div>
             </div>
             <div class="preview-content" style="background-image: url('path/to/website2-screenshot.jpg');">
               <h3>Project Name 2</h3>
-              <p>Brief description of the project</p>
-              <div class="preview-overlay">
-                <span>Click to Preview</span>
-              </div>
+              <p>Brief description of the project.</p>
+              <div class="preview-overlay"><span>Click to Preview</span></div>
             </div>
           </div>
         </div>
 
-        <!-- Website Box 3 -->
-        <div class="website-box" data-url="https://example3.com" data-title="Project Name 3">
+        <!-- Project 3 (placeholder) -->
+        <div class="website-box"
+             data-url="https://example3.com"
+             data-title="Project Name 3">
           <div class="website-preview">
             <div class="preview-header">
               <div class="browser-dots">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
               </div>
             </div>
             <div class="preview-content" style="background-image: url('path/to/website3-screenshot.jpg');">
               <h3>Project Name 3</h3>
-              <p>Brief description of the project</p>
-              <div class="preview-overlay">
-                <span>Click to Preview</span>
-              </div>
+              <p>Brief description of the project.</p>
+              <div class="preview-overlay"><span>Click to Preview</span></div>
             </div>
           </div>
         </div>
 
-    <!-- Lightbox Modal -->
-    <div id="website-lightbox" class="lightbox-overlay">
-      <div class="lightbox-container">
-        <div class="lightbox-header">
-          <h3 id="lightbox-title">Website Preview</h3>
-          <button class="close-btn" id="close-lightbox">&times;</button>
-        </div>
-        <div class="lightbox-content">
-          <iframe id="website-iframe" src="about:blank" frameborder="0"></iframe>
-        </div>
-        <div class="lightbox-footer">
-          <a id="visit-website" href="#" target="_blank" class="visit-btn">Visit Website</a>
-        </div>
+      </div><!-- /.portfolio-grid -->
+    </div><!-- /.portfolio-container -->
+  </section>
+
+
+  <!-- =========================================================
+       LIGHTBOX MODAL
+       Opened automatically when a .website-box is clicked.
+       ========================================================= -->
+  <div id="website-lightbox" class="lightbox-overlay">
+    <div class="lightbox-container">
+      <div class="lightbox-header">
+        <h3 id="lightbox-title">Website Preview</h3>
+        <button class="close-btn" id="close-lightbox">&times;</button>
+      </div>
+      <div class="lightbox-content">
+        <iframe id="website-iframe" src="about:blank" frameborder="0" title="Website preview"></iframe>
+      </div>
+      <div class="lightbox-footer">
+        <a id="visit-website" href="#" target="_blank" class="visit-btn">Visit Website</a>
       </div>
     </div>
-  </section>
-  
+  </div>
 
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
   <div class="footer-wrapper">
     <footer class="footer">
       <div class="footer-content">
         <img src="https://i.ibb.co/7J7bKyN3/logo1.png" alt="CoreStack Logo">
         <p>CoreStack Creative — Web Design for Local Businesses</p>
       </div>
-  
       <div class="footer-links">
         <a href="contact.html" class="footer-button">Contact</a>
         <a href="pricing.html" class="footer-button">Pricing</a>
       </div>
-  
-      <p>Email us: 
-        <a href="mailto:velo.guidrycsc@gmail.com">velo.guidrycsc@gmail.com</a> | 
+      <p>
+        Email us:
+        <a href="mailto:velo.guidrycsc@gmail.com">velo.guidrycsc@gmail.com</a> |
         <a href="mailto:baxter.caresscsc@gmail.com">baxter.caresscsc@gmail.com</a>
       </p>
     </footer>
   </div>
 
-  <script src="script.js"></script>
 
+  <script src="script.js"></script>
 </body>
 </html>
